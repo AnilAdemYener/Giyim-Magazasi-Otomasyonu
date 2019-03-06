@@ -74,6 +74,8 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(756, 72);
             this.panel1.TabIndex = 0;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
             // pictureBox3
             // 
@@ -239,8 +241,8 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button5);
+            this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.textBox3);
             this.panel3.Controls.Add(this.label5);
@@ -343,15 +345,9 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Kullanıcı Adı:";
             // 
-            // itemlerrDataSet
-            // 
-            // 
             // tablo1BindingSource
             // 
             this.tablo1BindingSource.DataMember = "Tablo1";
-            // 
-            // tablo1TableAdapter
-            // 
             // 
             // Form3
             // 

@@ -25,3 +25,18 @@ C:\Users\Anıl Adem Yener\Desktop\hazir-giyim-otomasyonu-v2\WindowsFormsApplicat
 C:\Users\Anıl Adem Yener\Desktop\hazir-giyim-otomasyonu-v2\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.csproj.CoreCompileInputs.cache
 C:\Users\Anıl Adem Yener\Desktop\hazir-giyim-otomasyonu-v2\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.exe
 C:\Users\Anıl Adem Yener\Desktop\hazir-giyim-otomasyonu-v2\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.pdb
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe.config
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.exe
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.pdb
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\bin\Debug\itemlerr1.accdb
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.pdb
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.csprojResolveAssemblyReference.cache
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form4.resources
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form1.resources
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form2.resources
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form3.resources
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form5.resources
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Properties.Resources.resources
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.csproj.GenerateResource.Cache
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\bin\Debug\itemler3.accdb

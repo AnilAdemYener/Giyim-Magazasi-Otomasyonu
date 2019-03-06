@@ -70,6 +70,17 @@
     <Compile Include="Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form5.Designer.cs">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="itemler3DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>itemler3DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="itemlerr1DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,6 +100,9 @@
     <EmbeddedResource Include="Form3.resx">
       <DependentUpon>Form3.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form5.resx">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -99,6 +113,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="app.config" />
+    <None Include="itemler3DataSet.xsc">
+      <DependentUpon>itemler3DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="itemler3DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>itemler3DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="itemler3DataSet.xss">
+      <DependentUpon>itemler3DataSet.xsd</DependentUpon>
+    </None>
     <None Include="itemlerr1DataSet.xsc">
       <DependentUpon>itemlerr1DataSet.xsd</DependentUpon>
     </None>
@@ -121,6 +146,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="itemler3.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="itemlerr1.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

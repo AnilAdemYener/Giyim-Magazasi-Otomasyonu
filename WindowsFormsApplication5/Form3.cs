@@ -100,8 +100,9 @@ namespace WindowsFormsApplication5
                 label6.Visible = false;
                 //Form1 kullaniciPaneli = new Form1();
                 //kullaniciPaneli.Show();
-                Form4 kullaniciPaneli = new Form4();
+                Form5 kullaniciPaneli = new Form5();
                 kullaniciPaneli.Show();
+                this.Hide();
                 textBox1.Text = "_________";
                 textBox2.Text = "_________";
             }
@@ -177,6 +178,22 @@ namespace WindowsFormsApplication5
         private void textBox3_Click(object sender, EventArgs e)
         {
             textBox3.Text = "";
+        }
+
+        Point lastPoint;
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
         }
     }
 }
