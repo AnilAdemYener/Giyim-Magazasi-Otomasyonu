@@ -40,3 +40,34 @@ Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\Windows
 Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Properties.Resources.resources
 Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.csproj.GenerateResource.Cache
 Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\bin\Debug\itemler3.accdb
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe.config
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.exe
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.pdb
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\bin\Debug\itemlerr1.accdb
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.pdb
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form4.resources
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form1.resources
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form2.resources
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form3.resources
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form5.resources
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Properties.Resources.resources
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\bin\Debug\itemler4.accdb
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe.config
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.exe
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.pdb
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\bin\Debug\itemler4.accdb
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\bin\Debug\itemlerr1.accdb
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.pdb
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.csprojResolveAssemblyReference.cache
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form4.resources
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form1.resources
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form2.resources
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form3.resources
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form5.resources
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Properties.Resources.resources
+C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.csproj.GenerateResource.Cache

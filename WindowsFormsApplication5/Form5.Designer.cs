@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form5));
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.pictureGitLogo = new System.Windows.Forms.PictureBox();
             this.lblKullaniciAdi = new System.Windows.Forms.Label();
             this.lblHosgeldiniz = new System.Windows.Forms.Label();
             this.lblBaslik = new System.Windows.Forms.Label();
@@ -48,24 +49,25 @@
             this.rengiDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bedeniDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fiyatiDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cocukBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.itemler3DataSet = new WindowsFormsApplication5.itemler3DataSet();
+            this.cocuk4BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.itemler4DataSet = new WindowsFormsApplication5.itemler4DataSet();
             this.dataGridViewErkek = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rengiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bedeniDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fiyatiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.erkekBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.erkek4BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewKadin = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adiDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rengiDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bedeniDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fiyatiDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kadinBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kadin4BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bttnKitleGoster = new System.Windows.Forms.Button();
             this.comboBoxKitleSecim = new System.Windows.Forms.ComboBox();
+            this.cocukBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblID = new System.Windows.Forms.Label();
             this.lblRengi = new System.Windows.Forms.Label();
             this.lblBedeni = new System.Windows.Forms.Label();
@@ -76,29 +78,32 @@
             this.txtBedeni = new System.Windows.Forms.TextBox();
             this.txtFiyati = new System.Windows.Forms.TextBox();
             this.panelKontrolPaneli = new System.Windows.Forms.Panel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.bttnEnDusukFiyat = new System.Windows.Forms.Button();
+            this.bttnEnYuksekFiyat = new System.Windows.Forms.Button();
             this.lblMesaj = new System.Windows.Forms.Label();
             this.lblAdi = new System.Windows.Forms.Label();
             this.bttnSil = new System.Windows.Forms.Button();
             this.bttnGuncelle = new System.Windows.Forms.Button();
             this.bttnEkle = new System.Windows.Forms.Button();
-            this.erkekTableAdapter = new WindowsFormsApplication5.itemler3DataSetTableAdapters.erkekTableAdapter();
-            this.kadinTableAdapter = new WindowsFormsApplication5.itemler3DataSetTableAdapters.kadinTableAdapter();
-            this.cocukTableAdapter = new WindowsFormsApplication5.itemler3DataSetTableAdapters.cocukTableAdapter();
-            this.pictureGitLogo = new System.Windows.Forms.PictureBox();
+            this.kadin4TableAdapter = new WindowsFormsApplication5.itemler4DataSetTableAdapters.kadin4TableAdapter();
+            this.erkek4TableAdapter = new WindowsFormsApplication5.itemler4DataSetTableAdapters.erkek4TableAdapter();
+            this.cocuk4TableAdapter = new WindowsFormsApplication5.itemler4DataSetTableAdapters.cocuk4TableAdapter();
             this.pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureGitLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClose)).BeginInit();
             this.panelKayıtlar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCocuk)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cocukBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemler3DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cocuk4BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemler4DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewErkek)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erkekBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erkek4BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKadin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kadinBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kadin4BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cocukBindingSource)).BeginInit();
             this.panelKontrolPaneli.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureGitLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -114,10 +119,22 @@
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(993, 61);
+            this.pnlTop.Size = new System.Drawing.Size(996, 61);
             this.pnlTop.TabIndex = 0;
             this.pnlTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTop_MouseDown);
             this.pnlTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTop_MouseMove);
+            // 
+            // pictureGitLogo
+            // 
+            this.pictureGitLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureGitLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureGitLogo.Image")));
+            this.pictureGitLogo.Location = new System.Drawing.Point(434, 33);
+            this.pictureGitLogo.Name = "pictureGitLogo";
+            this.pictureGitLogo.Size = new System.Drawing.Size(25, 24);
+            this.pictureGitLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureGitLogo.TabIndex = 11;
+            this.pictureGitLogo.TabStop = false;
+            this.pictureGitLogo.Click += new System.EventHandler(this.pictureGitLogo_Click);
             // 
             // lblKullaniciAdi
             // 
@@ -270,7 +287,7 @@
             this.rengiDataGridViewTextBoxColumn2,
             this.bedeniDataGridViewTextBoxColumn2,
             this.fiyatiDataGridViewTextBoxColumn2});
-            this.dataGridViewCocuk.DataSource = this.cocukBindingSource;
+            this.dataGridViewCocuk.DataSource = this.cocuk4BindingSource;
             this.dataGridViewCocuk.Location = new System.Drawing.Point(3, 36);
             this.dataGridViewCocuk.Name = "dataGridViewCocuk";
             this.dataGridViewCocuk.Size = new System.Drawing.Size(680, 463);
@@ -306,15 +323,15 @@
             this.fiyatiDataGridViewTextBoxColumn2.HeaderText = "fiyati";
             this.fiyatiDataGridViewTextBoxColumn2.Name = "fiyatiDataGridViewTextBoxColumn2";
             // 
-            // cocukBindingSource
+            // cocuk4BindingSource
             // 
-            this.cocukBindingSource.DataMember = "cocuk";
-            this.cocukBindingSource.DataSource = this.itemler3DataSet;
+            this.cocuk4BindingSource.DataMember = "cocuk4";
+            this.cocuk4BindingSource.DataSource = this.itemler4DataSet;
             // 
-            // itemler3DataSet
+            // itemler4DataSet
             // 
-            this.itemler3DataSet.DataSetName = "itemler3DataSet";
-            this.itemler3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.itemler4DataSet.DataSetName = "itemler4DataSet";
+            this.itemler4DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridViewErkek
             // 
@@ -330,7 +347,7 @@
             this.rengiDataGridViewTextBoxColumn,
             this.bedeniDataGridViewTextBoxColumn,
             this.fiyatiDataGridViewTextBoxColumn});
-            this.dataGridViewErkek.DataSource = this.erkekBindingSource;
+            this.dataGridViewErkek.DataSource = this.erkek4BindingSource;
             this.dataGridViewErkek.Location = new System.Drawing.Point(3, 36);
             this.dataGridViewErkek.Name = "dataGridViewErkek";
             this.dataGridViewErkek.Size = new System.Drawing.Size(680, 463);
@@ -366,10 +383,10 @@
             this.fiyatiDataGridViewTextBoxColumn.HeaderText = "fiyati";
             this.fiyatiDataGridViewTextBoxColumn.Name = "fiyatiDataGridViewTextBoxColumn";
             // 
-            // erkekBindingSource
+            // erkek4BindingSource
             // 
-            this.erkekBindingSource.DataMember = "erkek";
-            this.erkekBindingSource.DataSource = this.itemler3DataSet;
+            this.erkek4BindingSource.DataMember = "erkek4";
+            this.erkek4BindingSource.DataSource = this.itemler4DataSet;
             // 
             // dataGridViewKadin
             // 
@@ -385,7 +402,7 @@
             this.rengiDataGridViewTextBoxColumn1,
             this.bedeniDataGridViewTextBoxColumn1,
             this.fiyatiDataGridViewTextBoxColumn1});
-            this.dataGridViewKadin.DataSource = this.kadinBindingSource;
+            this.dataGridViewKadin.DataSource = this.kadin4BindingSource;
             this.dataGridViewKadin.Location = new System.Drawing.Point(3, 36);
             this.dataGridViewKadin.Name = "dataGridViewKadin";
             this.dataGridViewKadin.Size = new System.Drawing.Size(680, 463);
@@ -421,10 +438,10 @@
             this.fiyatiDataGridViewTextBoxColumn1.HeaderText = "fiyati";
             this.fiyatiDataGridViewTextBoxColumn1.Name = "fiyatiDataGridViewTextBoxColumn1";
             // 
-            // kadinBindingSource
+            // kadin4BindingSource
             // 
-            this.kadinBindingSource.DataMember = "kadin";
-            this.kadinBindingSource.DataSource = this.itemler3DataSet;
+            this.kadin4BindingSource.DataMember = "kadin4";
+            this.kadin4BindingSource.DataSource = this.itemler4DataSet;
             // 
             // bttnKitleGoster
             // 
@@ -432,7 +449,7 @@
             this.bttnKitleGoster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnKitleGoster.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.bttnKitleGoster.ForeColor = System.Drawing.Color.White;
-            this.bttnKitleGoster.Location = new System.Drawing.Point(166, 5);
+            this.bttnKitleGoster.Location = new System.Drawing.Point(583, 4);
             this.bttnKitleGoster.Name = "bttnKitleGoster";
             this.bttnKitleGoster.Size = new System.Drawing.Size(100, 29);
             this.bttnKitleGoster.TabIndex = 7;
@@ -449,9 +466,9 @@
             "Erkek",
             "Kadın",
             "Çocuk"});
-            this.comboBoxKitleSecim.Location = new System.Drawing.Point(9, 9);
+            this.comboBoxKitleSecim.Location = new System.Drawing.Point(495, 9);
             this.comboBoxKitleSecim.Name = "comboBoxKitleSecim";
-            this.comboBoxKitleSecim.Size = new System.Drawing.Size(151, 21);
+            this.comboBoxKitleSecim.Size = new System.Drawing.Size(82, 21);
             this.comboBoxKitleSecim.TabIndex = 0;
             // 
             // lblID
@@ -571,6 +588,9 @@
             // panelKontrolPaneli
             // 
             this.panelKontrolPaneli.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panelKontrolPaneli.Controls.Add(this.listBox1);
+            this.panelKontrolPaneli.Controls.Add(this.bttnEnDusukFiyat);
+            this.panelKontrolPaneli.Controls.Add(this.bttnEnYuksekFiyat);
             this.panelKontrolPaneli.Controls.Add(this.lblMesaj);
             this.panelKontrolPaneli.Controls.Add(this.lblAdi);
             this.panelKontrolPaneli.Controls.Add(this.bttnSil);
@@ -590,12 +610,48 @@
             this.panelKontrolPaneli.Size = new System.Drawing.Size(295, 502);
             this.panelKontrolPaneli.TabIndex = 1;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(6, 284);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(280, 173);
+            this.listBox1.TabIndex = 27;
+            // 
+            // bttnEnDusukFiyat
+            // 
+            this.bttnEnDusukFiyat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnEnDusukFiyat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnEnDusukFiyat.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bttnEnDusukFiyat.ForeColor = System.Drawing.Color.White;
+            this.bttnEnDusukFiyat.Location = new System.Drawing.Point(153, 238);
+            this.bttnEnDusukFiyat.Name = "bttnEnDusukFiyat";
+            this.bttnEnDusukFiyat.Size = new System.Drawing.Size(135, 40);
+            this.bttnEnDusukFiyat.TabIndex = 26;
+            this.bttnEnDusukFiyat.Text = "En Düşük Fiyat";
+            this.bttnEnDusukFiyat.UseVisualStyleBackColor = true;
+            this.bttnEnDusukFiyat.Click += new System.EventHandler(this.bttnEnDusukFiyat_Click);
+            // 
+            // bttnEnYuksekFiyat
+            // 
+            this.bttnEnYuksekFiyat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnEnYuksekFiyat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnEnYuksekFiyat.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bttnEnYuksekFiyat.ForeColor = System.Drawing.Color.White;
+            this.bttnEnYuksekFiyat.Location = new System.Drawing.Point(6, 238);
+            this.bttnEnYuksekFiyat.Name = "bttnEnYuksekFiyat";
+            this.bttnEnYuksekFiyat.Size = new System.Drawing.Size(141, 40);
+            this.bttnEnYuksekFiyat.TabIndex = 25;
+            this.bttnEnYuksekFiyat.Text = "En Yüksek Fiyat";
+            this.bttnEnYuksekFiyat.UseVisualStyleBackColor = true;
+            this.bttnEnYuksekFiyat.Click += new System.EventHandler(this.bttnEnYuksekFiyat_Click);
+            // 
             // lblMesaj
             // 
             this.lblMesaj.AutoSize = true;
             this.lblMesaj.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblMesaj.ForeColor = System.Drawing.Color.White;
-            this.lblMesaj.Location = new System.Drawing.Point(7, 429);
+            this.lblMesaj.Location = new System.Drawing.Point(7, 459);
             this.lblMesaj.Name = "lblMesaj";
             this.lblMesaj.Size = new System.Drawing.Size(67, 21);
             this.lblMesaj.TabIndex = 24;
@@ -616,11 +672,11 @@
             // 
             this.bttnSil.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnSil.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bttnSil.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.bttnSil.ForeColor = System.Drawing.Color.White;
-            this.bttnSil.Location = new System.Drawing.Point(11, 328);
+            this.bttnSil.Location = new System.Drawing.Point(198, 192);
             this.bttnSil.Name = "bttnSil";
-            this.bttnSil.Size = new System.Drawing.Size(275, 54);
+            this.bttnSil.Size = new System.Drawing.Size(90, 40);
             this.bttnSil.TabIndex = 22;
             this.bttnSil.Text = "Sil";
             this.bttnSil.UseVisualStyleBackColor = true;
@@ -630,11 +686,11 @@
             // 
             this.bttnGuncelle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnGuncelle.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bttnGuncelle.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.bttnGuncelle.ForeColor = System.Drawing.Color.White;
-            this.bttnGuncelle.Location = new System.Drawing.Point(11, 268);
+            this.bttnGuncelle.Location = new System.Drawing.Point(102, 192);
             this.bttnGuncelle.Name = "bttnGuncelle";
-            this.bttnGuncelle.Size = new System.Drawing.Size(275, 54);
+            this.bttnGuncelle.Size = new System.Drawing.Size(90, 40);
             this.bttnGuncelle.TabIndex = 21;
             this.bttnGuncelle.Text = "Güncelle";
             this.bttnGuncelle.UseVisualStyleBackColor = true;
@@ -644,46 +700,34 @@
             // 
             this.bttnEkle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnEkle.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bttnEkle.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.bttnEkle.ForeColor = System.Drawing.Color.White;
-            this.bttnEkle.Location = new System.Drawing.Point(11, 208);
+            this.bttnEkle.Location = new System.Drawing.Point(6, 192);
             this.bttnEkle.Name = "bttnEkle";
-            this.bttnEkle.Size = new System.Drawing.Size(275, 54);
+            this.bttnEkle.Size = new System.Drawing.Size(90, 40);
             this.bttnEkle.TabIndex = 11;
             this.bttnEkle.Text = "Ekle";
             this.bttnEkle.UseVisualStyleBackColor = true;
             this.bttnEkle.Click += new System.EventHandler(this.bttnEkle_Click);
             // 
-            // erkekTableAdapter
+            // kadin4TableAdapter
             // 
-            this.erkekTableAdapter.ClearBeforeFill = true;
+            this.kadin4TableAdapter.ClearBeforeFill = true;
             // 
-            // kadinTableAdapter
+            // erkek4TableAdapter
             // 
-            this.kadinTableAdapter.ClearBeforeFill = true;
+            this.erkek4TableAdapter.ClearBeforeFill = true;
             // 
-            // cocukTableAdapter
+            // cocuk4TableAdapter
             // 
-            this.cocukTableAdapter.ClearBeforeFill = true;
-            // 
-            // pictureGitLogo
-            // 
-            this.pictureGitLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureGitLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureGitLogo.Image")));
-            this.pictureGitLogo.Location = new System.Drawing.Point(434, 33);
-            this.pictureGitLogo.Name = "pictureGitLogo";
-            this.pictureGitLogo.Size = new System.Drawing.Size(25, 24);
-            this.pictureGitLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureGitLogo.TabIndex = 11;
-            this.pictureGitLogo.TabStop = false;
-            this.pictureGitLogo.Click += new System.EventHandler(this.pictureGitLogo_Click);
+            this.cocuk4TableAdapter.ClearBeforeFill = true;
             // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(993, 645);
+            this.ClientSize = new System.Drawing.Size(996, 642);
             this.Controls.Add(this.panelKontrolPaneli);
             this.Controls.Add(this.panelKayıtlar);
             this.Controls.Add(this.bttnKontrolPaneli2);
@@ -699,20 +743,21 @@
             this.Load += new System.EventHandler(this.Form5_Load);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureGitLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClose)).EndInit();
             this.panelKayıtlar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCocuk)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cocukBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemler3DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cocuk4BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemler4DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewErkek)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erkekBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erkek4BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKadin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kadinBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kadin4BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cocukBindingSource)).EndInit();
             this.panelKontrolPaneli.ResumeLayout(false);
             this.panelKontrolPaneli.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureGitLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -746,24 +791,18 @@
         private System.Windows.Forms.Button bttnGuncelle;
         private System.Windows.Forms.DataGridView dataGridViewErkek;
         private System.Windows.Forms.DataGridView dataGridViewKadin;
-        private itemler3DataSet itemler3DataSet;
-        private System.Windows.Forms.BindingSource erkekBindingSource;
-        private itemler3DataSetTableAdapters.erkekTableAdapter erkekTableAdapter;
         private System.Windows.Forms.DataGridView dataGridViewCocuk;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn adiDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rengiDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bedeniDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fiyatiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource kadinBindingSource;
-        private itemler3DataSetTableAdapters.kadinTableAdapter kadinTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn adiDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn rengiDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn bedeniDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn fiyatiDataGridViewTextBoxColumn1;
         private System.Windows.Forms.BindingSource cocukBindingSource;
-        private itemler3DataSetTableAdapters.cocukTableAdapter cocukTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn adiDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn rengiDataGridViewTextBoxColumn2;
@@ -774,5 +813,15 @@
         private System.Windows.Forms.Label lblKullaniciAdi;
         private System.Windows.Forms.Label lblHosgeldiniz;
         private System.Windows.Forms.PictureBox pictureGitLogo;
+        private System.Windows.Forms.Button bttnEnDusukFiyat;
+        private System.Windows.Forms.Button bttnEnYuksekFiyat;
+        private System.Windows.Forms.ListBox listBox1;
+        private itemler4DataSet itemler4DataSet;
+        private System.Windows.Forms.BindingSource kadin4BindingSource;
+        private itemler4DataSetTableAdapters.kadin4TableAdapter kadin4TableAdapter;
+        private System.Windows.Forms.BindingSource erkek4BindingSource;
+        private itemler4DataSetTableAdapters.erkek4TableAdapter erkek4TableAdapter;
+        private System.Windows.Forms.BindingSource cocuk4BindingSource;
+        private itemler4DataSetTableAdapters.cocuk4TableAdapter cocuk4TableAdapter;
     }
 }

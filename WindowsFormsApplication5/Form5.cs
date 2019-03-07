@@ -19,12 +19,12 @@ namespace WindowsFormsApplication5
 
         private void Form5_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'itemler3DataSet.cocuk' table. You can move, or remove it, as needed.
-            this.cocukTableAdapter.Fill(this.itemler3DataSet.cocuk);
-            // TODO: This line of code loads data into the 'itemler3DataSet.kadin' table. You can move, or remove it, as needed.
-            this.kadinTableAdapter.Fill(this.itemler3DataSet.kadin);
-            // TODO: This line of code loads data into the 'itemler3DataSet.erkek' table. You can move, or remove it, as needed.
-            this.erkekTableAdapter.Fill(this.itemler3DataSet.erkek);
+            // TODO: This line of code loads data into the 'itemler4DataSet.cocuk4' table. You can move, or remove it, as needed.
+            this.cocuk4TableAdapter.Fill(this.itemler4DataSet.cocuk4);
+            // TODO: This line of code loads data into the 'itemler4DataSet.erkek4' table. You can move, or remove it, as needed.
+            this.erkek4TableAdapter.Fill(this.itemler4DataSet.erkek4);
+            // TODO: This line of code loads data into the 'itemler4DataSet.kadin4' table. You can move, or remove it, as needed.
+            this.kadin4TableAdapter.Fill(this.itemler4DataSet.kadin4);
             bttnKayitlariGoster2.Visible = false;
             bttnKontrolPaneli2.Visible = false;
             panelKayıtlar.Visible = false;
@@ -33,7 +33,9 @@ namespace WindowsFormsApplication5
             dataGridViewKadin.Visible = false;
             dataGridViewCocuk.Visible = false;
             lblMesaj.Text = "";
-            lblKullaniciAdi.Text = Form3.kullaniciAdi+".";
+            lblKullaniciAdi.Text = Form3.kullaniciAdi + ".";
+            this.comboBoxKitleSecim.DropDownStyle = ComboBoxStyle.DropDownList;
+            listBox1.Visible = false;
         }
 
         private void pictureClose_Click(object sender, EventArgs e)
@@ -127,31 +129,70 @@ namespace WindowsFormsApplication5
             txtFiyati.Text = "";
         }
 
-        OleDbConnection baglanti = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=itemler3.accdb");
+        OleDbConnection baglanti = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=itemler4.accdb");
 
         private void bttnEkle_Click(object sender, EventArgs e)
         {
             baglanti.Open();
             if (comboBoxKitleSecim.SelectedItem == "Erkek")
             {
-                OleDbCommand komutEkle = new OleDbCommand("insert into erkek values('" + txtID.Text + "','" + txtAdi.Text + "','" + txtRengi.Text + "','" + txtBedeni.Text+ "','" + txtFiyati.Text + "')", baglanti);
-                komutEkle.ExecuteNonQuery();
-                lblMesaj.ForeColor = Color.Lime;
-                lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosuna eklendi.";
+                try
+                {
+                    OleDbCommand komutEkle = new OleDbCommand("insert into erkek4 values(@id,@adi,@rengi,@bedeni,@fiyati)", baglanti); //kitle
+                    komutEkle.Parameters.AddWithValue("@id", txtID.Text);
+                    komutEkle.Parameters.AddWithValue("@adi", txtAdi.Text);
+                    komutEkle.Parameters.AddWithValue("@rengi", txtRengi.Text);
+                    komutEkle.Parameters.AddWithValue("@bedeni", txtBedeni.Text);
+                    komutEkle.Parameters.AddWithValue("@fiyati", int.Parse(txtFiyati.Text));
+                    komutEkle.ExecuteNonQuery();
+                    lblMesaj.ForeColor = Color.Lime;
+                    lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosuna kayıt eklendi.";
+                }
+                catch
+                {
+                    lblMesaj.ForeColor = Color.Red;
+                    lblMesaj.Text = "HATA!";
+                }
             }
             else if (comboBoxKitleSecim.SelectedItem == "Kadın")
             {
-                OleDbCommand komutEkle = new OleDbCommand("insert into kadin values('" + txtID.Text + "','" + txtAdi.Text + "','" + txtRengi.Text + "','" + txtBedeni.Text + "','" + txtFiyati.Text + "')", baglanti);
-                komutEkle.ExecuteNonQuery();
-                lblMesaj.ForeColor = Color.Lime;
-                lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosuna eklendi.";
+                try
+                {
+                    OleDbCommand komutEkle = new OleDbCommand("insert into kadin4 values(@id,@adi,@rengi,@bedeni,@fiyati)", baglanti); //kitle
+                    komutEkle.Parameters.AddWithValue("@id", txtID.Text);
+                    komutEkle.Parameters.AddWithValue("@adi", txtAdi.Text);
+                    komutEkle.Parameters.AddWithValue("@rengi", txtRengi.Text);
+                    komutEkle.Parameters.AddWithValue("@bedeni", txtBedeni.Text);
+                    komutEkle.Parameters.AddWithValue("@fiyati", int.Parse(txtFiyati.Text));
+                    komutEkle.ExecuteNonQuery();
+                    lblMesaj.ForeColor = Color.Lime;
+                    lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosuna kayıt eklendi.";
+                }
+                catch
+                {
+                    lblMesaj.ForeColor = Color.Red;
+                    lblMesaj.Text = "HATA!";
+                }
             }
             else if (comboBoxKitleSecim.SelectedItem == "Çocuk")
             {
-                OleDbCommand komutEkle = new OleDbCommand("insert into cocuk values('" + txtID.Text + "','" + txtAdi.Text + "','" + txtRengi.Text + "','" + txtBedeni.Text + "','" + txtFiyati.Text + "')", baglanti);
-                komutEkle.ExecuteNonQuery();
-                lblMesaj.ForeColor = Color.Lime;
-                lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosuna eklendi.";
+                try
+                {
+                    OleDbCommand komutEkle = new OleDbCommand("insert into cocuk4 values(@id,@adi,@rengi,@bedeni,@fiyati)", baglanti); //kitle
+                    komutEkle.Parameters.AddWithValue("@id", txtID.Text);
+                    komutEkle.Parameters.AddWithValue("@adi", txtAdi.Text);
+                    komutEkle.Parameters.AddWithValue("@rengi", txtRengi.Text);
+                    komutEkle.Parameters.AddWithValue("@bedeni", txtBedeni.Text);
+                    komutEkle.Parameters.AddWithValue("@fiyati", int.Parse(txtFiyati.Text));
+                    komutEkle.ExecuteNonQuery();
+                    lblMesaj.ForeColor = Color.Lime;
+                    lblMesaj.Text = "Başarıyla " + comboBoxKitleSecim.SelectedItem + " tablosuna kayıt eklendi.";
+                }
+                catch
+                {
+                    lblMesaj.ForeColor = Color.Red;
+                    lblMesaj.Text = "HATA!";
+                }
             }
             baglanti.Close();
         }
@@ -160,19 +201,19 @@ namespace WindowsFormsApplication5
         {
             if (comboBoxKitleSecim.SelectedItem == "Erkek")
             {
-                this.erkekTableAdapter.Fill(this.itemler3DataSet.erkek);
+                this.erkek4TableAdapter.Fill(this.itemler4DataSet.erkek4);
                 lblMesaj.ForeColor = Color.Lime;
                 lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosu güncellendi.";
             }
             else if (comboBoxKitleSecim.SelectedItem == "Kadın")
             {
-                this.kadinTableAdapter.Fill(this.itemler3DataSet.kadin);
+                this.kadin4TableAdapter.Fill(this.itemler4DataSet.kadin4);
                 lblMesaj.ForeColor = Color.Lime;
                 lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosu güncellendi.";
             }
             else if (comboBoxKitleSecim.SelectedItem == "Çocuk")
             {
-                this.cocukTableAdapter.Fill(this.itemler3DataSet.cocuk);
+                this.cocuk4TableAdapter.Fill(this.itemler4DataSet.cocuk4);
                 lblMesaj.ForeColor = Color.Lime;
                 lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosu güncellendi.";
             }
@@ -183,24 +224,81 @@ namespace WindowsFormsApplication5
             baglanti.Open();
             if (comboBoxKitleSecim.SelectedItem == "Erkek")
             {
-                OleDbCommand komutSil = new OleDbCommand("delete from erkek where id='" + txtID.Text + "'", baglanti);
-                komutSil.ExecuteNonQuery();
-                lblMesaj.ForeColor = Color.Lime;
-                lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosundan kayıt silindi.";
+                Boolean kontrol = false;
+                OleDbCommand komutOku = new OleDbCommand("select * from erkek4", baglanti);
+                OleDbDataReader oku = komutOku.ExecuteReader();
+                while (oku.Read())
+                {
+                    if (txtID.Text == oku["id"].ToString())
+                    {
+                        kontrol = true;
+                    }
+                }
+                if (kontrol == true)
+                {
+                    OleDbCommand komutSil = new OleDbCommand("delete from erkek4 where id='" + txtID.Text + "'", baglanti);
+                    komutSil.ExecuteNonQuery();
+                    lblMesaj.ForeColor = Color.Lime;
+                    lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosundan silindi.";
+                }
+                else if (kontrol == false)
+                {
+                    lblMesaj.ForeColor = Color.Red;
+                    lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosunda böyle bir kayıt yok.";
+                }
+                baglanti.Close();
             }
             else if (comboBoxKitleSecim.SelectedItem == "Kadın")
             {
-                OleDbCommand komutSil = new OleDbCommand("delete from kadin where id='" + txtID.Text + "'", baglanti);
-                komutSil.ExecuteNonQuery();
-                lblMesaj.ForeColor = Color.Lime;
-                lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosundan kayıt silindi.";
+                Boolean kontrol = false;
+                OleDbCommand komutOku = new OleDbCommand("select * from kadin4", baglanti);
+                OleDbDataReader oku = komutOku.ExecuteReader();
+                while (oku.Read())
+                {
+                    if (txtID.Text == oku["id"].ToString())
+                    {
+                        kontrol = true;
+                    }
+                }
+                if (kontrol == true)
+                {
+                    OleDbCommand komutSil = new OleDbCommand("delete from kadin4 where id='" + txtID.Text + "'", baglanti);
+                    komutSil.ExecuteNonQuery();
+                    lblMesaj.ForeColor = Color.Lime;
+                    lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosundan silindi.";
+                }
+                else if (kontrol == false)
+                {
+                    lblMesaj.ForeColor = Color.Red;
+                    lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosunda böyle bir kayıt yok.";
+                }
+                baglanti.Close();
             }
             else if (comboBoxKitleSecim.SelectedItem == "Çocuk")
             {
-                OleDbCommand komutSil = new OleDbCommand("delete from cocuk where id='" + txtID.Text + "'", baglanti);
-                komutSil.ExecuteNonQuery();
-                lblMesaj.ForeColor = Color.Lime;
-                lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosundan kayıt silindi.";
+                Boolean kontrol = false;
+                OleDbCommand komutOku = new OleDbCommand("select * from cocuk4", baglanti);
+                OleDbDataReader oku = komutOku.ExecuteReader();
+                while (oku.Read())
+                {
+                    if (txtID.Text == oku["id"].ToString())
+                    {
+                        kontrol = true;
+                    }
+                }
+                if (kontrol == true)
+                {
+                    OleDbCommand komutSil = new OleDbCommand("delete from cocuk4 where id='" + txtID.Text + "'", baglanti);
+                    komutSil.ExecuteNonQuery();
+                    lblMesaj.ForeColor = Color.Lime;
+                    lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosundan silindi.";
+                }
+                else if (kontrol == false)
+                {
+                    lblMesaj.ForeColor = Color.Red;
+                    lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosunda böyle bir kayıt yok.";
+                }
+                baglanti.Close();
             }
             baglanti.Close();
         }
@@ -224,6 +322,32 @@ namespace WindowsFormsApplication5
         private void pictureGitLogo_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/AnilAdemYener/Hazir-Giyim-Otomasyonu");
+        }
+
+        private void bttnEnYuksekFiyat_Click(object sender, EventArgs e)
+        {
+            baglanti.Open();
+            OleDbCommand komut = new OleDbCommand("select id,max(fiyati) as [max fiyat] from erkek4 group by id having max(fiyati)", baglanti);
+            OleDbDataReader oku = komut.ExecuteReader();
+            listBox1.Items.Clear();
+            while (oku.Read())
+            {
+                listBox1.Items.Add("L " + oku["id"].ToString());
+            }
+            baglanti.Close();
+        }
+
+        private void bttnEnDusukFiyat_Click(object sender, EventArgs e)
+        {
+            baglanti.Open();
+            OleDbCommand komut = new OleDbCommand("select id,min(fiyati) as [min fiyat] from erkek4 group by id having max(fiyati)", baglanti);
+            OleDbDataReader oku = komut.ExecuteReader();
+            listBox1.Items.Clear();
+            while (oku.Read())
+            {
+                listBox1.Items.Add("L " + oku["id"].ToString());
+            }
+            baglanti.Close();
         }
     }
 }
