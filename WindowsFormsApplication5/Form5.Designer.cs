@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form5));
             this.pnlTop = new System.Windows.Forms.Panel();
-            this.pictureGitLogo = new System.Windows.Forms.PictureBox();
             this.lblKullaniciAdi = new System.Windows.Forms.Label();
             this.lblHosgeldiniz = new System.Windows.Forms.Label();
             this.lblBaslik = new System.Windows.Forms.Label();
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.pictureMinimize = new System.Windows.Forms.PictureBox();
             this.pictureClose = new System.Windows.Forms.PictureBox();
+            this.pictureGitLogo = new System.Windows.Forms.PictureBox();
             this.bttnKayitlariGoster = new System.Windows.Forms.Button();
             this.bttnKontrolPaneli = new System.Windows.Forms.Button();
             this.bttnKayitlariGoster2 = new System.Windows.Forms.Button();
@@ -78,6 +78,8 @@
             this.txtBedeni = new System.Windows.Forms.TextBox();
             this.txtFiyati = new System.Windows.Forms.TextBox();
             this.panelKontrolPaneli = new System.Windows.Forms.Panel();
+            this.bttnIleri = new System.Windows.Forms.Button();
+            this.bttnGeri = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.bttnEnDusukFiyat = new System.Windows.Forms.Button();
             this.bttnEnYuksekFiyat = new System.Windows.Forms.Button();
@@ -90,10 +92,10 @@
             this.erkek4TableAdapter = new WindowsFormsApplication5.itemler4DataSetTableAdapters.erkek4TableAdapter();
             this.cocuk4TableAdapter = new WindowsFormsApplication5.itemler4DataSetTableAdapters.cocuk4TableAdapter();
             this.pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureGitLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureGitLogo)).BeginInit();
             this.panelKayıtlar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCocuk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cocuk4BindingSource)).BeginInit();
@@ -109,7 +111,6 @@
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.Color.Black;
-            this.pnlTop.Controls.Add(this.pictureGitLogo);
             this.pnlTop.Controls.Add(this.lblKullaniciAdi);
             this.pnlTop.Controls.Add(this.lblHosgeldiniz);
             this.pnlTop.Controls.Add(this.lblBaslik);
@@ -123,18 +124,6 @@
             this.pnlTop.TabIndex = 0;
             this.pnlTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTop_MouseDown);
             this.pnlTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTop_MouseMove);
-            // 
-            // pictureGitLogo
-            // 
-            this.pictureGitLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureGitLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureGitLogo.Image")));
-            this.pictureGitLogo.Location = new System.Drawing.Point(434, 33);
-            this.pictureGitLogo.Name = "pictureGitLogo";
-            this.pictureGitLogo.Size = new System.Drawing.Size(25, 24);
-            this.pictureGitLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureGitLogo.TabIndex = 11;
-            this.pictureGitLogo.TabStop = false;
-            this.pictureGitLogo.Click += new System.EventHandler(this.pictureGitLogo_Click);
             // 
             // lblKullaniciAdi
             // 
@@ -202,6 +191,18 @@
             this.pictureClose.TabIndex = 1;
             this.pictureClose.TabStop = false;
             this.pictureClose.Click += new System.EventHandler(this.pictureClose_Click);
+            // 
+            // pictureGitLogo
+            // 
+            this.pictureGitLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureGitLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureGitLogo.Image")));
+            this.pictureGitLogo.Location = new System.Drawing.Point(965, 621);
+            this.pictureGitLogo.Name = "pictureGitLogo";
+            this.pictureGitLogo.Size = new System.Drawing.Size(25, 24);
+            this.pictureGitLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureGitLogo.TabIndex = 11;
+            this.pictureGitLogo.TabStop = false;
+            this.pictureGitLogo.Click += new System.EventHandler(this.pictureGitLogo_Click);
             // 
             // bttnKayitlariGoster
             // 
@@ -588,6 +589,8 @@
             // panelKontrolPaneli
             // 
             this.panelKontrolPaneli.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panelKontrolPaneli.Controls.Add(this.bttnIleri);
+            this.panelKontrolPaneli.Controls.Add(this.bttnGeri);
             this.panelKontrolPaneli.Controls.Add(this.listBox1);
             this.panelKontrolPaneli.Controls.Add(this.bttnEnDusukFiyat);
             this.panelKontrolPaneli.Controls.Add(this.bttnEnYuksekFiyat);
@@ -607,43 +610,78 @@
             this.panelKontrolPaneli.Controls.Add(this.lblID);
             this.panelKontrolPaneli.Location = new System.Drawing.Point(695, 131);
             this.panelKontrolPaneli.Name = "panelKontrolPaneli";
-            this.panelKontrolPaneli.Size = new System.Drawing.Size(295, 502);
+            this.panelKontrolPaneli.Size = new System.Drawing.Size(295, 484);
             this.panelKontrolPaneli.TabIndex = 1;
+            // 
+            // bttnIleri
+            // 
+            this.bttnIleri.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnIleri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnIleri.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bttnIleri.ForeColor = System.Drawing.Color.White;
+            this.bttnIleri.Location = new System.Drawing.Point(151, 238);
+            this.bttnIleri.Name = "bttnIleri";
+            this.bttnIleri.Size = new System.Drawing.Size(137, 40);
+            this.bttnIleri.TabIndex = 29;
+            this.bttnIleri.Text = ">";
+            this.bttnIleri.UseVisualStyleBackColor = true;
+            this.bttnIleri.Click += new System.EventHandler(this.bttnIleri_Click);
+            // 
+            // bttnGeri
+            // 
+            this.bttnGeri.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnGeri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bttnGeri.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bttnGeri.ForeColor = System.Drawing.Color.White;
+            this.bttnGeri.Location = new System.Drawing.Point(6, 238);
+            this.bttnGeri.Name = "bttnGeri";
+            this.bttnGeri.Size = new System.Drawing.Size(141, 40);
+            this.bttnGeri.TabIndex = 28;
+            this.bttnGeri.Text = "<";
+            this.bttnGeri.UseVisualStyleBackColor = true;
+            this.bttnGeri.Click += new System.EventHandler(this.bttnGeri_Click);
             // 
             // listBox1
             // 
+            this.listBox1.BackColor = System.Drawing.Color.OliveDrab;
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.listBox1.ForeColor = System.Drawing.Color.White;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 284);
+            this.listBox1.ItemHeight = 21;
+            this.listBox1.Location = new System.Drawing.Point(6, 368);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(280, 173);
+            this.listBox1.Size = new System.Drawing.Size(280, 84);
             this.listBox1.TabIndex = 27;
             // 
             // bttnEnDusukFiyat
             // 
+            this.bttnEnDusukFiyat.BackColor = System.Drawing.Color.OliveDrab;
             this.bttnEnDusukFiyat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnEnDusukFiyat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnEnDusukFiyat.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bttnEnDusukFiyat.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.bttnEnDusukFiyat.ForeColor = System.Drawing.Color.White;
-            this.bttnEnDusukFiyat.Location = new System.Drawing.Point(153, 238);
+            this.bttnEnDusukFiyat.Location = new System.Drawing.Point(151, 322);
             this.bttnEnDusukFiyat.Name = "bttnEnDusukFiyat";
             this.bttnEnDusukFiyat.Size = new System.Drawing.Size(135, 40);
             this.bttnEnDusukFiyat.TabIndex = 26;
             this.bttnEnDusukFiyat.Text = "En Düşük Fiyat";
-            this.bttnEnDusukFiyat.UseVisualStyleBackColor = true;
+            this.bttnEnDusukFiyat.UseVisualStyleBackColor = false;
             this.bttnEnDusukFiyat.Click += new System.EventHandler(this.bttnEnDusukFiyat_Click);
             // 
             // bttnEnYuksekFiyat
             // 
+            this.bttnEnYuksekFiyat.BackColor = System.Drawing.Color.OliveDrab;
             this.bttnEnYuksekFiyat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnEnYuksekFiyat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bttnEnYuksekFiyat.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bttnEnYuksekFiyat.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.bttnEnYuksekFiyat.ForeColor = System.Drawing.Color.White;
-            this.bttnEnYuksekFiyat.Location = new System.Drawing.Point(6, 238);
+            this.bttnEnYuksekFiyat.Location = new System.Drawing.Point(6, 322);
             this.bttnEnYuksekFiyat.Name = "bttnEnYuksekFiyat";
             this.bttnEnYuksekFiyat.Size = new System.Drawing.Size(141, 40);
             this.bttnEnYuksekFiyat.TabIndex = 25;
             this.bttnEnYuksekFiyat.Text = "En Yüksek Fiyat";
-            this.bttnEnYuksekFiyat.UseVisualStyleBackColor = true;
+            this.bttnEnYuksekFiyat.UseVisualStyleBackColor = false;
             this.bttnEnYuksekFiyat.Click += new System.EventHandler(this.bttnEnYuksekFiyat_Click);
             // 
             // lblMesaj
@@ -651,7 +689,7 @@
             this.lblMesaj.AutoSize = true;
             this.lblMesaj.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblMesaj.ForeColor = System.Drawing.Color.White;
-            this.lblMesaj.Location = new System.Drawing.Point(7, 459);
+            this.lblMesaj.Location = new System.Drawing.Point(6, 458);
             this.lblMesaj.Name = "lblMesaj";
             this.lblMesaj.Size = new System.Drawing.Size(67, 21);
             this.lblMesaj.TabIndex = 24;
@@ -727,7 +765,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(996, 642);
+            this.ClientSize = new System.Drawing.Size(996, 650);
+            this.Controls.Add(this.pictureGitLogo);
             this.Controls.Add(this.panelKontrolPaneli);
             this.Controls.Add(this.panelKayıtlar);
             this.Controls.Add(this.bttnKontrolPaneli2);
@@ -743,10 +782,10 @@
             this.Load += new System.EventHandler(this.Form5_Load);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureGitLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureGitLogo)).EndInit();
             this.panelKayıtlar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCocuk)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cocuk4BindingSource)).EndInit();
@@ -823,5 +862,7 @@
         private itemler4DataSetTableAdapters.erkek4TableAdapter erkek4TableAdapter;
         private System.Windows.Forms.BindingSource cocuk4BindingSource;
         private itemler4DataSetTableAdapters.cocuk4TableAdapter cocuk4TableAdapter;
+        private System.Windows.Forms.Button bttnIleri;
+        private System.Windows.Forms.Button bttnGeri;
     }
 }

@@ -39,7 +39,6 @@ Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\Windows
 Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form5.resources
 Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Properties.Resources.resources
 Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.csproj.GenerateResource.Cache
-Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\bin\Debug\itemler3.accdb
 C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\bin\Debug\WindowsFormsApplication5.exe.config
 C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.exe
 C:\Users\LAB4\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.pdb
@@ -71,3 +70,4 @@ C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsAppl
 C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Form5.resources
 C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.Properties.Resources.resources
 C:\Users\Anıl Adem Yener\Desktop\Hazir-Giyim-Otomasyonu-master\WindowsFormsApplication5\obj\x86\Debug\WindowsFormsApplication5.csproj.GenerateResource.Cache
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication5\bin\Debug\itemler4.accdb

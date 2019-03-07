@@ -29,13 +29,18 @@ namespace WindowsFormsApplication5
             bttnKontrolPaneli2.Visible = false;
             panelKayıtlar.Visible = false;
             panelKontrolPaneli.Visible = false;
+            dataGridViewErkek.Enabled = false;
+            dataGridViewKadin.Enabled = false;
+            dataGridViewCocuk.Enabled = false;
             dataGridViewErkek.Visible = false;
             dataGridViewKadin.Visible = false;
             dataGridViewCocuk.Visible = false;
             lblMesaj.Text = "";
             lblKullaniciAdi.Text = Form3.kullaniciAdi + ".";
             this.comboBoxKitleSecim.DropDownStyle = ComboBoxStyle.DropDownList;
-            listBox1.Visible = false;
+            listBox1.Visible = false; //TEST
+            bttnEnYuksekFiyat.Visible = false; //TEST
+            bttnEnDusukFiyat.Visible = false; //TEST
         }
 
         private void pictureClose_Click(object sender, EventArgs e)
@@ -340,7 +345,7 @@ namespace WindowsFormsApplication5
         private void bttnEnDusukFiyat_Click(object sender, EventArgs e)
         {
             baglanti.Open();
-            OleDbCommand komut = new OleDbCommand("select id,min(fiyati) as [min fiyat] from erkek4 group by id having max(fiyati)", baglanti);
+            OleDbCommand komut = new OleDbCommand("select id,min(fiyati) as [min fiyat] from erkek4 group by id having min(fiyati)", baglanti);
             OleDbDataReader oku = komut.ExecuteReader();
             listBox1.Items.Clear();
             while (oku.Read())
@@ -348,6 +353,38 @@ namespace WindowsFormsApplication5
                 listBox1.Items.Add("L " + oku["id"].ToString());
             }
             baglanti.Close();
+        }
+
+        private void bttnGeri_Click(object sender, EventArgs e)
+        {
+            if (comboBoxKitleSecim.SelectedItem == "Erkek")
+            {
+                erkek4BindingSource.MovePrevious();
+            }
+            else if (comboBoxKitleSecim.SelectedItem == "Kadın")
+            {
+                kadin4BindingSource.MovePrevious();
+            }
+            else if (comboBoxKitleSecim.SelectedItem == "Çocuk")
+            {
+                cocuk4BindingSource.MovePrevious();
+            }
+        }
+
+        private void bttnIleri_Click(object sender, EventArgs e)
+        {
+            if (comboBoxKitleSecim.SelectedItem == "Erkek")
+            {
+                erkek4BindingSource.MoveNext();
+            }
+            else if (comboBoxKitleSecim.SelectedItem == "Kadın")
+            {
+                kadin4BindingSource.MoveNext();
+            }
+            else if (comboBoxKitleSecim.SelectedItem == "Çocuk")
+            {
+                cocuk4BindingSource.MoveNext();
+            }
         }
     }
 }
