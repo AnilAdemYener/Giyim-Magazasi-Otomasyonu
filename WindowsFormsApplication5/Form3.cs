@@ -19,12 +19,23 @@ namespace WindowsFormsApplication5
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            textBox1.Text = "_________";
-            textBox2.Text = "_________";
+            textBoxKullaniciAdi.Text = "_____";
+            textBoxSifre.Text = "_____";
             button2.Visible = false;
-            label6.Visible = false;
-            panel3.Visible = false;
-            label8.Visible = false;
+            labelMesaj.Visible = false;
+            panelKayitOl.Visible = false;
+            labelMesaj2.Visible = false;
+            labelBolum.Text = "| Giriş Yap";
+            //LABELVERSİON TEST
+            OleDbConnection baglanti = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=version.accdb");
+            baglanti.Open();
+            OleDbCommand komut = new OleDbCommand("select version from version",baglanti);
+            OleDbDataReader oku = komut.ExecuteReader();
+            while (oku.Read())
+            {
+                labelVersion.Text = oku["version"].ToString();
+            }
+            baglanti.Close();
         }
 
         public static string kullaniciAdi;
@@ -41,12 +52,12 @@ namespace WindowsFormsApplication5
 
         private void textBox1_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
+            textBoxKullaniciAdi.Text = "";
         }
 
         private void textBox2_Click(object sender, EventArgs e)
         {
-            textBox2.Text = "";
+            textBoxSifre.Text = "";
         }
 
         Form2 hata_mesaji = new Form2();
@@ -82,29 +93,29 @@ namespace WindowsFormsApplication5
             OleDbDataReader oku = komut.ExecuteReader();
             while (oku.Read())
             {
-                if (textBox1.Text == oku["kullanici_adi"].ToString() && textBox2.Text == oku["sifre"].ToString())
+                if (textBoxKullaniciAdi.Text == oku["kullanici_adi"].ToString() && textBoxSifre.Text == oku["sifre"].ToString())
                 {
                     kontrol = 't';
                 }
             }
             if (kontrol == 'f')
             {
-                label6.Visible = true;
-                label6.ForeColor = Color.Red;
-                label6.Text = "Doğru kullanıcı adı/şifre girdiğinizden emin olun.";
-                kullaniciAdi = textBox1.Text;
+                labelMesaj.Visible = true;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Doğru kullanıcı adı/şifre girdiğinizden emin olun.";
+                kullaniciAdi = textBoxKullaniciAdi.Text;
             }
             else if (kontrol == 't')
             {
-                kullaniciAdi = textBox1.Text;
-                label6.Visible = false;
+                kullaniciAdi = textBoxKullaniciAdi.Text;
+                labelMesaj.Visible = false;
                 //Form1 kullaniciPaneli = new Form1();
                 //kullaniciPaneli.Show();
                 Form5 kullaniciPaneli = new Form5();
                 kullaniciPaneli.Show();
                 this.Hide();
-                textBox1.Text = "_________";
-                textBox2.Text = "_________";
+                textBoxKullaniciAdi.Text = "_________";
+                textBoxSifre.Text = "_________";
             }
             baglanti.Close();
         }
@@ -119,18 +130,20 @@ namespace WindowsFormsApplication5
 
         private void button4_Click(object sender, EventArgs e)
         {
-            panel3.Visible = true;
-            textBox4.Text = "_________";
-            textBox3.Text = "_________";
-            label8.Visible = false;
+            panelKayitOl.Visible = true;
+            textBoxKullaniciAdi2.Text = "_____";
+            textBoxSifre2.Text = "_____";
+            labelMesaj2.Visible = false;
+            labelBolum.Text = "| Kayıt Ol";
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            panel3.Visible = false;
-            label6.Text = "";
-            textBox1.Text = "_________";
-            textBox2.Text = "_________";
+            panelKayitOl.Visible = false;
+            labelMesaj.Text = "";
+            textBoxKullaniciAdi.Text = "_____";
+            textBoxSifre.Text = "_____";
+            labelBolum.Text = "| Giriş Yap";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -142,11 +155,11 @@ namespace WindowsFormsApplication5
             OleDbDataReader oku = komut.ExecuteReader();
             while (oku.Read())
             {
-                if (textBox4.Text == oku["kullanici_adi"].ToString())
+                if (textBoxKullaniciAdi2.Text == oku["kullanici_adi"].ToString())
                 {
-                    label8.Visible = true;
-                    label8.ForeColor = Color.Red;
-                    label8.Text = "Bu kullanıcı adı zaten alınmış.";
+                    labelMesaj2.Visible = true;
+                    labelMesaj2.ForeColor = Color.Red;
+                    labelMesaj2.Text = "Bu kullanıcı adı zaten alınmış.";
                     kontrol = "t";
                 }
             }
@@ -154,17 +167,17 @@ namespace WindowsFormsApplication5
             {
                 try
                 {
-                    OleDbCommand komutEkle = new OleDbCommand("insert into kullanicilar values('" + textBox4.Text + "','" + textBox3.Text + "')", baglanti);
+                    OleDbCommand komutEkle = new OleDbCommand("insert into kullanicilar values('" + textBoxKullaniciAdi2.Text + "','" + textBoxSifre2.Text + "')", baglanti);
                     komutEkle.ExecuteNonQuery();
-                    label8.Visible = true;
-                    label8.ForeColor = Color.Lime;
-                    label8.Text = "Başarıyla kayıt olunmuştur.";                
+                    labelMesaj2.Visible = true;
+                    labelMesaj2.ForeColor = Color.Lime;
+                    labelMesaj2.Text = "Başarıyla kayıt olunmuştur.";                
                 }
                 catch
                 {
-                    label8.Visible = true;
-                    label8.ForeColor = Color.Red;
-                    label8.Text = "Kayıt sırasında bir hata meydana geldi.";                     
+                    labelMesaj2.Visible = true;
+                    labelMesaj2.ForeColor = Color.Red;
+                    labelMesaj2.Text = "Kayıt sırasında bir hata meydana geldi.";                     
                 }
             }
             baglanti.Close();
@@ -172,12 +185,12 @@ namespace WindowsFormsApplication5
 
         private void textBox4_Click(object sender, EventArgs e)
         {
-            textBox4.Text = "";
+            textBoxKullaniciAdi2.Text = "";
         }
 
         private void textBox3_Click(object sender, EventArgs e)
         {
-            textBox3.Text = "";
+            textBoxSifre2.Text = "";
         }
 
         Point lastPoint;

@@ -25,22 +25,39 @@ namespace WindowsFormsApplication5
             this.erkek4TableAdapter.Fill(this.itemler4DataSet.erkek4);
             // TODO: This line of code loads data into the 'itemler4DataSet.kadin4' table. You can move, or remove it, as needed.
             this.kadin4TableAdapter.Fill(this.itemler4DataSet.kadin4);
+            //inverse butonlar
             bttnKayitlariGoster2.Visible = false;
             bttnKontrolPaneli2.Visible = false;
+            //kayıtlar ve kontrol paneli default kapalı
             panelKayıtlar.Visible = false;
             panelKontrolPaneli.Visible = false;
+            //datagridview tıklama kapat
             dataGridViewErkek.Enabled = false;
             dataGridViewKadin.Enabled = false;
             dataGridViewCocuk.Enabled = false;
+            //datagridview görünürlük default kapalı
             dataGridViewErkek.Visible = false;
             dataGridViewKadin.Visible = false;
             dataGridViewCocuk.Visible = false;
             lblMesaj.Text = "";
+            //kullanıcı adını giriş formundan çek
             lblKullaniciAdi.Text = Form3.kullaniciAdi + ".";
+            //kitle seçim yazı yazmayı kaldır
             this.comboBoxKitleSecim.DropDownStyle = ComboBoxStyle.DropDownList;
-            listBox1.Visible = false; //TEST
-            bttnEnYuksekFiyat.Visible = false; //TEST
-            bttnEnDusukFiyat.Visible = false; //TEST
+            //TEST
+            listBox1.Visible = false;
+            bttnEnYuksekFiyat.Visible = false;
+            bttnEnDusukFiyat.Visible = false;
+            //LABELVERSİON TEST
+            OleDbConnection baglanti = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=version.accdb");
+            baglanti.Open();
+            OleDbCommand komut = new OleDbCommand("select version from version", baglanti);
+            OleDbDataReader oku = komut.ExecuteReader();
+            while (oku.Read())
+            {
+                labelVersion.Text = oku["version"].ToString();
+            }
+            baglanti.Close();
         }
 
         private void pictureClose_Click(object sender, EventArgs e)
@@ -106,6 +123,11 @@ namespace WindowsFormsApplication5
                 dataGridViewErkek.Visible = false;
                 dataGridViewKadin.Visible = false;
                 dataGridViewCocuk.Visible = true;
+            }
+            else //if (comboBoxKitleSecim.SelectedItem == "")
+            {
+                lblMesaj.ForeColor = Color.Red;
+                lblMesaj.Text = "Önce bir seçim yapınız!";
             }
         }
 
@@ -191,13 +213,18 @@ namespace WindowsFormsApplication5
                     komutEkle.Parameters.AddWithValue("@fiyati", int.Parse(txtFiyati.Text));
                     komutEkle.ExecuteNonQuery();
                     lblMesaj.ForeColor = Color.Lime;
-                    lblMesaj.Text = "Başarıyla " + comboBoxKitleSecim.SelectedItem + " tablosuna kayıt eklendi.";
+                    lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosuna kayıt eklendi.";
                 }
                 catch
                 {
                     lblMesaj.ForeColor = Color.Red;
                     lblMesaj.Text = "HATA!";
                 }
+            }
+            else
+            {
+                lblMesaj.ForeColor = Color.Red;
+                lblMesaj.Text = "Seçim yaptığınızdan emin olun.";
             }
             baglanti.Close();
         }
@@ -221,6 +248,11 @@ namespace WindowsFormsApplication5
                 this.cocuk4TableAdapter.Fill(this.itemler4DataSet.cocuk4);
                 lblMesaj.ForeColor = Color.Lime;
                 lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosu güncellendi.";
+            }
+            else
+            {
+                lblMesaj.ForeColor = Color.Red;
+                lblMesaj.Text = "Seçim yaptığınızdan emin olun.";
             }
         }
 
@@ -303,7 +335,12 @@ namespace WindowsFormsApplication5
                     lblMesaj.ForeColor = Color.Red;
                     lblMesaj.Text = comboBoxKitleSecim.SelectedItem + " tablosunda böyle bir kayıt yok.";
                 }
-                baglanti.Close();
+                //baglanti.Close();
+            }
+            else
+            {
+                lblMesaj.ForeColor = Color.Red;
+                lblMesaj.Text = "Seçim yaptığınızdan emin olun.";
             }
             baglanti.Close();
         }
@@ -357,6 +394,7 @@ namespace WindowsFormsApplication5
 
         private void bttnGeri_Click(object sender, EventArgs e)
         {
+            lblMesaj.Text = "";
             if (comboBoxKitleSecim.SelectedItem == "Erkek")
             {
                 erkek4BindingSource.MovePrevious();
@@ -373,6 +411,7 @@ namespace WindowsFormsApplication5
 
         private void bttnIleri_Click(object sender, EventArgs e)
         {
+            lblMesaj.Text = "";
             if (comboBoxKitleSecim.SelectedItem == "Erkek")
             {
                 erkek4BindingSource.MoveNext();

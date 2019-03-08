@@ -83,14 +83,15 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.bttnEnDusukFiyat = new System.Windows.Forms.Button();
             this.bttnEnYuksekFiyat = new System.Windows.Forms.Button();
-            this.lblMesaj = new System.Windows.Forms.Label();
             this.lblAdi = new System.Windows.Forms.Label();
             this.bttnSil = new System.Windows.Forms.Button();
             this.bttnGuncelle = new System.Windows.Forms.Button();
             this.bttnEkle = new System.Windows.Forms.Button();
+            this.lblMesaj = new System.Windows.Forms.Label();
             this.kadin4TableAdapter = new WindowsFormsApplication5.itemler4DataSetTableAdapters.kadin4TableAdapter();
             this.erkek4TableAdapter = new WindowsFormsApplication5.itemler4DataSetTableAdapters.erkek4TableAdapter();
             this.cocuk4TableAdapter = new WindowsFormsApplication5.itemler4DataSetTableAdapters.cocuk4TableAdapter();
+            this.labelVersion = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMinimize)).BeginInit();
@@ -450,9 +451,9 @@
             this.bttnKitleGoster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bttnKitleGoster.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.bttnKitleGoster.ForeColor = System.Drawing.Color.White;
-            this.bttnKitleGoster.Location = new System.Drawing.Point(583, 4);
+            this.bttnKitleGoster.Location = new System.Drawing.Point(495, 4);
             this.bttnKitleGoster.Name = "bttnKitleGoster";
-            this.bttnKitleGoster.Size = new System.Drawing.Size(100, 29);
+            this.bttnKitleGoster.Size = new System.Drawing.Size(188, 29);
             this.bttnKitleGoster.TabIndex = 7;
             this.bttnKitleGoster.Text = "Göster";
             this.bttnKitleGoster.UseVisualStyleBackColor = true;
@@ -467,9 +468,9 @@
             "Erkek",
             "Kadın",
             "Çocuk"});
-            this.comboBoxKitleSecim.Location = new System.Drawing.Point(495, 9);
+            this.comboBoxKitleSecim.Location = new System.Drawing.Point(3, 9);
             this.comboBoxKitleSecim.Name = "comboBoxKitleSecim";
-            this.comboBoxKitleSecim.Size = new System.Drawing.Size(82, 21);
+            this.comboBoxKitleSecim.Size = new System.Drawing.Size(489, 21);
             this.comboBoxKitleSecim.TabIndex = 0;
             // 
             // lblID
@@ -594,7 +595,6 @@
             this.panelKontrolPaneli.Controls.Add(this.listBox1);
             this.panelKontrolPaneli.Controls.Add(this.bttnEnDusukFiyat);
             this.panelKontrolPaneli.Controls.Add(this.bttnEnYuksekFiyat);
-            this.panelKontrolPaneli.Controls.Add(this.lblMesaj);
             this.panelKontrolPaneli.Controls.Add(this.lblAdi);
             this.panelKontrolPaneli.Controls.Add(this.bttnSil);
             this.panelKontrolPaneli.Controls.Add(this.bttnGuncelle);
@@ -610,7 +610,7 @@
             this.panelKontrolPaneli.Controls.Add(this.lblID);
             this.panelKontrolPaneli.Location = new System.Drawing.Point(695, 131);
             this.panelKontrolPaneli.Name = "panelKontrolPaneli";
-            this.panelKontrolPaneli.Size = new System.Drawing.Size(295, 484);
+            this.panelKontrolPaneli.Size = new System.Drawing.Size(295, 456);
             this.panelKontrolPaneli.TabIndex = 1;
             // 
             // bttnIleri
@@ -684,17 +684,6 @@
             this.bttnEnYuksekFiyat.UseVisualStyleBackColor = false;
             this.bttnEnYuksekFiyat.Click += new System.EventHandler(this.bttnEnYuksekFiyat_Click);
             // 
-            // lblMesaj
-            // 
-            this.lblMesaj.AutoSize = true;
-            this.lblMesaj.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblMesaj.ForeColor = System.Drawing.Color.White;
-            this.lblMesaj.Location = new System.Drawing.Point(6, 458);
-            this.lblMesaj.Name = "lblMesaj";
-            this.lblMesaj.Size = new System.Drawing.Size(67, 21);
-            this.lblMesaj.TabIndex = 24;
-            this.lblMesaj.Text = "[mesaj]";
-            // 
             // lblAdi
             // 
             this.lblAdi.AutoSize = true;
@@ -748,6 +737,17 @@
             this.bttnEkle.UseVisualStyleBackColor = true;
             this.bttnEkle.Click += new System.EventHandler(this.bttnEkle_Click);
             // 
+            // lblMesaj
+            // 
+            this.lblMesaj.AutoSize = true;
+            this.lblMesaj.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblMesaj.ForeColor = System.Drawing.Color.White;
+            this.lblMesaj.Location = new System.Drawing.Point(695, 590);
+            this.lblMesaj.Name = "lblMesaj";
+            this.lblMesaj.Size = new System.Drawing.Size(67, 21);
+            this.lblMesaj.TabIndex = 24;
+            this.lblMesaj.Text = "[mesaj]";
+            // 
             // kadin4TableAdapter
             // 
             this.kadin4TableAdapter.ClearBeforeFill = true;
@@ -760,17 +760,32 @@
             // 
             this.cocuk4TableAdapter.ClearBeforeFill = true;
             // 
+            // labelVersion
+            // 
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.Cursor = System.Windows.Forms.Cursors.Default;
+            this.labelVersion.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelVersion.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.labelVersion.Location = new System.Drawing.Point(876, 630);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.labelVersion.Size = new System.Drawing.Size(61, 17);
+            this.labelVersion.TabIndex = 25;
+            this.labelVersion.Text = "[version]";
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(996, 650);
+            this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.pictureGitLogo);
             this.Controls.Add(this.panelKontrolPaneli);
             this.Controls.Add(this.panelKayıtlar);
             this.Controls.Add(this.bttnKontrolPaneli2);
             this.Controls.Add(this.bttnKayitlariGoster2);
+            this.Controls.Add(this.lblMesaj);
             this.Controls.Add(this.bttnKontrolPaneli);
             this.Controls.Add(this.bttnKayitlariGoster);
             this.Controls.Add(this.pnlTop);
@@ -798,6 +813,7 @@
             this.panelKontrolPaneli.ResumeLayout(false);
             this.panelKontrolPaneli.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -864,5 +880,6 @@
         private itemler4DataSetTableAdapters.cocuk4TableAdapter cocuk4TableAdapter;
         private System.Windows.Forms.Button bttnIleri;
         private System.Windows.Forms.Button bttnGeri;
+        private System.Windows.Forms.Label labelVersion;
     }
 }
