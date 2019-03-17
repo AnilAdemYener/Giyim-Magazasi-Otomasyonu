@@ -7,3 +7,12 @@ c:\users\anıl adem yener\documents\visual studio 2010\Projects\WindowsFormsAppl
 c:\users\anıl adem yener\documents\visual studio 2010\Projects\WindowsFormsApplication7\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.GirisEkrani.resources
 c:\users\anıl adem yener\documents\visual studio 2010\Projects\WindowsFormsApplication7\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.Kontrol_Paneli.resources
 C:\Users\Anıl Adem Yener\Documents\Visual Studio 2010\Projects\WindowsFormsApplication7\WindowsFormsApplication7\obj\x86\Debug\Hazir-Giyim-Otomasyonu.csprojResolveAssemblyReference.cache
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.exe
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.pdb
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication7\bin\Debug\WindowsFormsApplication7.exe
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication7\bin\Debug\WindowsFormsApplication7.pdb
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\Hazir-Giyim-Otomasyonu.csprojResolveAssemblyReference.cache
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.GirisEkrani.resources
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.Kontrol_Paneli.resources
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.Properties.Resources.resources
+Z:\VMShare\Hazir-Giyim-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\Hazir-Giyim-Otomasyonu.csproj.GenerateResource.Cache

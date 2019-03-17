@@ -40,6 +40,7 @@
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.panelBottomRenk = new System.Windows.Forms.Panel();
             this.panelUrunler = new System.Windows.Forms.Panel();
+            this.buttonUrunTumKayitlariGoster = new System.Windows.Forms.Button();
             this.labelMesaj = new System.Windows.Forms.Label();
             this.buttonUrunSil = new System.Windows.Forms.Button();
             this.buttonUrunGuncelle = new System.Windows.Forms.Button();
@@ -60,16 +61,28 @@
             this.comboBoxKitleSecim = new System.Windows.Forms.ComboBox();
             this.dataGridViewUrunler = new System.Windows.Forms.DataGridView();
             this.panelMusteriler = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.panelKullanicilar = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.buttonUrunleriGoster1 = new System.Windows.Forms.Button();
             this.buttonUrunleriGoster2 = new System.Windows.Forms.Button();
             this.buttonMusterileriGoster2 = new System.Windows.Forms.Button();
             this.buttonMusterileriGoster1 = new System.Windows.Forms.Button();
             this.buttonKullanicilariGoster2 = new System.Windows.Forms.Button();
             this.buttonKullanicilariGoster1 = new System.Windows.Forms.Button();
-            this.buttonUrunTumKayitlariGoster = new System.Windows.Forms.Button();
+            this.buttonMusteriSil = new System.Windows.Forms.Button();
+            this.buttonMusteriGuncelle = new System.Windows.Forms.Button();
+            this.buttonMusteriEkle = new System.Windows.Forms.Button();
+            this.textBoxMusteriTelefonu = new System.Windows.Forms.TextBox();
+            this.labelMusteriTelefonu = new System.Windows.Forms.Label();
+            this.textBoxMusteriAdresi = new System.Windows.Forms.TextBox();
+            this.labelMusteriAdresi = new System.Windows.Forms.Label();
+            this.textBoxMusteriSoyadi = new System.Windows.Forms.TextBox();
+            this.labelMusteriSoyadi = new System.Windows.Forms.Label();
+            this.textBoxMusteriAdi = new System.Windows.Forms.TextBox();
+            this.labelMusteriAdi = new System.Windows.Forms.Label();
+            this.textBoxMusteriId = new System.Windows.Forms.TextBox();
+            this.labelMusteriId = new System.Windows.Forms.Label();
+            this.dataGridViewMusteriler = new System.Windows.Forms.DataGridView();
+            this.dataGridViewKullanicilar = new System.Windows.Forms.DataGridView();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGitHub)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTwitter)).BeginInit();
@@ -80,6 +93,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUrunler)).BeginInit();
             this.panelMusteriler.SuspendLayout();
             this.panelKullanicilar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMusteriler)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKullanicilar)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -194,7 +209,7 @@
             // 
             this.panelBottomRenk.BackColor = System.Drawing.Color.DodgerBlue;
             this.panelBottomRenk.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottomRenk.Location = new System.Drawing.Point(0, 622);
+            this.panelBottomRenk.Location = new System.Drawing.Point(0, 662);
             this.panelBottomRenk.Name = "panelBottomRenk";
             this.panelBottomRenk.Size = new System.Drawing.Size(979, 3);
             this.panelBottomRenk.TabIndex = 3;
@@ -203,7 +218,6 @@
             // 
             this.panelUrunler.BackColor = System.Drawing.Color.Transparent;
             this.panelUrunler.Controls.Add(this.buttonUrunTumKayitlariGoster);
-            this.panelUrunler.Controls.Add(this.labelMesaj);
             this.panelUrunler.Controls.Add(this.buttonUrunSil);
             this.panelUrunler.Controls.Add(this.buttonUrunGuncelle);
             this.panelUrunler.Controls.Add(this.buttonUrunEkle);
@@ -227,10 +241,26 @@
             this.panelUrunler.Size = new System.Drawing.Size(973, 516);
             this.panelUrunler.TabIndex = 4;
             // 
+            // buttonUrunTumKayitlariGoster
+            // 
+            this.buttonUrunTumKayitlariGoster.BackColor = System.Drawing.Color.Orange;
+            this.buttonUrunTumKayitlariGoster.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonUrunTumKayitlariGoster.FlatAppearance.BorderSize = 0;
+            this.buttonUrunTumKayitlariGoster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUrunTumKayitlariGoster.ForeColor = System.Drawing.Color.White;
+            this.buttonUrunTumKayitlariGoster.Location = new System.Drawing.Point(654, 265);
+            this.buttonUrunTumKayitlariGoster.Name = "buttonUrunTumKayitlariGoster";
+            this.buttonUrunTumKayitlariGoster.Size = new System.Drawing.Size(312, 51);
+            this.buttonUrunTumKayitlariGoster.TabIndex = 30;
+            this.buttonUrunTumKayitlariGoster.Text = "Tüm Kayıtları Göster";
+            this.buttonUrunTumKayitlariGoster.UseVisualStyleBackColor = false;
+            this.buttonUrunTumKayitlariGoster.Click += new System.EventHandler(this.buttonUrunTumKayitlariGoster_Click);
+            // 
             // labelMesaj
             // 
             this.labelMesaj.AutoSize = true;
-            this.labelMesaj.Location = new System.Drawing.Point(655, 480);
+            this.labelMesaj.BackColor = System.Drawing.Color.Transparent;
+            this.labelMesaj.Location = new System.Drawing.Point(207, 628);
             this.labelMesaj.Name = "labelMesaj";
             this.labelMesaj.Size = new System.Drawing.Size(35, 13);
             this.labelMesaj.TabIndex = 29;
@@ -394,9 +424,9 @@
             this.labelUrunId.AutoSize = true;
             this.labelUrunId.Location = new System.Drawing.Point(651, 28);
             this.labelUrunId.Name = "labelUrunId";
-            this.labelUrunId.Size = new System.Drawing.Size(18, 13);
+            this.labelUrunId.Size = new System.Drawing.Size(44, 13);
             this.labelUrunId.TabIndex = 14;
-            this.labelUrunId.Text = "ID";
+            this.labelUrunId.Text = "Ürün ID";
             // 
             // buttonKitleSec
             // 
@@ -441,38 +471,33 @@
             // panelMusteriler
             // 
             this.panelMusteriler.BackColor = System.Drawing.Color.Transparent;
-            this.panelMusteriler.Controls.Add(this.label2);
+            this.panelMusteriler.Controls.Add(this.buttonMusteriSil);
+            this.panelMusteriler.Controls.Add(this.buttonMusteriGuncelle);
+            this.panelMusteriler.Controls.Add(this.buttonMusteriEkle);
+            this.panelMusteriler.Controls.Add(this.textBoxMusteriTelefonu);
+            this.panelMusteriler.Controls.Add(this.labelMusteriTelefonu);
+            this.panelMusteriler.Controls.Add(this.textBoxMusteriAdresi);
+            this.panelMusteriler.Controls.Add(this.labelMusteriAdresi);
+            this.panelMusteriler.Controls.Add(this.textBoxMusteriSoyadi);
+            this.panelMusteriler.Controls.Add(this.labelMusteriSoyadi);
+            this.panelMusteriler.Controls.Add(this.textBoxMusteriAdi);
+            this.panelMusteriler.Controls.Add(this.labelMusteriAdi);
+            this.panelMusteriler.Controls.Add(this.textBoxMusteriId);
+            this.panelMusteriler.Controls.Add(this.labelMusteriId);
+            this.panelMusteriler.Controls.Add(this.dataGridViewMusteriler);
             this.panelMusteriler.Location = new System.Drawing.Point(3, 100);
             this.panelMusteriler.Name = "panelMusteriler";
             this.panelMusteriler.Size = new System.Drawing.Size(973, 516);
             this.panelMusteriler.TabIndex = 5;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 294);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
-            // 
             // panelKullanicilar
             // 
             this.panelKullanicilar.BackColor = System.Drawing.Color.Transparent;
-            this.panelKullanicilar.Controls.Add(this.label3);
+            this.panelKullanicilar.Controls.Add(this.dataGridViewKullanicilar);
             this.panelKullanicilar.Location = new System.Drawing.Point(3, 100);
             this.panelKullanicilar.Name = "panelKullanicilar";
             this.panelKullanicilar.Size = new System.Drawing.Size(973, 516);
             this.panelKullanicilar.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(67, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "label3";
             // 
             // buttonUrunleriGoster1
             // 
@@ -509,9 +534,9 @@
             this.buttonMusterileriGoster2.FlatAppearance.BorderSize = 0;
             this.buttonMusterileriGoster2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMusterileriGoster2.ForeColor = System.Drawing.Color.White;
-            this.buttonMusterileriGoster2.Location = new System.Drawing.Point(317, 51);
+            this.buttonMusterileriGoster2.Location = new System.Drawing.Point(325, 51);
             this.buttonMusterileriGoster2.Name = "buttonMusterileriGoster2";
-            this.buttonMusterileriGoster2.Size = new System.Drawing.Size(347, 43);
+            this.buttonMusterileriGoster2.Size = new System.Drawing.Size(334, 43);
             this.buttonMusterileriGoster2.TabIndex = 10;
             this.buttonMusterileriGoster2.Text = "Müşterileri Göster";
             this.buttonMusterileriGoster2.UseVisualStyleBackColor = false;
@@ -522,9 +547,9 @@
             this.buttonMusterileriGoster1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonMusterileriGoster1.FlatAppearance.BorderSize = 0;
             this.buttonMusterileriGoster1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMusterileriGoster1.Location = new System.Drawing.Point(316, 51);
+            this.buttonMusterileriGoster1.Location = new System.Drawing.Point(324, 51);
             this.buttonMusterileriGoster1.Name = "buttonMusterileriGoster1";
-            this.buttonMusterileriGoster1.Size = new System.Drawing.Size(348, 43);
+            this.buttonMusterileriGoster1.Size = new System.Drawing.Size(335, 43);
             this.buttonMusterileriGoster1.TabIndex = 9;
             this.buttonMusterileriGoster1.Text = "Müşterileri Göster";
             this.buttonMusterileriGoster1.UseVisualStyleBackColor = true;
@@ -558,20 +583,173 @@
             this.buttonKullanicilariGoster1.UseVisualStyleBackColor = true;
             this.buttonKullanicilariGoster1.Click += new System.EventHandler(this.buttonKullanicilariGoster1_Click);
             // 
-            // buttonUrunTumKayitlariGoster
+            // buttonMusteriSil
             // 
-            this.buttonUrunTumKayitlariGoster.BackColor = System.Drawing.Color.Orange;
-            this.buttonUrunTumKayitlariGoster.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonUrunTumKayitlariGoster.FlatAppearance.BorderSize = 0;
-            this.buttonUrunTumKayitlariGoster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUrunTumKayitlariGoster.ForeColor = System.Drawing.Color.White;
-            this.buttonUrunTumKayitlariGoster.Location = new System.Drawing.Point(654, 265);
-            this.buttonUrunTumKayitlariGoster.Name = "buttonUrunTumKayitlariGoster";
-            this.buttonUrunTumKayitlariGoster.Size = new System.Drawing.Size(312, 51);
-            this.buttonUrunTumKayitlariGoster.TabIndex = 30;
-            this.buttonUrunTumKayitlariGoster.Text = "Tüm Kayıtları Göster";
-            this.buttonUrunTumKayitlariGoster.UseVisualStyleBackColor = false;
-            this.buttonUrunTumKayitlariGoster.Click += new System.EventHandler(this.buttonUrunTumKayitlariGoster_Click);
+            this.buttonMusteriSil.BackColor = System.Drawing.Color.Orange;
+            this.buttonMusteriSil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonMusteriSil.FlatAppearance.BorderSize = 0;
+            this.buttonMusteriSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMusteriSil.ForeColor = System.Drawing.Color.White;
+            this.buttonMusteriSil.Image = ((System.Drawing.Image)(resources.GetObject("buttonMusteriSil.Image")));
+            this.buttonMusteriSil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonMusteriSil.Location = new System.Drawing.Point(889, 214);
+            this.buttonMusteriSil.Name = "buttonMusteriSil";
+            this.buttonMusteriSil.Size = new System.Drawing.Size(77, 51);
+            this.buttonMusteriSil.TabIndex = 46;
+            this.buttonMusteriSil.Text = "Sil";
+            this.buttonMusteriSil.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMusteriSil.UseVisualStyleBackColor = false;
+            this.buttonMusteriSil.Click += new System.EventHandler(this.buttonMusteriSil_Click);
+            // 
+            // buttonMusteriGuncelle
+            // 
+            this.buttonMusteriGuncelle.BackColor = System.Drawing.Color.Orange;
+            this.buttonMusteriGuncelle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonMusteriGuncelle.FlatAppearance.BorderSize = 0;
+            this.buttonMusteriGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMusteriGuncelle.ForeColor = System.Drawing.Color.White;
+            this.buttonMusteriGuncelle.Image = ((System.Drawing.Image)(resources.GetObject("buttonMusteriGuncelle.Image")));
+            this.buttonMusteriGuncelle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonMusteriGuncelle.Location = new System.Drawing.Point(751, 214);
+            this.buttonMusteriGuncelle.Name = "buttonMusteriGuncelle";
+            this.buttonMusteriGuncelle.Size = new System.Drawing.Size(138, 51);
+            this.buttonMusteriGuncelle.TabIndex = 45;
+            this.buttonMusteriGuncelle.Text = "Güncelle";
+            this.buttonMusteriGuncelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMusteriGuncelle.UseVisualStyleBackColor = false;
+            this.buttonMusteriGuncelle.Click += new System.EventHandler(this.buttonMusteriGuncelle_Click);
+            // 
+            // buttonMusteriEkle
+            // 
+            this.buttonMusteriEkle.BackColor = System.Drawing.Color.Orange;
+            this.buttonMusteriEkle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonMusteriEkle.FlatAppearance.BorderSize = 0;
+            this.buttonMusteriEkle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMusteriEkle.ForeColor = System.Drawing.Color.White;
+            this.buttonMusteriEkle.Image = ((System.Drawing.Image)(resources.GetObject("buttonMusteriEkle.Image")));
+            this.buttonMusteriEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonMusteriEkle.Location = new System.Drawing.Point(654, 214);
+            this.buttonMusteriEkle.Name = "buttonMusteriEkle";
+            this.buttonMusteriEkle.Size = new System.Drawing.Size(100, 51);
+            this.buttonMusteriEkle.TabIndex = 44;
+            this.buttonMusteriEkle.Text = "Ekle";
+            this.buttonMusteriEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMusteriEkle.UseVisualStyleBackColor = false;
+            this.buttonMusteriEkle.Click += new System.EventHandler(this.buttonMusteriEkle_Click);
+            // 
+            // textBoxMusteriTelefonu
+            // 
+            this.textBoxMusteriTelefonu.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxMusteriTelefonu.Location = new System.Drawing.Point(805, 163);
+            this.textBoxMusteriTelefonu.Multiline = true;
+            this.textBoxMusteriTelefonu.Name = "textBoxMusteriTelefonu";
+            this.textBoxMusteriTelefonu.Size = new System.Drawing.Size(159, 25);
+            this.textBoxMusteriTelefonu.TabIndex = 41;
+            // 
+            // labelMusteriTelefonu
+            // 
+            this.labelMusteriTelefonu.AutoSize = true;
+            this.labelMusteriTelefonu.Location = new System.Drawing.Point(651, 163);
+            this.labelMusteriTelefonu.Name = "labelMusteriTelefonu";
+            this.labelMusteriTelefonu.Size = new System.Drawing.Size(86, 13);
+            this.labelMusteriTelefonu.TabIndex = 40;
+            this.labelMusteriTelefonu.Text = "Müşteri Telefonu";
+            // 
+            // textBoxMusteriAdresi
+            // 
+            this.textBoxMusteriAdresi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxMusteriAdresi.Location = new System.Drawing.Point(805, 132);
+            this.textBoxMusteriAdresi.Multiline = true;
+            this.textBoxMusteriAdresi.Name = "textBoxMusteriAdresi";
+            this.textBoxMusteriAdresi.Size = new System.Drawing.Size(159, 25);
+            this.textBoxMusteriAdresi.TabIndex = 39;
+            // 
+            // labelMusteriAdresi
+            // 
+            this.labelMusteriAdresi.AutoSize = true;
+            this.labelMusteriAdresi.Location = new System.Drawing.Point(651, 132);
+            this.labelMusteriAdresi.Name = "labelMusteriAdresi";
+            this.labelMusteriAdresi.Size = new System.Drawing.Size(73, 13);
+            this.labelMusteriAdresi.TabIndex = 38;
+            this.labelMusteriAdresi.Text = "Müşteri Adresi";
+            // 
+            // textBoxMusteriSoyadi
+            // 
+            this.textBoxMusteriSoyadi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxMusteriSoyadi.Location = new System.Drawing.Point(805, 101);
+            this.textBoxMusteriSoyadi.Multiline = true;
+            this.textBoxMusteriSoyadi.Name = "textBoxMusteriSoyadi";
+            this.textBoxMusteriSoyadi.Size = new System.Drawing.Size(159, 25);
+            this.textBoxMusteriSoyadi.TabIndex = 37;
+            // 
+            // labelMusteriSoyadi
+            // 
+            this.labelMusteriSoyadi.AutoSize = true;
+            this.labelMusteriSoyadi.Location = new System.Drawing.Point(651, 101);
+            this.labelMusteriSoyadi.Name = "labelMusteriSoyadi";
+            this.labelMusteriSoyadi.Size = new System.Drawing.Size(76, 13);
+            this.labelMusteriSoyadi.TabIndex = 36;
+            this.labelMusteriSoyadi.Text = "Müşteri Soyadı";
+            // 
+            // textBoxMusteriAdi
+            // 
+            this.textBoxMusteriAdi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxMusteriAdi.Location = new System.Drawing.Point(805, 70);
+            this.textBoxMusteriAdi.Multiline = true;
+            this.textBoxMusteriAdi.Name = "textBoxMusteriAdi";
+            this.textBoxMusteriAdi.Size = new System.Drawing.Size(159, 25);
+            this.textBoxMusteriAdi.TabIndex = 35;
+            // 
+            // labelMusteriAdi
+            // 
+            this.labelMusteriAdi.AutoSize = true;
+            this.labelMusteriAdi.Location = new System.Drawing.Point(651, 70);
+            this.labelMusteriAdi.Name = "labelMusteriAdi";
+            this.labelMusteriAdi.Size = new System.Drawing.Size(59, 13);
+            this.labelMusteriAdi.TabIndex = 34;
+            this.labelMusteriAdi.Text = "Müşteri Adı";
+            // 
+            // textBoxMusteriId
+            // 
+            this.textBoxMusteriId.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxMusteriId.Location = new System.Drawing.Point(805, 39);
+            this.textBoxMusteriId.Multiline = true;
+            this.textBoxMusteriId.Name = "textBoxMusteriId";
+            this.textBoxMusteriId.Size = new System.Drawing.Size(159, 25);
+            this.textBoxMusteriId.TabIndex = 33;
+            // 
+            // labelMusteriId
+            // 
+            this.labelMusteriId.AutoSize = true;
+            this.labelMusteriId.Location = new System.Drawing.Point(651, 39);
+            this.labelMusteriId.Name = "labelMusteriId";
+            this.labelMusteriId.Size = new System.Drawing.Size(55, 13);
+            this.labelMusteriId.TabIndex = 32;
+            this.labelMusteriId.Text = "Müşteri ID";
+            // 
+            // dataGridViewMusteriler
+            // 
+            this.dataGridViewMusteriler.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewMusteriler.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewMusteriler.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewMusteriler.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewMusteriler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMusteriler.Location = new System.Drawing.Point(3, 5);
+            this.dataGridViewMusteriler.Name = "dataGridViewMusteriler";
+            this.dataGridViewMusteriler.Size = new System.Drawing.Size(643, 508);
+            this.dataGridViewMusteriler.TabIndex = 31;
+            // 
+            // dataGridViewKullanicilar
+            // 
+            this.dataGridViewKullanicilar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewKullanicilar.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewKullanicilar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewKullanicilar.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewKullanicilar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewKullanicilar.Location = new System.Drawing.Point(6, 4);
+            this.dataGridViewKullanicilar.Name = "dataGridViewKullanicilar";
+            this.dataGridViewKullanicilar.Size = new System.Drawing.Size(960, 508);
+            this.dataGridViewKullanicilar.TabIndex = 32;
             // 
             // Kontrol_Paneli
             // 
@@ -580,18 +758,19 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(979, 625);
+            this.ClientSize = new System.Drawing.Size(979, 665);
             this.Controls.Add(this.buttonKullanicilariGoster2);
+            this.Controls.Add(this.labelMesaj);
             this.Controls.Add(this.buttonKullanicilariGoster1);
             this.Controls.Add(this.buttonUrunleriGoster2);
             this.Controls.Add(this.buttonUrunleriGoster1);
             this.Controls.Add(this.panelBottomRenk);
             this.Controls.Add(this.panelTop);
-            this.Controls.Add(this.panelUrunler);
-            this.Controls.Add(this.panelMusteriler);
-            this.Controls.Add(this.panelKullanicilar);
             this.Controls.Add(this.buttonMusterileriGoster2);
             this.Controls.Add(this.buttonMusterileriGoster1);
+            this.Controls.Add(this.panelKullanicilar);
+            this.Controls.Add(this.panelUrunler);
+            this.Controls.Add(this.panelMusteriler);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Kontrol_Paneli";
@@ -611,8 +790,10 @@
             this.panelMusteriler.ResumeLayout(false);
             this.panelMusteriler.PerformLayout();
             this.panelKullanicilar.ResumeLayout(false);
-            this.panelKullanicilar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMusteriler)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKullanicilar)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -636,8 +817,6 @@
         private System.Windows.Forms.Button buttonKullanicilariGoster1;
         private System.Windows.Forms.Panel panelMusteriler;
         private System.Windows.Forms.Panel panelKullanicilar;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridViewUrunler;
         private System.Windows.Forms.ComboBox comboBoxKitleSecim;
         private System.Windows.Forms.Button buttonKitleSec;
@@ -659,5 +838,20 @@
         private System.Windows.Forms.Label labelMesaj;
         private System.Windows.Forms.Label labelKullaniciAdi;
         private System.Windows.Forms.Button buttonUrunTumKayitlariGoster;
+        private System.Windows.Forms.Button buttonMusteriSil;
+        private System.Windows.Forms.Button buttonMusteriGuncelle;
+        private System.Windows.Forms.Button buttonMusteriEkle;
+        private System.Windows.Forms.TextBox textBoxMusteriTelefonu;
+        private System.Windows.Forms.Label labelMusteriTelefonu;
+        private System.Windows.Forms.TextBox textBoxMusteriAdresi;
+        private System.Windows.Forms.Label labelMusteriAdresi;
+        private System.Windows.Forms.TextBox textBoxMusteriSoyadi;
+        private System.Windows.Forms.Label labelMusteriSoyadi;
+        private System.Windows.Forms.TextBox textBoxMusteriAdi;
+        private System.Windows.Forms.Label labelMusteriAdi;
+        private System.Windows.Forms.TextBox textBoxMusteriId;
+        private System.Windows.Forms.Label labelMusteriId;
+        private System.Windows.Forms.DataGridView dataGridViewMusteriler;
+        private System.Windows.Forms.DataGridView dataGridViewKullanicilar;
     }
 }

@@ -99,6 +99,8 @@ namespace WindowsFormsApplication7
             buttonMusterileriGoster2.Visible = false;
             buttonKullanicilariGoster1.Visible = true;
             buttonKullanicilariGoster2.Visible = false;
+            panelTopRenk.BackColor = Color.Orange;
+            labelMesaj.Text = "";
         }
 
         //müşterileri göster butonu
@@ -113,6 +115,9 @@ namespace WindowsFormsApplication7
             buttonUrunleriGoster2.Visible = false;
             buttonKullanicilariGoster1.Visible = true;
             buttonKullanicilariGoster2.Visible = false;
+            musteriGuncelle();
+            panelTopRenk.BackColor = Color.Orange;
+            labelMesaj.Text = "";
         }
 
         //kullanıcıları göster butonu
@@ -127,6 +132,18 @@ namespace WindowsFormsApplication7
             buttonUrunleriGoster2.Visible = false;
             buttonMusterileriGoster1.Visible = true;
             buttonMusterileriGoster2.Visible = false;
+            kullanicilariGuncelle();
+            panelTopRenk.BackColor = Color.Orange;
+            labelMesaj.Text = "";
+        }
+
+        //kullanıcılar tablosunu güncelle
+        void kullanicilariGuncelle()
+        {
+            DataTable dt = new DataTable();
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select kullanici_adi from kullanicilar", baglanti);
+            adaptor.Fill(dt);
+            dataGridViewKullanicilar.DataSource = dt;
         }
 
         //ters ürünleri göster butonu
@@ -162,18 +179,33 @@ namespace WindowsFormsApplication7
             DataTable dt = new DataTable();
             if (comboBoxKitleSecim.SelectedItem == "Erkek")
             {
-                OleDbDataAdapter adaptor = new OleDbDataAdapter("select id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='erkek'", baglanti);
+                OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='erkek'", baglanti);
                 adaptor.Fill(dt);
+                panelTopRenk.BackColor = Color.Lime;
+                labelMesaj.ForeColor = Color.Green;
+                labelMesaj.Text = "Erkek tablosu gösterildi.";
             }
             else if (comboBoxKitleSecim.SelectedItem == "Kadın")
             {
-                OleDbDataAdapter adaptor = new OleDbDataAdapter("select id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='kadın'", baglanti);
+                OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='kadın'", baglanti);
                 adaptor.Fill(dt);
+                panelTopRenk.BackColor = Color.Lime;
+                labelMesaj.ForeColor = Color.Green;
+                labelMesaj.Text = "Kadın tablosu gösterildi.";
             }
             else if (comboBoxKitleSecim.SelectedItem == "Çocuk")
             {
-                OleDbDataAdapter adaptor = new OleDbDataAdapter("select id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='çocuk'", baglanti);
+                OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='çocuk'", baglanti);
                 adaptor.Fill(dt);
+                panelTopRenk.BackColor = Color.Lime;
+                labelMesaj.ForeColor = Color.Green;
+                labelMesaj.Text = "Çocuk tablosu gösterildi.";
+            }
+            else
+            {
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Önce bir seçim yapın!";
             }
             dataGridViewUrunler.DataSource = dt;
             baglanti.Close();
@@ -182,30 +214,28 @@ namespace WindowsFormsApplication7
         //ürünler tablosunu güncelle
         void urunGuncelle()
         {
-            //baglanti.Open();
             DataTable dt = new DataTable();
             if (comboBoxKitleSecim.SelectedItem == "Erkek")
             {
-                OleDbDataAdapter adaptor = new OleDbDataAdapter("select id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='erkek'", baglanti);
+                OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='erkek'", baglanti);
                 adaptor.Fill(dt);
             }
             else if (comboBoxKitleSecim.SelectedItem == "Kadın")
             {
-                OleDbDataAdapter adaptor = new OleDbDataAdapter("select id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='kadın'", baglanti);
+                OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='kadın'", baglanti);
                 adaptor.Fill(dt);
             }
             else if (comboBoxKitleSecim.SelectedItem == "Çocuk")
             {
-                OleDbDataAdapter adaptor = new OleDbDataAdapter("select id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='çocuk'", baglanti);
+                OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='çocuk'", baglanti);
                 adaptor.Fill(dt);
             }
             else
             {
-                OleDbDataAdapter adaptor = new OleDbDataAdapter("select id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati, urun_kitlesi from urunler", baglanti);
+                OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati, urun_kitlesi from urunler", baglanti);
                 adaptor.Fill(dt);
             }
             dataGridViewUrunler.DataSource = dt;
-            //baglanti.Close();
         }
 
         //ürün ekle butonu
@@ -217,7 +247,7 @@ namespace WindowsFormsApplication7
             OleDbDataReader oku = komut.ExecuteReader();
             while (oku.Read())
             {
-                if (textBoxUrunId.Text == oku["id"].ToString())
+                if (textBoxUrunId.Text == oku["urun_id"].ToString())
                 {
                     kontrol = 'f';
                     panelTopRenk.BackColor = Color.Red;
@@ -227,8 +257,8 @@ namespace WindowsFormsApplication7
             }
             if (kontrol == 't')
             {
-                OleDbCommand komutEkle = new OleDbCommand("insert into urunler values(@id, @urun_adi, @urun_rengi, @urun_bedeni, @urun_fiyati, @urun_kitlesi)", baglanti);
-                komutEkle.Parameters.AddWithValue("@id", textBoxUrunId.Text);
+                OleDbCommand komutEkle = new OleDbCommand("insert into urunler values(@urun_id, @urun_adi, @urun_rengi, @urun_bedeni, @urun_fiyati, @urun_kitlesi)", baglanti);
+                komutEkle.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
                 komutEkle.Parameters.AddWithValue("@urun_adi", textBoxUrunAdi.Text);
                 komutEkle.Parameters.AddWithValue("@urun_rengi", textBoxUrunRengi.Text);
                 komutEkle.Parameters.AddWithValue("@urun_bedeni", textBoxUrunBedeni.Text);
@@ -250,22 +280,22 @@ namespace WindowsFormsApplication7
             DataTable dt = new DataTable();
             if (comboBoxKitleSecim.SelectedItem == "Erkek")
             {
-                OleDbDataAdapter adaptor = new OleDbDataAdapter("select id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='erkek'", baglanti);
+                OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='erkek'", baglanti);
                 adaptor.Fill(dt);
             }
             else if (comboBoxKitleSecim.SelectedItem == "Kadın")
             {
-                OleDbDataAdapter adaptor = new OleDbDataAdapter("select id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='kadın'", baglanti);
+                OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='kadın'", baglanti);
                 adaptor.Fill(dt);
             }
             else if (comboBoxKitleSecim.SelectedItem == "Çocuk")
             {
-                OleDbDataAdapter adaptor = new OleDbDataAdapter("select id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='çocuk'", baglanti);
+                OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati from urunler where urun_kitlesi='çocuk'", baglanti);
                 adaptor.Fill(dt);
             }
             else
             {
-                OleDbDataAdapter adaptor = new OleDbDataAdapter("select id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati, urun_kitlesi from urunler", baglanti);
+                OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati, urun_kitlesi from urunler", baglanti);
                 adaptor.Fill(dt);
             }
             dataGridViewUrunler.DataSource = dt;
@@ -284,11 +314,11 @@ namespace WindowsFormsApplication7
             OleDbDataReader oku = komut.ExecuteReader();
             while (oku.Read())
             {
-                if (textBoxUrunId.Text == oku["id"].ToString())
+                if (textBoxUrunId.Text == oku["urun_id"].ToString())
                 {
                     kontrol = 't';
-                    OleDbCommand komutSil = new OleDbCommand("delete from urunler where id=@id", baglanti);
-                    komutSil.Parameters.AddWithValue("@id", textBoxUrunId.Text);
+                    OleDbCommand komutSil = new OleDbCommand("delete from urunler where urun_id=@urun_id", baglanti);
+                    komutSil.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
                     komutSil.ExecuteNonQuery();
                     panelTopRenk.BackColor = Color.Lime;
                     labelMesaj.ForeColor = Color.Green;
@@ -310,13 +340,95 @@ namespace WindowsFormsApplication7
         {
             baglanti.Open();
             DataTable dt = new DataTable();
-            OleDbDataAdapter adaptor = new OleDbDataAdapter("select id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati, urun_kitlesi from urunler", baglanti);
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_rengi, urun_bedeni, urun_fiyati, urun_kitlesi from urunler", baglanti);
             adaptor.Fill(dt);
             dataGridViewUrunler.DataSource = dt;
             baglanti.Close();
             panelTopRenk.BackColor = Color.Lime;
             labelMesaj.ForeColor = Color.Green;
             labelMesaj.Text = "Tüm kayıtlar gösterildi.";
+        }
+
+        //müşteriler tablosunu güncelle
+        void musteriGuncelle()
+        {
+            DataTable dt = new DataTable();
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select * from musteriler", baglanti);
+            adaptor.Fill(dt);
+            dataGridViewMusteriler.DataSource = dt;
+        }
+
+        //müşteri ekle butonu
+        private void buttonMusteriEkle_Click(object sender, EventArgs e)
+        {
+            char kontrol = 't';
+            baglanti.Open();
+            OleDbCommand komut = new OleDbCommand("select * from musteriler",baglanti);
+            OleDbDataReader oku = komut.ExecuteReader();
+            while (oku.Read())
+            {
+                if (textBoxMusteriId.Text == oku["musteri_id"].ToString())
+                {
+                    kontrol = 'f';
+                    panelTopRenk.BackColor = Color.Red;
+                    labelMesaj.ForeColor = Color.Red;
+                    labelMesaj.Text = "Böyle bir müşteri zaten kayıtlı.";
+                }
+            }
+            if (kontrol == 't')
+            {
+                OleDbCommand komutEkle = new OleDbCommand("insert into musteriler values(@musteri_id, @musteri_adi, @musteri_soyadi, @musteri_adresi, @musteri_telefonu)",baglanti);
+                komutEkle.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
+                komutEkle.Parameters.AddWithValue("@musteri_adi", textBoxMusteriAdi.Text);
+                komutEkle.Parameters.AddWithValue("@musteri_soyadi", textBoxMusteriSoyadi.Text);
+                komutEkle.Parameters.AddWithValue("@musteri_adresi", textBoxMusteriAdresi.Text);
+                komutEkle.Parameters.AddWithValue("@musteri_telefonu", textBoxMusteriTelefonu.Text);
+                komutEkle.ExecuteNonQuery();
+                panelTopRenk.BackColor = Color.Lime;
+                labelMesaj.ForeColor = Color.Green;
+                labelMesaj.Text = "Müşteri başarıyla eklendi.";
+                musteriGuncelle();
+            }
+            baglanti.Close();
+        }
+
+        //müşteri güncelle butonu
+        private void buttonMusteriGuncelle_Click(object sender, EventArgs e)
+        {
+            panelTopRenk.BackColor = Color.Lime;
+            labelMesaj.ForeColor = Color.Green;
+            labelMesaj.Text = "Müşteri tablosu güncellendi.";
+            musteriGuncelle();
+        }
+
+        //müşteri sil butonu
+        private void buttonMusteriSil_Click(object sender, EventArgs e)
+        {
+            char kontrol = 'f';
+            baglanti.Open();
+            OleDbCommand komut = new OleDbCommand("select * from musteriler",baglanti);
+            OleDbDataReader oku = komut.ExecuteReader();
+            while (oku.Read())
+            {
+                if (textBoxMusteriId.Text == oku["musteri_id"].ToString())
+                {
+                    kontrol = 't';
+                    OleDbCommand komutSil = new OleDbCommand("delete from musteriler where musteri_id=@musteri_id", baglanti);
+                    komutSil.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
+                    komutSil.ExecuteNonQuery();
+                    panelTopRenk.BackColor = Color.Lime;
+                    labelMesaj.ForeColor = Color.Green;
+                    labelMesaj.Text = "Müşteri başarılı bir şekilde silindi.";
+                    musteriGuncelle();
+                }
+            }
+            if (kontrol == 'f')
+            {
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Bu ID ile kayıtlı müşteri bulunamadı.";
+            }
+            baglanti.Close();
         }
     }
 }

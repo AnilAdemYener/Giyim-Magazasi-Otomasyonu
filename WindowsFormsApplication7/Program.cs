@@ -15,7 +15,7 @@ namespace WindowsFormsApplication7
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GirisEkrani());
+            Application.Run(new Kontrol_Paneli());
         }
     }
 }
