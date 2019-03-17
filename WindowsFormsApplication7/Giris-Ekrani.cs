@@ -32,6 +32,10 @@ namespace WindowsFormsApplication7
             foreach (Control c in this.Controls)
             {
                 c.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
+                labelBaslik.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                labelMesaj.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                textBoxKullaniciAdi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                textBoxSifre.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
             }
         }
 
@@ -67,27 +71,67 @@ namespace WindowsFormsApplication7
         // giriş yap buton hover ====================================================================================
         private void buttonGirisYap_MouseEnter(object sender, EventArgs e)
         {
-            buttonGirisYap.BackColor = Color.DarkGreen;
+            buttonGirisYap.BackColor = Color.Black;
             buttonGirisYap.ForeColor = Color.White;
+
+            buttonKayitOl.BackColor = Color.Orange;
+            buttonKayitOl.ForeColor = Color.White;
+
+            PrivateFontCollection pfc = new PrivateFontCollection();
+            pfc.AddFontFile("fonts/Praktika-Light.otf");
+            foreach (Control c in this.Controls)
+            {
+                buttonGirisYap.Font = new Font(pfc.Families[0], 17, FontStyle.Bold);
+            }
         }
 
         private void buttonGirisYap_MouseLeave(object sender, EventArgs e)
         {
             buttonGirisYap.BackColor = Color.Transparent;
             buttonGirisYap.ForeColor = Color.Black;
+
+            buttonKayitOl.BackColor = Color.Transparent;
+            buttonKayitOl.ForeColor = Color.Black;
+
+            PrivateFontCollection pfc = new PrivateFontCollection();
+            pfc.AddFontFile("fonts/Praktika-Light.otf");
+            foreach (Control c in this.Controls)
+            {
+                buttonGirisYap.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
+            }
         }
 
         // kayıt ol buton hover ====================================================================================
         private void buttonKayitOl_MouseEnter(object sender, EventArgs e)
         {
-            buttonKayitOl.BackColor = Color.Lime;
-            buttonKayitOl.ForeColor = Color.Black;
+            buttonKayitOl.BackColor = Color.Black;
+            buttonKayitOl.ForeColor = Color.White;
+
+            buttonGirisYap.BackColor = Color.Orange;
+            buttonGirisYap.ForeColor = Color.White;
+
+            PrivateFontCollection pfc = new PrivateFontCollection();
+            pfc.AddFontFile("fonts/Praktika-Light.otf");
+            foreach (Control c in this.Controls)
+            {
+                buttonKayitOl.Font = new Font(pfc.Families[0], 17, FontStyle.Bold);
+            }
         }
 
         private void buttonKayitOl_MouseLeave(object sender, EventArgs e)
         {
             buttonKayitOl.BackColor = Color.Transparent;
             buttonKayitOl.ForeColor = Color.Black;
+
+            buttonGirisYap.BackColor = Color.Transparent;
+            buttonGirisYap.ForeColor = Color.Black;
+
+            PrivateFontCollection pfc = new PrivateFontCollection();
+            pfc.AddFontFile("fonts/Praktika-Light.otf");
+            foreach (Control c in this.Controls)
+            {
+                buttonKayitOl.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
+            }
         }
 
         OleDbConnection baglanti = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=databases/veritabani.accdb");
@@ -107,7 +151,7 @@ namespace WindowsFormsApplication7
                 if (textBoxKullaniciAdi.Text == oku["kullanici_adi"].ToString() && textBoxSifre.Text == oku["sifre"].ToString())
                 {
                     kontrol = 't';
-                    panelTopRenk.BackColor = Color.Green;
+                    panelTopRenk.BackColor = Color.Lime;
                     labelMesaj.ForeColor = Color.Green;
                     kullanici_adi = textBoxKullaniciAdi.Text;
                     Kontrol_Paneli kontrol_paneli = new Kontrol_Paneli();
@@ -119,7 +163,7 @@ namespace WindowsFormsApplication7
             {
                 panelTopRenk.BackColor = Color.Red;
                 labelMesaj.ForeColor = Color.Red;
-                labelMesaj.Text = "Doğru kullanıcı adı/şifreyi girdiğinizden emin olun.";
+                labelMesaj.Text = "Yanlış kullanıcı adı/şifre.";
             }
             baglanti.Close();
         }
@@ -147,7 +191,7 @@ namespace WindowsFormsApplication7
                 komutEkle.Parameters.AddWithValue("@kullanici_adi", textBoxKullaniciAdi.Text);
                 komutEkle.Parameters.AddWithValue("@sifre", textBoxSifre.Text);
                 komutEkle.ExecuteNonQuery();
-                panelTopRenk.BackColor = Color.Green;
+                panelTopRenk.BackColor = Color.Lime;
                 labelMesaj.ForeColor = Color.Green;
                 labelMesaj.Text = "Kayıt başarıyla eklendi.";
             }

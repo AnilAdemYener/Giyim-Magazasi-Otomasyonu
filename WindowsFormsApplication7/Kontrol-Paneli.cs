@@ -41,6 +41,22 @@ namespace WindowsFormsApplication7
             foreach (Control c in this.Controls)
             {
                 c.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
+                labelBaslik.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                labelMesaj.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                //ürünler tablosu
+                textBoxUrunId.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                textBoxUrunAdi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                textBoxUrunRengi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                textBoxUrunBedeni.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                textBoxUrunFiyati.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                textBoxUrunKitlesi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                //müşteri tablosu
+                textBoxMusteriId.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                textBoxMusteriAdi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                textBoxMusteriSoyadi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                textBoxMusteriAdresi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                textBoxMusteriAdresi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+                textBoxMusteriTelefonu.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
             }
             //kullanıcı adı
             labelKullaniciAdi.Text = "Hoşgeldiniz sayın " + GirisEkrani.kullanici_adi + ".";
@@ -100,7 +116,8 @@ namespace WindowsFormsApplication7
             buttonKullanicilariGoster1.Visible = true;
             buttonKullanicilariGoster2.Visible = false;
             panelTopRenk.BackColor = Color.Orange;
-            labelMesaj.Text = "";
+            labelMesaj.ForeColor = Color.Black;
+            labelMesaj.Text = "Ürünler tablosu gösterildi.";
         }
 
         //müşterileri göster butonu
@@ -117,7 +134,8 @@ namespace WindowsFormsApplication7
             buttonKullanicilariGoster2.Visible = false;
             musteriGuncelle();
             panelTopRenk.BackColor = Color.Orange;
-            labelMesaj.Text = "";
+            labelMesaj.ForeColor = Color.Black;
+            labelMesaj.Text = "Müşteriler tablosu gösterildi.";
         }
 
         //kullanıcıları göster butonu
@@ -134,7 +152,8 @@ namespace WindowsFormsApplication7
             buttonMusterileriGoster2.Visible = false;
             kullanicilariGuncelle();
             panelTopRenk.BackColor = Color.Orange;
-            labelMesaj.Text = "";
+            labelMesaj.ForeColor = Color.Black;
+            labelMesaj.Text = "Kullanıcılar tablosu gösterildi.";
         }
 
         //kullanıcılar tablosunu güncelle
@@ -363,7 +382,7 @@ namespace WindowsFormsApplication7
         {
             char kontrol = 't';
             baglanti.Open();
-            OleDbCommand komut = new OleDbCommand("select * from musteriler",baglanti);
+            OleDbCommand komut = new OleDbCommand("select * from musteriler", baglanti);
             OleDbDataReader oku = komut.ExecuteReader();
             while (oku.Read())
             {
@@ -377,7 +396,7 @@ namespace WindowsFormsApplication7
             }
             if (kontrol == 't')
             {
-                OleDbCommand komutEkle = new OleDbCommand("insert into musteriler values(@musteri_id, @musteri_adi, @musteri_soyadi, @musteri_adresi, @musteri_telefonu)",baglanti);
+                OleDbCommand komutEkle = new OleDbCommand("insert into musteriler values(@musteri_id, @musteri_adi, @musteri_soyadi, @musteri_adresi, @musteri_telefonu)", baglanti);
                 komutEkle.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
                 komutEkle.Parameters.AddWithValue("@musteri_adi", textBoxMusteriAdi.Text);
                 komutEkle.Parameters.AddWithValue("@musteri_soyadi", textBoxMusteriSoyadi.Text);
@@ -406,7 +425,7 @@ namespace WindowsFormsApplication7
         {
             char kontrol = 'f';
             baglanti.Open();
-            OleDbCommand komut = new OleDbCommand("select * from musteriler",baglanti);
+            OleDbCommand komut = new OleDbCommand("select * from musteriler", baglanti);
             OleDbDataReader oku = komut.ExecuteReader();
             while (oku.Read())
             {
@@ -429,6 +448,13 @@ namespace WindowsFormsApplication7
                 labelMesaj.Text = "Bu ID ile kayıtlı müşteri bulunamadı.";
             }
             baglanti.Close();
+        }
+
+        //çıkış yap butonu
+        private void buttonCikisYap_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            giris_ekrani.Show();
         }
     }
 }

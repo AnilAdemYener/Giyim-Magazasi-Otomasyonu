@@ -201,9 +201,9 @@
             this.buttonGirisYap.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGirisYap.FlatAppearance.BorderSize = 0;
             this.buttonGirisYap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGirisYap.Location = new System.Drawing.Point(444, 54);
+            this.buttonGirisYap.Location = new System.Drawing.Point(503, 48);
             this.buttonGirisYap.Name = "buttonGirisYap";
-            this.buttonGirisYap.Size = new System.Drawing.Size(264, 155);
+            this.buttonGirisYap.Size = new System.Drawing.Size(217, 168);
             this.buttonGirisYap.TabIndex = 7;
             this.buttonGirisYap.Text = "Giriş Yap";
             this.buttonGirisYap.UseVisualStyleBackColor = false;
@@ -217,9 +217,9 @@
             this.buttonKayitOl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonKayitOl.FlatAppearance.BorderSize = 0;
             this.buttonKayitOl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKayitOl.Location = new System.Drawing.Point(444, 220);
+            this.buttonKayitOl.Location = new System.Drawing.Point(503, 216);
             this.buttonKayitOl.Name = "buttonKayitOl";
-            this.buttonKayitOl.Size = new System.Drawing.Size(264, 155);
+            this.buttonKayitOl.Size = new System.Drawing.Size(217, 168);
             this.buttonKayitOl.TabIndex = 8;
             this.buttonKayitOl.Text = "Kayıt Ol";
             this.buttonKayitOl.UseVisualStyleBackColor = false;
