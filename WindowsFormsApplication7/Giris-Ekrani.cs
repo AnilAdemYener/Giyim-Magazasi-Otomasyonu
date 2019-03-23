@@ -71,11 +71,10 @@ namespace WindowsFormsApplication7
         // giriş yap buton hover ====================================================================================
         private void buttonGirisYap_MouseEnter(object sender, EventArgs e)
         {
-            buttonGirisYap.BackColor = Color.Black;
+            buttonGirisYap.BackColor = Color.Orange;
             buttonGirisYap.ForeColor = Color.White;
 
-            buttonKayitOl.BackColor = Color.Orange;
-            buttonKayitOl.ForeColor = Color.White;
+            buttonKayitOl.BackColor = Color.Transparent;
 
             PrivateFontCollection pfc = new PrivateFontCollection();
             pfc.AddFontFile("fonts/Praktika-Light.otf");
@@ -104,11 +103,10 @@ namespace WindowsFormsApplication7
         // kayıt ol buton hover ====================================================================================
         private void buttonKayitOl_MouseEnter(object sender, EventArgs e)
         {
-            buttonKayitOl.BackColor = Color.Black;
+            buttonKayitOl.BackColor = Color.Orange;
             buttonKayitOl.ForeColor = Color.White;
 
-            buttonGirisYap.BackColor = Color.Orange;
-            buttonGirisYap.ForeColor = Color.White;
+            buttonGirisYap.BackColor = Color.Transparent;
 
             PrivateFontCollection pfc = new PrivateFontCollection();
             pfc.AddFontFile("fonts/Praktika-Light.otf");
