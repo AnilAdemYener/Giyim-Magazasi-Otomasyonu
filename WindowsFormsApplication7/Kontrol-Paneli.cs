@@ -296,6 +296,17 @@ namespace WindowsFormsApplication7
         private void buttonUrunGuncelle_Click(object sender, EventArgs e)
         {
             baglanti.Open();
+            OleDbCommand komut = new OleDbCommand("update urunler set urun_id=@urun_id, urun_adi=@urun_adi, urun_rengi=@urun_rengi, urun_bedeni=@urun_bedeni, urun_fiyati=@urun_fiyati, urun_kitlesi=@urun_kitlesi where urun_id=@urun_id", baglanti); 
+            komut.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
+            komut.Parameters.AddWithValue("@urun_adi", textBoxUrunAdi.Text);
+            komut.Parameters.AddWithValue("@urun_rengi", textBoxUrunRengi.Text);
+            komut.Parameters.AddWithValue("@urun_bedeni", textBoxUrunBedeni.Text);
+            komut.Parameters.AddWithValue("@urun_fiyati", textBoxUrunFiyati.Text);
+            komut.Parameters.AddWithValue("@urun_kitlesi", textBoxUrunKitlesi.Text);
+            komut.ExecuteNonQuery();
+            baglanti.Close();
+            //MessageBox.Show("Kayıt düzenlendi.");
+            //baglanti.Open();
             DataTable dt = new DataTable();
             if (comboBoxKitleSecim.SelectedItem == "Erkek")
             {
@@ -318,7 +329,7 @@ namespace WindowsFormsApplication7
                 adaptor.Fill(dt);
             }
             dataGridViewUrunler.DataSource = dt;
-            baglanti.Close();
+            //baglanti.Close();
             panelTopRenk.BackColor = Color.Lime;
             labelMesaj.ForeColor = Color.Green;
             labelMesaj.Text = "Kayıt başarıyla güncellendi.";
@@ -414,6 +425,15 @@ namespace WindowsFormsApplication7
         //müşteri güncelle butonu
         private void buttonMusteriGuncelle_Click(object sender, EventArgs e)
         {
+            baglanti.Open();
+            OleDbCommand komut = new OleDbCommand("update musteriler set musteri_id=@musteri_id, musteri_adi=@musteri_adi, musteri_soyadi=@musteri_soyadi, musteri_adresi=@musteri_adresi, musteri_telefonu=@musteri_telefonu where musteri_id=@musteri_id", baglanti);
+            komut.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
+            komut.Parameters.AddWithValue("@musteri_adi", textBoxMusteriAdi.Text);
+            komut.Parameters.AddWithValue("@musteri_soyadi", textBoxMusteriSoyadi.Text);
+            komut.Parameters.AddWithValue("@musteri_adresi", textBoxMusteriAdresi.Text);
+            komut.Parameters.AddWithValue("@musteri_telefonu", textBoxMusteriTelefonu.Text);
+            komut.ExecuteNonQuery();
+            baglanti.Close();
             panelTopRenk.BackColor = Color.Lime;
             labelMesaj.ForeColor = Color.Green;
             labelMesaj.Text = "Müşteri tablosu güncellendi.";

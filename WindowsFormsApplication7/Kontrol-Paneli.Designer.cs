@@ -785,9 +785,9 @@
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.buttonMusterileriGoster2);
             this.Controls.Add(this.buttonMusterileriGoster1);
-            this.Controls.Add(this.panelUrunler);
             this.Controls.Add(this.panelMusteriler);
             this.Controls.Add(this.panelKullanicilar);
+            this.Controls.Add(this.panelUrunler);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Kontrol_Paneli";
