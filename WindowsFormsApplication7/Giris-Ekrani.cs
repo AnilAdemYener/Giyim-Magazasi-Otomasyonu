@@ -24,6 +24,8 @@ namespace WindowsFormsApplication7
 
         private void GirisEkrani_Load(object sender, EventArgs e)
         {
+            pictureBoxGitHub.Visible = false;
+            pictureBoxTwitter.Visible = false;
             //mesaj
             labelMesaj.Text = "";
             //font

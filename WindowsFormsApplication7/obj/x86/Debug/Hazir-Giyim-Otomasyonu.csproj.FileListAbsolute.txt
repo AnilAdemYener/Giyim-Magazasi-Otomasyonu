@@ -25,3 +25,13 @@ Z:\Hazir-Giyim-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApp
 Z:\Hazir-Giyim-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.Kontrol_Paneli.resources
 Z:\Hazir-Giyim-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.Properties.Resources.resources
 Z:\Hazir-Giyim-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\Hazir-Giyim-Otomasyonu.csproj.GenerateResource.Cache
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\bin\Debug\WindowsFormsApplication7.exe
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\bin\Debug\WindowsFormsApplication7.pdb
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\Hazir-Giyim-Otomasyonu.csprojAssemblyReference.cache
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.GirisEkrani.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.Kontrol_Paneli.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.Properties.Resources.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\Hazir-Giyim-Otomasyonu.csproj.GenerateResource.cache
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\Hazir-Giyim-Otomasyonu.csproj.CoreCompileInputs.cache
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.exe
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.pdb

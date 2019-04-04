@@ -26,6 +26,8 @@ namespace WindowsFormsApplication7
 
         private void Kontrol_Paneli_Load(object sender, EventArgs e)
         {
+            pictureBoxGitHub.Visible = false;
+            pictureBoxTwitter.Visible = false;
             labelMesaj.Text = "";
             //ters butonlar
             buttonUrunleriGoster2.Visible = false;
@@ -296,7 +298,7 @@ namespace WindowsFormsApplication7
         private void buttonUrunGuncelle_Click(object sender, EventArgs e)
         {
             baglanti.Open();
-            OleDbCommand komut = new OleDbCommand("update urunler set urun_id=@urun_id, urun_adi=@urun_adi, urun_rengi=@urun_rengi, urun_bedeni=@urun_bedeni, urun_fiyati=@urun_fiyati, urun_kitlesi=@urun_kitlesi where urun_id=@urun_id", baglanti); 
+            OleDbCommand komut = new OleDbCommand("update urunler set urun_id=@urun_id, urun_adi=@urun_adi, urun_rengi=@urun_rengi, urun_bedeni=@urun_bedeni, urun_fiyati=@urun_fiyati, urun_kitlesi=@urun_kitlesi where urun_id=@urun_id", baglanti);
             komut.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
             komut.Parameters.AddWithValue("@urun_adi", textBoxUrunAdi.Text);
             komut.Parameters.AddWithValue("@urun_rengi", textBoxUrunRengi.Text);
@@ -475,6 +477,75 @@ namespace WindowsFormsApplication7
         {
             this.Hide();
             giris_ekrani.Show();
+        }
+
+        // ürün ara
+        private void ButtonUrunAra_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select * from urunler where urun_id='" + textBoxUrunAra.Text + "' or urun_adi='" + textBoxUrunAra.Text + "'", baglanti);
+            adaptor.Fill(dt);
+            dataGridViewUrunler.DataSource = dt;
+        }
+
+        // müşteri ara
+        private void ButtonMusteriAra_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select * from musteriler where musteri_id='" + textBoxMusteriAra.Text + "' or musteri_adi='"+textBoxMusteriAra.Text+"' or musteri_soyadi='"+textBoxMusteriAra.Text+ "' or musteri_adresi='" + textBoxMusteriAra.Text + "' or musteri_telefonu='" + textBoxMusteriAra.Text + "'", baglanti);
+            adaptor.Fill(dt);
+            dataGridViewMusteriler.DataSource = dt;
+        }
+
+        // tüm müşteri kayıtlarını göster
+        private void ButtonMusteriTumKayitlariGoster_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select * from musteriler",baglanti);
+            adaptor.Fill(dt);
+            dataGridViewMusteriler.DataSource = dt;
+            panelTopRenk.BackColor = Color.Lime;
+            labelMesaj.ForeColor = Color.Green;
+            labelMesaj.Text = "Tüm müşteri kayıtları listelendi.";
+        }
+
+        // müşteriler cell click
+        private void DataGridViewMusteriler_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxMusteriId.Text = dataGridViewMusteriler.CurrentRow.Cells["musteri_id"].Value.ToString();
+            textBoxMusteriAdi.Text = dataGridViewMusteriler.CurrentRow.Cells["musteri_adi"].Value.ToString();
+            textBoxMusteriSoyadi.Text = dataGridViewMusteriler.CurrentRow.Cells["musteri_soyadi"].Value.ToString();
+            textBoxMusteriAdresi.Text = dataGridViewMusteriler.CurrentRow.Cells["musteri_adresi"].Value.ToString();
+            textBoxMusteriTelefonu.Text = dataGridViewMusteriler.CurrentRow.Cells["musteri_telefonu"].Value.ToString();
+        }
+
+        // ürünler cell click
+        private void DataGridViewUrunler_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                textBoxUrunId.Text = dataGridViewUrunler.CurrentRow.Cells["urun_id"].Value.ToString();
+                textBoxUrunAdi.Text = dataGridViewUrunler.CurrentRow.Cells["urun_adi"].Value.ToString();
+                textBoxUrunRengi.Text = dataGridViewUrunler.CurrentRow.Cells["urun_rengi"].Value.ToString();
+                textBoxUrunBedeni.Text = dataGridViewUrunler.CurrentRow.Cells["urun_bedeni"].Value.ToString();
+                textBoxUrunFiyati.Text = dataGridViewUrunler.CurrentRow.Cells["urun_fiyati"].Value.ToString();
+                baglanti.Open();
+                OleDbCommand komut = new OleDbCommand("select urun_kitlesi from urunler where urun_id='"+textBoxUrunId.Text+"'",baglanti);
+                OleDbDataReader oku = komut.ExecuteReader();
+                while (oku.Read())
+                {
+                    textBoxUrunKitlesi.Text = oku["urun_kitlesi"].ToString();
+                }
+                baglanti.Close();
+                //textBoxUrunKitlesi.Text = dataGridViewUrunler.CurrentRow.Cells["urun_kitlesi"].Value.ToString();
+            }
+
+            catch
+            {
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Önce bir seçim yapın!";
+            }
         }
     }
 }

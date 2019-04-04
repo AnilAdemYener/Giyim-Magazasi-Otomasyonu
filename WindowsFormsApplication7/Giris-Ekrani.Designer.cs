@@ -102,9 +102,9 @@
             this.labelBaslik.ForeColor = System.Drawing.Color.White;
             this.labelBaslik.Location = new System.Drawing.Point(54, 10);
             this.labelBaslik.Name = "labelBaslik";
-            this.labelBaslik.Size = new System.Drawing.Size(183, 13);
+            this.labelBaslik.Size = new System.Drawing.Size(204, 13);
             this.labelBaslik.TabIndex = 3;
-            this.labelBaslik.Text = "Hazır Giyim Otomasyonu - Giriş Ekranı";
+            this.labelBaslik.Text = "Giyim Mağazası Otomasyonu - Giriş Ekranı";
             // 
             // pictureBoxMinimize
             // 
