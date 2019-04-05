@@ -91,6 +91,9 @@
             this.buttonMusterileriGoster1 = new System.Windows.Forms.Button();
             this.buttonKullanicilariGoster2 = new System.Windows.Forms.Button();
             this.buttonKullanicilariGoster1 = new System.Windows.Forms.Button();
+            this.labelUrunResmi = new System.Windows.Forms.Label();
+            this.textBoxUrunResmi = new System.Windows.Forms.TextBox();
+            this.pictureBoxUrunResmi = new System.Windows.Forms.PictureBox();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGitHub)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTwitter)).BeginInit();
@@ -103,6 +106,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMusteriler)).BeginInit();
             this.panelKullanicilar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKullanicilar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUrunResmi)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -225,6 +229,9 @@
             // panelUrunler
             // 
             this.panelUrunler.BackColor = System.Drawing.Color.Transparent;
+            this.panelUrunler.Controls.Add(this.pictureBoxUrunResmi);
+            this.panelUrunler.Controls.Add(this.textBoxUrunResmi);
+            this.panelUrunler.Controls.Add(this.labelUrunResmi);
             this.panelUrunler.Controls.Add(this.buttonUrunAra);
             this.panelUrunler.Controls.Add(this.labelUrunAra);
             this.panelUrunler.Controls.Add(this.textBoxUrunAra);
@@ -259,7 +266,7 @@
             this.buttonUrunAra.FlatAppearance.BorderSize = 0;
             this.buttonUrunAra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUrunAra.ForeColor = System.Drawing.Color.White;
-            this.buttonUrunAra.Location = new System.Drawing.Point(844, 350);
+            this.buttonUrunAra.Location = new System.Drawing.Point(848, 470);
             this.buttonUrunAra.Name = "buttonUrunAra";
             this.buttonUrunAra.Size = new System.Drawing.Size(123, 43);
             this.buttonUrunAra.TabIndex = 33;
@@ -270,7 +277,7 @@
             // labelUrunAra
             // 
             this.labelUrunAra.AutoSize = true;
-            this.labelUrunAra.Location = new System.Drawing.Point(651, 322);
+            this.labelUrunAra.Location = new System.Drawing.Point(655, 442);
             this.labelUrunAra.Name = "labelUrunAra";
             this.labelUrunAra.Size = new System.Drawing.Size(49, 13);
             this.labelUrunAra.TabIndex = 32;
@@ -280,7 +287,7 @@
             // 
             this.textBoxUrunAra.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBoxUrunAra.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxUrunAra.Location = new System.Drawing.Point(784, 322);
+            this.textBoxUrunAra.Location = new System.Drawing.Point(788, 442);
             this.textBoxUrunAra.Multiline = true;
             this.textBoxUrunAra.Name = "textBoxUrunAra";
             this.textBoxUrunAra.Size = new System.Drawing.Size(180, 25);
@@ -293,7 +300,7 @@
             this.buttonUrunTumKayitlariGoster.FlatAppearance.BorderSize = 0;
             this.buttonUrunTumKayitlariGoster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUrunTumKayitlariGoster.ForeColor = System.Drawing.Color.White;
-            this.buttonUrunTumKayitlariGoster.Location = new System.Drawing.Point(654, 265);
+            this.buttonUrunTumKayitlariGoster.Location = new System.Drawing.Point(658, 385);
             this.buttonUrunTumKayitlariGoster.Name = "buttonUrunTumKayitlariGoster";
             this.buttonUrunTumKayitlariGoster.Size = new System.Drawing.Size(312, 51);
             this.buttonUrunTumKayitlariGoster.TabIndex = 30;
@@ -310,7 +317,7 @@
             this.buttonUrunSil.ForeColor = System.Drawing.Color.White;
             this.buttonUrunSil.Image = ((System.Drawing.Image)(resources.GetObject("buttonUrunSil.Image")));
             this.buttonUrunSil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonUrunSil.Location = new System.Drawing.Point(889, 214);
+            this.buttonUrunSil.Location = new System.Drawing.Point(893, 334);
             this.buttonUrunSil.Name = "buttonUrunSil";
             this.buttonUrunSil.Size = new System.Drawing.Size(77, 51);
             this.buttonUrunSil.TabIndex = 28;
@@ -328,7 +335,7 @@
             this.buttonUrunGuncelle.ForeColor = System.Drawing.Color.White;
             this.buttonUrunGuncelle.Image = ((System.Drawing.Image)(resources.GetObject("buttonUrunGuncelle.Image")));
             this.buttonUrunGuncelle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonUrunGuncelle.Location = new System.Drawing.Point(751, 214);
+            this.buttonUrunGuncelle.Location = new System.Drawing.Point(755, 334);
             this.buttonUrunGuncelle.Name = "buttonUrunGuncelle";
             this.buttonUrunGuncelle.Size = new System.Drawing.Size(138, 51);
             this.buttonUrunGuncelle.TabIndex = 27;
@@ -346,7 +353,7 @@
             this.buttonUrunEkle.ForeColor = System.Drawing.Color.White;
             this.buttonUrunEkle.Image = ((System.Drawing.Image)(resources.GetObject("buttonUrunEkle.Image")));
             this.buttonUrunEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonUrunEkle.Location = new System.Drawing.Point(654, 214);
+            this.buttonUrunEkle.Location = new System.Drawing.Point(658, 334);
             this.buttonUrunEkle.Name = "buttonUrunEkle";
             this.buttonUrunEkle.Size = new System.Drawing.Size(100, 51);
             this.buttonUrunEkle.TabIndex = 26;
@@ -359,7 +366,7 @@
             // 
             this.textBoxUrunKitlesi.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBoxUrunKitlesi.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxUrunKitlesi.Location = new System.Drawing.Point(784, 183);
+            this.textBoxUrunKitlesi.Location = new System.Drawing.Point(788, 271);
             this.textBoxUrunKitlesi.Multiline = true;
             this.textBoxUrunKitlesi.Name = "textBoxUrunKitlesi";
             this.textBoxUrunKitlesi.Size = new System.Drawing.Size(180, 25);
@@ -368,7 +375,7 @@
             // labelUrunKitlesi
             // 
             this.labelUrunKitlesi.AutoSize = true;
-            this.labelUrunKitlesi.Location = new System.Drawing.Point(651, 183);
+            this.labelUrunKitlesi.Location = new System.Drawing.Point(655, 271);
             this.labelUrunKitlesi.Name = "labelUrunKitlesi";
             this.labelUrunKitlesi.Size = new System.Drawing.Size(60, 13);
             this.labelUrunKitlesi.TabIndex = 24;
@@ -378,7 +385,7 @@
             // 
             this.textBoxUrunFiyati.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBoxUrunFiyati.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxUrunFiyati.Location = new System.Drawing.Point(784, 152);
+            this.textBoxUrunFiyati.Location = new System.Drawing.Point(788, 240);
             this.textBoxUrunFiyati.Multiline = true;
             this.textBoxUrunFiyati.Name = "textBoxUrunFiyati";
             this.textBoxUrunFiyati.Size = new System.Drawing.Size(180, 25);
@@ -387,7 +394,7 @@
             // labelUrunFiyati
             // 
             this.labelUrunFiyati.AutoSize = true;
-            this.labelUrunFiyati.Location = new System.Drawing.Point(651, 152);
+            this.labelUrunFiyati.Location = new System.Drawing.Point(655, 240);
             this.labelUrunFiyati.Name = "labelUrunFiyati";
             this.labelUrunFiyati.Size = new System.Drawing.Size(57, 13);
             this.labelUrunFiyati.TabIndex = 22;
@@ -397,7 +404,7 @@
             // 
             this.textBoxUrunBedeni.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBoxUrunBedeni.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxUrunBedeni.Location = new System.Drawing.Point(784, 121);
+            this.textBoxUrunBedeni.Location = new System.Drawing.Point(788, 209);
             this.textBoxUrunBedeni.Multiline = true;
             this.textBoxUrunBedeni.Name = "textBoxUrunBedeni";
             this.textBoxUrunBedeni.Size = new System.Drawing.Size(180, 25);
@@ -406,7 +413,7 @@
             // labelUrunBedeni
             // 
             this.labelUrunBedeni.AutoSize = true;
-            this.labelUrunBedeni.Location = new System.Drawing.Point(651, 121);
+            this.labelUrunBedeni.Location = new System.Drawing.Point(655, 209);
             this.labelUrunBedeni.Name = "labelUrunBedeni";
             this.labelUrunBedeni.Size = new System.Drawing.Size(66, 13);
             this.labelUrunBedeni.TabIndex = 20;
@@ -416,7 +423,7 @@
             // 
             this.textBoxUrunRengi.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBoxUrunRengi.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxUrunRengi.Location = new System.Drawing.Point(784, 90);
+            this.textBoxUrunRengi.Location = new System.Drawing.Point(788, 178);
             this.textBoxUrunRengi.Multiline = true;
             this.textBoxUrunRengi.Name = "textBoxUrunRengi";
             this.textBoxUrunRengi.Size = new System.Drawing.Size(180, 25);
@@ -425,7 +432,7 @@
             // labelUrunRengi
             // 
             this.labelUrunRengi.AutoSize = true;
-            this.labelUrunRengi.Location = new System.Drawing.Point(651, 90);
+            this.labelUrunRengi.Location = new System.Drawing.Point(655, 178);
             this.labelUrunRengi.Name = "labelUrunRengi";
             this.labelUrunRengi.Size = new System.Drawing.Size(61, 13);
             this.labelUrunRengi.TabIndex = 18;
@@ -435,7 +442,7 @@
             // 
             this.textBoxUrunAdi.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBoxUrunAdi.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxUrunAdi.Location = new System.Drawing.Point(784, 59);
+            this.textBoxUrunAdi.Location = new System.Drawing.Point(788, 147);
             this.textBoxUrunAdi.Multiline = true;
             this.textBoxUrunAdi.Name = "textBoxUrunAdi";
             this.textBoxUrunAdi.Size = new System.Drawing.Size(180, 25);
@@ -444,7 +451,7 @@
             // labelUrunAdi
             // 
             this.labelUrunAdi.AutoSize = true;
-            this.labelUrunAdi.Location = new System.Drawing.Point(651, 59);
+            this.labelUrunAdi.Location = new System.Drawing.Point(655, 147);
             this.labelUrunAdi.Name = "labelUrunAdi";
             this.labelUrunAdi.Size = new System.Drawing.Size(48, 13);
             this.labelUrunAdi.TabIndex = 16;
@@ -454,7 +461,7 @@
             // 
             this.textBoxUrunId.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBoxUrunId.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxUrunId.Location = new System.Drawing.Point(784, 28);
+            this.textBoxUrunId.Location = new System.Drawing.Point(788, 116);
             this.textBoxUrunId.Multiline = true;
             this.textBoxUrunId.Name = "textBoxUrunId";
             this.textBoxUrunId.Size = new System.Drawing.Size(180, 25);
@@ -463,7 +470,7 @@
             // labelUrunId
             // 
             this.labelUrunId.AutoSize = true;
-            this.labelUrunId.Location = new System.Drawing.Point(651, 28);
+            this.labelUrunId.Location = new System.Drawing.Point(655, 116);
             this.labelUrunId.Name = "labelUrunId";
             this.labelUrunId.Size = new System.Drawing.Size(44, 13);
             this.labelUrunId.TabIndex = 14;
@@ -872,6 +879,33 @@
             this.buttonKullanicilariGoster1.UseVisualStyleBackColor = true;
             this.buttonKullanicilariGoster1.Click += new System.EventHandler(this.buttonKullanicilariGoster1_Click);
             // 
+            // labelUrunResmi
+            // 
+            this.labelUrunResmi.AutoSize = true;
+            this.labelUrunResmi.Location = new System.Drawing.Point(655, 302);
+            this.labelUrunResmi.Name = "labelUrunResmi";
+            this.labelUrunResmi.Size = new System.Drawing.Size(62, 13);
+            this.labelUrunResmi.TabIndex = 34;
+            this.labelUrunResmi.Text = "Ürün Resmi";
+            // 
+            // textBoxUrunResmi
+            // 
+            this.textBoxUrunResmi.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBoxUrunResmi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxUrunResmi.Location = new System.Drawing.Point(788, 302);
+            this.textBoxUrunResmi.Multiline = true;
+            this.textBoxUrunResmi.Name = "textBoxUrunResmi";
+            this.textBoxUrunResmi.Size = new System.Drawing.Size(180, 25);
+            this.textBoxUrunResmi.TabIndex = 35;
+            // 
+            // pictureBoxUrunResmi
+            // 
+            this.pictureBoxUrunResmi.Location = new System.Drawing.Point(658, 4);
+            this.pictureBoxUrunResmi.Name = "pictureBoxUrunResmi";
+            this.pictureBoxUrunResmi.Size = new System.Drawing.Size(100, 100);
+            this.pictureBoxUrunResmi.TabIndex = 36;
+            this.pictureBoxUrunResmi.TabStop = false;
+            // 
             // Kontrol_Paneli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -914,6 +948,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMusteriler)).EndInit();
             this.panelKullanicilar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKullanicilar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUrunResmi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -983,5 +1018,8 @@
         private System.Windows.Forms.Label labelMusteriAra;
         private System.Windows.Forms.TextBox textBoxMusteriAra;
         private System.Windows.Forms.Button buttonMusteriTumKayitlariGoster;
+        private System.Windows.Forms.TextBox textBoxUrunResmi;
+        private System.Windows.Forms.Label labelUrunResmi;
+        private System.Windows.Forms.PictureBox pictureBoxUrunResmi;
     }
 }
