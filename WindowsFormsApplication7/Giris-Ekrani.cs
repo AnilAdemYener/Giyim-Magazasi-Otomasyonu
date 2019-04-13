@@ -138,11 +138,11 @@ namespace WindowsFormsApplication7
 
         //kullanıcı adı
         public static string kullanici_adi;
-        
+
         //giriş yap butonu
         public void buttonGirisYap_Click(object sender, EventArgs e)
         {
-            char kontrol='f';
+            char kontrol = 'f';
             baglanti.Open();
             OleDbCommand komut = new OleDbCommand("Select * from kullanicilar", baglanti);
             OleDbDataReader oku = komut.ExecuteReader();
@@ -171,31 +171,41 @@ namespace WindowsFormsApplication7
         //kayıt ol butonu
         private void buttonKayitOl_Click(object sender, EventArgs e)
         {
-            char kontrol = 'f';
-            baglanti.Open();
-            OleDbCommand komut = new OleDbCommand("Select * from kullanicilar",baglanti);
-            OleDbDataReader oku = komut.ExecuteReader();
-            while (oku.Read())
+            if (textBoxKullaniciAdi.TextLength > 3 && textBoxSifre.TextLength > 3)
             {
-                if (textBoxKullaniciAdi.Text == oku["kullanici_adi"].ToString())
+                char kontrol = 'f';
+                baglanti.Open();
+                OleDbCommand komut = new OleDbCommand("Select * from kullanicilar", baglanti);
+                OleDbDataReader oku = komut.ExecuteReader();
+                while (oku.Read())
                 {
-                    kontrol = 't';
-                    panelTopRenk.BackColor = Color.Red;
-                    labelMesaj.ForeColor = Color.Red;
-                    labelMesaj.Text = "Böyle bir hesap zaten kayıtlı.";
+                    if (textBoxKullaniciAdi.Text == oku["kullanici_adi"].ToString())
+                    {
+                        kontrol = 't';
+                        panelTopRenk.BackColor = Color.Red;
+                        labelMesaj.ForeColor = Color.Red;
+                        labelMesaj.Text = "Böyle bir hesap zaten kayıtlı.";
+                    }
                 }
+                if (kontrol == 'f')
+                {
+                    OleDbCommand komutEkle = new OleDbCommand("insert into kullanicilar values(@kullanici_adi,@sifre,@yetki)", baglanti);
+                    komutEkle.Parameters.AddWithValue("@kullanici_adi", textBoxKullaniciAdi.Text);
+                    komutEkle.Parameters.AddWithValue("@sifre", textBoxSifre.Text);
+                    komutEkle.Parameters.AddWithValue("@yetki", "normal");
+                    komutEkle.ExecuteNonQuery();
+                    panelTopRenk.BackColor = Color.Lime;
+                    labelMesaj.ForeColor = Color.Green;
+                    labelMesaj.Text = "Kayıt başarıyla eklendi.";
+                }
+                baglanti.Close();
             }
-            if (kontrol == 'f')
+            else
             {
-                OleDbCommand komutEkle = new OleDbCommand("insert into kullanicilar values(@kullanici_adi,@sifre)", baglanti);
-                komutEkle.Parameters.AddWithValue("@kullanici_adi", textBoxKullaniciAdi.Text);
-                komutEkle.Parameters.AddWithValue("@sifre", textBoxSifre.Text);
-                komutEkle.ExecuteNonQuery();
-                panelTopRenk.BackColor = Color.Lime;
-                labelMesaj.ForeColor = Color.Green;
-                labelMesaj.Text = "Kayıt başarıyla eklendi.";
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Kullanıcı adı ve şifre en az 3 karakter olmalı.";
             }
-            baglanti.Close();
         }
 
         //twitter butonu

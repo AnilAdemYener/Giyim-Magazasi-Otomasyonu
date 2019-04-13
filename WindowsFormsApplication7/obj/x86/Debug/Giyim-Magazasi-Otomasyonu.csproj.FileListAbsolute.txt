@@ -8,3 +8,4 @@ C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplicat
 C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\Giyim-Magazasi-Otomasyonu.csproj.CoreCompileInputs.cache
 C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.exe
 C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.pdb
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.Admin_Paneli.resources

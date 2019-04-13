@@ -39,6 +39,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,6 +56,12 @@
     <Compile Include="Giris-Ekrani.Designer.cs">
       <DependentUpon>Giris-Ekrani.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin-Paneli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin-Paneli.Designer.cs">
+      <DependentUpon>Admin-Paneli.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kontrol-Paneli.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +72,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Giris-Ekrani.resx">
       <DependentUpon>Giris-Ekrani.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin-Paneli.resx">
+      <DependentUpon>Admin-Paneli.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Kontrol-Paneli.resx">
       <DependentUpon>Kontrol-Paneli.cs</DependentUpon>

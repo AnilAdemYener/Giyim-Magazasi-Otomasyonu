@@ -26,6 +26,22 @@ namespace WindowsFormsApplication7
 
         private void Kontrol_Paneli_Load(object sender, EventArgs e)
         {
+            baglanti.Open();
+            OleDbCommand komut = new OleDbCommand("select * from kullanicilar where kullanici_adi='" + GirisEkrani.kullanici_adi + "'", baglanti);
+            OleDbDataReader oku = komut.ExecuteReader();
+            while (oku.Read())
+            {
+                if (oku["yetki"].ToString()=="admin")
+                {
+                    buttonAdminPaneli.Visible = true;
+                }
+                else
+                {
+                    buttonAdminPaneli.Visible = false;
+                }
+            }
+            baglanti.Close();
+            //
             pictureBoxGitHub.Visible = false;
             pictureBoxTwitter.Visible = false;
             labelMesaj.Text = "";
@@ -308,38 +324,47 @@ namespace WindowsFormsApplication7
         //ürün ekle butonu
         private void buttonUrunEkle_Click(object sender, EventArgs e)
         {
-            char kontrol = 't';
-            baglanti.Open();
-            OleDbCommand komut = new OleDbCommand("select * from urunler", baglanti);
-            OleDbDataReader oku = komut.ExecuteReader();
-            while (oku.Read())
+            if (textBoxUrunId.TextLength > 3)
             {
-                if (textBoxUrunId.Text == oku["urun_id"].ToString())
+                char kontrol = 't';
+                baglanti.Open();
+                OleDbCommand komut = new OleDbCommand("select * from urunler", baglanti);
+                OleDbDataReader oku = komut.ExecuteReader();
+                while (oku.Read())
                 {
-                    kontrol = 'f';
-                    panelTopRenk.BackColor = Color.Red;
-                    labelMesaj.ForeColor = Color.Red;
-                    labelMesaj.Text = "Böyle bir kayıt zaten mevcut.";
+                    if (textBoxUrunId.Text == oku["urun_id"].ToString())
+                    {
+                        kontrol = 'f';
+                        panelTopRenk.BackColor = Color.Red;
+                        labelMesaj.ForeColor = Color.Red;
+                        labelMesaj.Text = "Böyle bir kayıt zaten mevcut.";
+                    }
                 }
+                if (kontrol == 't')
+                {
+                    OleDbCommand komutEkle = new OleDbCommand("insert into urunler values(@urun_id, @urun_adi, @urun_turu, @urun_rengi, @urun_bedeni, @urun_fiyati, @urun_kitlesi, @urun_resmi)", baglanti);
+                    komutEkle.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
+                    komutEkle.Parameters.AddWithValue("@urun_turu", textBoxUrunTuru.Text);
+                    komutEkle.Parameters.AddWithValue("@urun_adi", textBoxUrunAdi.Text);
+                    komutEkle.Parameters.AddWithValue("@urun_rengi", textBoxUrunRengi.Text);
+                    komutEkle.Parameters.AddWithValue("@urun_bedeni", textBoxUrunBedeni.Text);
+                    komutEkle.Parameters.AddWithValue("@urun_fiyati", textBoxUrunFiyati.Text);
+                    komutEkle.Parameters.AddWithValue("@urun_kitlesi", textBoxUrunKitlesi.Text);
+                    komutEkle.Parameters.AddWithValue("@urun_resmi", textBoxUrunResmi.Text);
+                    komutEkle.ExecuteNonQuery();
+                    panelTopRenk.BackColor = Color.Lime;
+                    labelMesaj.ForeColor = Color.Green;
+                    labelMesaj.Text = "Kayıt başarıyla eklendi.";
+                    urunGuncelle();
+                }
+                baglanti.Close();
             }
-            if (kontrol == 't')
+            else
             {
-                OleDbCommand komutEkle = new OleDbCommand("insert into urunler values(@urun_id, @urun_adi, @urun_turu, @urun_rengi, @urun_bedeni, @urun_fiyati, @urun_kitlesi, @urun_resmi)", baglanti);
-                komutEkle.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
-                komutEkle.Parameters.AddWithValue("@urun_turu", textBoxUrunTuru.Text);
-                komutEkle.Parameters.AddWithValue("@urun_adi", textBoxUrunAdi.Text);
-                komutEkle.Parameters.AddWithValue("@urun_rengi", textBoxUrunRengi.Text);
-                komutEkle.Parameters.AddWithValue("@urun_bedeni", textBoxUrunBedeni.Text);
-                komutEkle.Parameters.AddWithValue("@urun_fiyati", textBoxUrunFiyati.Text);
-                komutEkle.Parameters.AddWithValue("@urun_kitlesi", textBoxUrunKitlesi.Text);
-                komutEkle.Parameters.AddWithValue("@urun_resmi", textBoxUrunResmi.Text);
-                komutEkle.ExecuteNonQuery();
-                panelTopRenk.BackColor = Color.Lime;
-                labelMesaj.ForeColor = Color.Green;
-                labelMesaj.Text = "Kayıt başarıyla eklendi.";
-                urunGuncelle();
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Kayıt eklemek için en az 3 basamaklı bir ID girmelisiniz!";
             }
-            baglanti.Close();
         }
 
         //ürünleri güncelle butonu
@@ -468,36 +493,45 @@ namespace WindowsFormsApplication7
         //müşteri ekle butonu
         private void buttonMusteriEkle_Click(object sender, EventArgs e)
         {
-            char kontrol = 't';
-            baglanti.Open();
-            OleDbCommand komut = new OleDbCommand("select * from musteriler", baglanti);
-            OleDbDataReader oku = komut.ExecuteReader();
-            while (oku.Read())
+            if (textBoxMusteriId.TextLength > 2)
             {
-                if (textBoxMusteriId.Text == oku["musteri_id"].ToString())
+                char kontrol = 't';
+                baglanti.Open();
+                OleDbCommand komut = new OleDbCommand("select * from musteriler", baglanti);
+                OleDbDataReader oku = komut.ExecuteReader();
+                while (oku.Read())
                 {
-                    kontrol = 'f';
-                    panelTopRenk.BackColor = Color.Red;
-                    labelMesaj.ForeColor = Color.Red;
-                    labelMesaj.Text = "Böyle bir müşteri zaten kayıtlı.";
+                    if (textBoxMusteriId.Text == oku["musteri_id"].ToString())
+                    {
+                        kontrol = 'f';
+                        panelTopRenk.BackColor = Color.Red;
+                        labelMesaj.ForeColor = Color.Red;
+                        labelMesaj.Text = "Böyle bir müşteri zaten kayıtlı.";
+                    }
                 }
+                if (kontrol == 't')
+                {
+                    OleDbCommand komutEkle = new OleDbCommand("insert into musteriler values(@musteri_id, @musteri_adi, @musteri_soyadi, @musteri_adresi, @musteri_telefonu, @musteri_resmi)", baglanti);
+                    komutEkle.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
+                    komutEkle.Parameters.AddWithValue("@musteri_adi", textBoxMusteriAdi.Text);
+                    komutEkle.Parameters.AddWithValue("@musteri_soyadi", textBoxMusteriSoyadi.Text);
+                    komutEkle.Parameters.AddWithValue("@musteri_adresi", textBoxMusteriAdresi.Text);
+                    komutEkle.Parameters.AddWithValue("@musteri_telefonu", textBoxMusteriTelefonu.Text);
+                    komutEkle.Parameters.AddWithValue("@musteri_resmi", textBoxMusteriResmi.Text);
+                    komutEkle.ExecuteNonQuery();
+                    panelTopRenk.BackColor = Color.Lime;
+                    labelMesaj.ForeColor = Color.Green;
+                    labelMesaj.Text = "Müşteri başarıyla eklendi.";
+                    musteriGuncelle();
+                }
+                baglanti.Close();
             }
-            if (kontrol == 't')
+            else
             {
-                OleDbCommand komutEkle = new OleDbCommand("insert into musteriler values(@musteri_id, @musteri_adi, @musteri_soyadi, @musteri_adresi, @musteri_telefonu, @musteri_resmi)", baglanti);
-                komutEkle.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
-                komutEkle.Parameters.AddWithValue("@musteri_adi", textBoxMusteriAdi.Text);
-                komutEkle.Parameters.AddWithValue("@musteri_soyadi", textBoxMusteriSoyadi.Text);
-                komutEkle.Parameters.AddWithValue("@musteri_adresi", textBoxMusteriAdresi.Text);
-                komutEkle.Parameters.AddWithValue("@musteri_telefonu", textBoxMusteriTelefonu.Text);
-                komutEkle.Parameters.AddWithValue("@musteri_resmi", textBoxMusteriResmi.Text);
-                komutEkle.ExecuteNonQuery();
-                panelTopRenk.BackColor = Color.Lime;
-                labelMesaj.ForeColor = Color.Green;
-                labelMesaj.Text = "Müşteri başarıyla eklendi.";
-                musteriGuncelle();
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Kayıt eklemek için en az 3 basamaklı bir ID girmelisiniz!";
             }
-            baglanti.Close();
         }
 
         //müşteri güncelle butonu
@@ -682,6 +716,14 @@ namespace WindowsFormsApplication7
                 labelMesaj.ForeColor = Color.Red;
                 labelMesaj.Text = "Önce bir seçim yapın!";
             }
+        }
+
+        // admin paneli
+        private void ButtonAdminPaneli_Click(object sender, EventArgs e)
+        {
+            Admin_Paneli adminPaneli = new Admin_Paneli();
+            this.Hide();
+            adminPaneli.Show();
         }
     }
 }
