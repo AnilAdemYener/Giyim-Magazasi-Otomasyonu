@@ -730,7 +730,7 @@
         XuKiMxuMZvGoG0+JdGaD0exKTj7ZuWCsCGNFGCvCWBHGijDWM6ZPYySvjeVXmh0AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="buttonKayitEkleSilUrunTumUrunleriSil.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="buttonKayitEkleyenlerMusteriTemizle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAAAj5JREFUaEPd2C1vFUEUxvHWIfA1SEwdpOWlBQsthIYg+AokWJKmpt8Dw4fA0RfA
@@ -746,7 +746,7 @@
         SUVORK5CYII=
 </value>
   </data>
-  <data name="buttonKayitEkleSilUrunSil.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="buttonKayitEkleyenlerUrunTemizle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAAAj5JREFUaEPd2C1vFUEUxvHWIfA1SEwdpOWlBQsthIYg+AokWJKmpt8Dw4fA0RfA

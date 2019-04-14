@@ -24,6 +24,24 @@ namespace WindowsFormsApplication7
 
         private void GirisEkrani_Load(object sender, EventArgs e)
         {
+            // kayıt olmayı devre dışı bırak
+            baglanti.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from program_ayarlari where ayar_id=@p1",baglanti);
+            cmd.Parameters.AddWithValue("@p1","program");
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader["kayit_olmayi_devre_disi_birak"].ToString()=="true")
+                {
+                    buttonKayitOl.Enabled = false;
+                }
+                else if (reader["kayit_olmayi_devre_disi_birak"].ToString() == "false")
+                {
+                    buttonKayitOl.Enabled = true;
+                }
+            }
+            baglanti.Close();
+            // iconlar
             pictureBoxGitHub.Visible = false;
             pictureBoxTwitter.Visible = false;
             //mesaj

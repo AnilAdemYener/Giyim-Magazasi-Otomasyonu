@@ -259,7 +259,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GirisEkrani";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Hazır Giyim Otomasyonu - Giriş Ekranı";
+            this.Text = "Giyim Mağazası Otomasyonu - Giriş Ekranı";
             this.Load += new System.EventHandler(this.GirisEkrani_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();

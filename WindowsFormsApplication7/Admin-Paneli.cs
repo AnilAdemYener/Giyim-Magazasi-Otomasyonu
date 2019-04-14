@@ -29,11 +29,46 @@ namespace WindowsFormsApplication7
 
         private void Admin_Paneli_Load(object sender, EventArgs e)
         {
+            // program ayarları checkbox
+            /* kayıt olmayı devre dışı bırak */
+            char control = 'f';
+            cnn.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from program_ayarlari", cnn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader["kayit_olmayi_devre_disi_birak"].ToString() == "true")
+                {
+                    control = 't';
+                    checkBoxKayitOlmayiDevreDisiBirak.Checked = true;
+                }
+            }
+            if (control == 'f')
+            {
+                checkBoxKayitOlmayiDevreDisiBirak.Checked = false;
+            }
+            cnn.Close();
+            /* kayıt ekleme güncelleme silmeyi devre dışı bırak */
+            control = 'f';
+            cnn.Open();
+            cmd = new OleDbCommand("select * from program_ayarlari", cnn);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader["kayit_ekleme_guncelleme_silmeyi_devre_disi_birak"].ToString() == "true")
+                {
+                    control = 't';
+                    checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak.Checked = true;
+                }
+            }
+            if (control == 'f')
+            {
+                checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak.Checked = false;
+            }
+            cnn.Close();
             // paneller
             panelKullaniciEkleSil.Visible = false;
-            panelKayitEkleSil.Visible = false;
-            panelKayitEkleSilUrunler.Visible = false;
-            panelKayitEkleSilMusteriler.Visible = false;
+            panelProgramAyarlari.Visible = false;
             panelKayitEkleyenler.Visible = false;
             panelKayitSilenler.Visible = false;
             //font
@@ -101,52 +136,92 @@ namespace WindowsFormsApplication7
             giris_ekrani.Show();
         }
 
-        // kullanıcı ekle sil
-        private void ButtonKullaniciEkleSil_Click(object sender, EventArgs e)
+        // program ayarları
+        private void ButtonProgramAyarlari_Click_1(object sender, EventArgs e)
         {
-            if (panelKullaniciEkleSil.Visible == false)
+            if (panelProgramAyarlari.Visible == false)
             {
-                panelKayitSilenler.Visible = false;
-                panelKullaniciEkleSil.Visible = true;
-                panelKayitEkleSil.Visible = false;
-                panelKayitEkleyenler.Visible = false;
-                updateKullanicilar();
-                panelTopRenk.BackColor = Color.Orange;
-                labelMesaj.ForeColor = Color.Black;
-                labelMesaj.Text = "";
-            }
-            else if (panelKullaniciEkleSil.Visible == true)
-            {
-                panelKayitSilenler.Visible = false;
                 panelKullaniciEkleSil.Visible = false;
-                panelKayitEkleSil.Visible = false;
+                panelProgramAyarlari.Visible = true;
                 panelKayitEkleyenler.Visible = false;
+                panelKayitSilenler.Visible = false;
+                panelTopRenk.BackColor = Color.Orange;
+                labelMesaj.Text = " ";
+            }
+            else if (panelProgramAyarlari.Visible == true)
+            {
+                panelKullaniciEkleSil.Visible = false;
+                panelProgramAyarlari.Visible = false;
+                panelKayitEkleyenler.Visible = false;
+                panelKayitSilenler.Visible = false;
             }
         }
 
         // kayıt ekle sil
         private void ButtonKayitEkleSil_Click(object sender, EventArgs e)
         {
-            if (panelKayitEkleSil.Visible == false)
+            if (panelProgramAyarlari.Visible == false)
             {
                 panelKayitSilenler.Visible = false;
-                panelKayitEkleSil.Visible = true;
+                panelProgramAyarlari.Visible = true;
                 panelKullaniciEkleSil.Visible = false;
                 panelKayitEkleyenler.Visible = false;
                 panelTopRenk.BackColor = Color.Orange;
                 labelMesaj.ForeColor = Color.Black;
                 labelMesaj.Text = "";
             }
-            else if (panelKayitEkleSil.Visible == true)
+            else if (panelProgramAyarlari.Visible == true)
             {
                 panelKayitSilenler.Visible = false;
-                panelKayitEkleSil.Visible = false;
+                panelProgramAyarlari.Visible = false;
                 panelKullaniciEkleSil.Visible = false;
                 panelKayitEkleyenler.Visible = false;
             }
         }
 
-        // kullanıcı ekle
+        // kullanıcı ekle sil tüm kayıtlar
+        private void ButtonKayitEkleSilTumKayitlar_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select * from kullanicilar", cnn);
+            adaptor.Fill(dt);
+            dataGridViewKullaniciEkleSil.DataSource = dt;
+            updateKullanicilar();
+        }
+
+        // kullanıcı ekle sil ara
+        private void ButtonKullaniciEkleSilAra_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select * from kullanicilar where kullanici_adi='" + textBoxKullaniciEkleSilAra.Text + "'", cnn);
+            adaptor.Fill(dt);
+            dataGridViewKullaniciEkleSil.DataSource = dt;
+            updateKullanicilar();
+        }
+
+        // button kullanici ekle sil
+        private void ButtonKullaniciEkleSil_Click(object sender, EventArgs e)
+        {
+            if (panelKullaniciEkleSil.Visible == false)
+            {
+                panelKullaniciEkleSil.Visible = true;
+                panelProgramAyarlari.Visible = false;
+                panelKayitEkleyenler.Visible = false;
+                panelKayitSilenler.Visible = false;
+                updateKullanicilar();
+                panelTopRenk.BackColor = Color.Orange;
+                labelMesaj.Text = " ";
+            }
+            else if (panelKullaniciEkleSil.Visible == true)
+            {
+                panelKullaniciEkleSil.Visible = false;
+                panelProgramAyarlari.Visible = false;
+                panelKayitEkleyenler.Visible = false;
+                panelKayitSilenler.Visible = false;
+            }
+        }
+
+        // kayıt ekle sil kullanıcı ekle
         private void ButtonKullaniciEkle_Click(object sender, EventArgs e)
         {
             char control = 't';
@@ -288,7 +363,7 @@ namespace WindowsFormsApplication7
             }
         }
 
-        
+
 
         // kontrol paneli
         private void ButtonKontrolPaneli_Click(object sender, EventArgs e)
@@ -302,144 +377,11 @@ namespace WindowsFormsApplication7
 
 
 
-        /* kayıt ekle sil ================= */
-
-        // kayıt ekle sil kullanıcı ara
-        private void ButtonKullaniciEkleSilAra_Click(object sender, EventArgs e)
-        {
-            DataTable dt = new DataTable();
-            OleDbDataAdapter adaptor = new OleDbDataAdapter("select * from kullanicilar where kullanici_adi='" + textBoxKullaniciEkleSilAra.Text + "' or sifre='" + textBoxKullaniciEkleSilAra.Text + "' or yetki='" + textBoxKullaniciEkleSilAra.Text + "'", cnn);
-            adaptor.Fill(dt);
-            dataGridViewKullaniciEkleSil.DataSource = dt;
-        }
-
-        // kayit ekle sil tüm kayıtlar
-        private void ButtonKayitEkleSilTumKayitlar_Click(object sender, EventArgs e)
-        {
-            DataTable dt = new DataTable();
-            OleDbDataAdapter adaptor = new OleDbDataAdapter("select * from kullanicilar", cnn);
-            adaptor.Fill(dt);
-            dataGridViewKullaniciEkleSil.DataSource = dt;
-        }
-
-        // kayit ekle sil ürünler tablosu
-        void updateKayitEkleSilUrunler()
-        {
-            DataTable dt = new DataTable();
-            OleDbDataAdapter adaptor = new OleDbDataAdapter("select * from urunler", cnn);
-            adaptor.Fill(dt);
-            dataGridViewKayitEkleSilUrunler.DataSource = dt;
-        }
+        /* program ayarları ================= */
 
 
-        // kayıt ekle sil ürünler
-        private void ButtonKayitEkleSilUrunler_Click(object sender, EventArgs e)
-        {
-            if (panelKayitEkleSilUrunler.Visible == false)
-            {
-                panelKayitSilenler.Visible = false;
-                panelKayitEkleyenler.Visible = false;
-                panelKayitEkleSilUrunler.Visible = true;
-                panelKayitEkleSilMusteriler.Visible = false;
-                panelTopRenk.BackColor = Color.Orange;
-                labelMesaj.ForeColor = Color.Black;
-                labelMesaj.Text = "";
-                updateKayitEkleSilUrunler();
-            }
-            else if (panelKayitEkleSilUrunler.Visible == true)
-            {
-                panelKayitSilenler.Visible = false;
-                panelKayitEkleyenler.Visible = false;
-                panelKayitEkleSilUrunler.Visible = false;
-                panelKayitEkleSilMusteriler.Visible = false;
-            }
-        }
 
-        // kayıt ekle sil müşteriler
-        private void ButtonKayitEkleSilMusteriler_Click(object sender, EventArgs e)
-        {
-            if (panelKayitEkleSilMusteriler.Visible == false)
-            {
-                panelKayitSilenler.Visible = false;
-                panelKayitEkleyenler.Visible = false;
-                panelKayitEkleSilMusteriler.Visible = true;
-                panelKayitEkleSilUrunler.Visible = false;
-                panelTopRenk.BackColor = Color.Orange;
-                labelMesaj.ForeColor = Color.Black;
-                labelMesaj.Text = "";
-            }
-            else if (panelKayitEkleSilMusteriler.Visible == true)
-            {
-                panelKayitEkleyenler.Visible = false;
-                panelKayitSilenler.Visible = false;
-                panelKayitEkleSilMusteriler.Visible = false;
-                panelKayitEkleSilUrunler.Visible = false;
-            }
-        }
 
-        // kayit ekle sil ürün tüm kayitlar
-        private void ButtonKayitEkleSilUrunTumKayitlar_Click(object sender, EventArgs e)
-        {
-            updateKayitEkleSilUrunler();
-            panelTopRenk.BackColor = Color.Lime;
-            labelMesaj.ForeColor = Color.Green;
-            labelMesaj.Text = "Tüm kayıtlar gösterildi.";
-        }
-
-        // kayit ekle sil ürün kayıt ara
-        private void ButtonKayitEkleSilUrunAra_Click(object sender, EventArgs e)
-        {
-            DataTable dt = new DataTable();
-            OleDbDataAdapter adaptor = new OleDbDataAdapter("select * from urunler where urun_id='" + textBoxKayitEkleSilUrunAra.Text + "'", cnn);
-            adaptor.Fill(dt);
-            dataGridViewKayitEkleSilUrunler.DataSource = dt;
-            panelTopRenk.BackColor = Color.Lime;
-            labelMesaj.ForeColor = Color.Green;
-            labelMesaj.Text = textBoxKayitEkleSilUrunAra.Text + " ID'li kayıt gösterildi.";
-        }
-
-        // kayit ekle sil ürün sil
-        private void ButtonKayitEkleSilUrunSil_Click(object sender, EventArgs e)
-        {
-            char control = 'f';
-            cnn.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from urunler", cnn);
-            OleDbDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                if (textBoxKayitEkleSilUrunAra.Text == reader["urun_id"].ToString())
-                {
-                    control = 't';
-                    OleDbCommand cmdDelete = new OleDbCommand("delete from urunler where urun_id=@p1", cnn);
-                    cmdDelete.Parameters.AddWithValue("@p1", textBoxKayitEkleSilUrunAra.Text);
-                    cmdDelete.ExecuteNonQuery();
-                    updateKayitEkleSilUrunler();
-                    panelTopRenk.BackColor = Color.Lime;
-                    labelMesaj.ForeColor = Color.Green;
-                    labelMesaj.Text = textBoxKayitEkleSilUrunAra.Text + " ID'li kayıt silindi.";
-                }
-            }
-            if (control == 'f')
-            {
-                panelTopRenk.BackColor = Color.Red;
-                labelMesaj.ForeColor = Color.Red;
-                labelMesaj.Text = textBoxKayitEkleSilUrunAra.Text + " ile kayıtlı ürün yok.";
-            }
-            cnn.Close();
-        }
-
-        // kayıt ekle sil ürünler tüm kayıtları sil
-        private void ButtonKayitEkleSilUrunTumUrunleriSil_Click(object sender, EventArgs e)
-        {
-            cnn.Open();
-            OleDbCommand cmd = new OleDbCommand("delete * from urunler", cnn);
-            cmd.ExecuteNonQuery();
-            updateKayitEkleSilUrunler();
-            panelTopRenk.BackColor = Color.Red;
-            labelMesaj.ForeColor = Color.Red;
-            labelMesaj.Text = "Tüm kayıtlar silindi.";
-            cnn.Close();
-        }
 
 
 
@@ -447,16 +389,16 @@ namespace WindowsFormsApplication7
 
 
         /* kayıt ekleyenler ================= */
-        
+
         // update kayit ekleyenler
         void updateKayitEkleyenler()
         {
             DataTable dt = new DataTable();
-            OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_ekleyen_kisi from urunler", cnn);
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_ekleyen_kisi from eklenen_urunler", cnn);
             adaptor.Fill(dt);
             dataGridViewKayitEkleyenlerUrunler.DataSource = dt;
             DataTable dt2 = new DataTable();
-            OleDbDataAdapter adaptor2 = new OleDbDataAdapter("select musteri_id, musteri_adi, musteri_ekleyen_kisi from musteriler",cnn);
+            OleDbDataAdapter adaptor2 = new OleDbDataAdapter("select musteri_id, musteri_adi, musteri_ekleyen_kisi from eklenen_musteriler", cnn);
             adaptor2.Fill(dt2);
             dataGridViewKayitEkleyenlerMusteriler.DataSource = dt2;
         }
@@ -469,26 +411,25 @@ namespace WindowsFormsApplication7
                 panelKayitEkleyenler.Visible = true;
                 panelKullaniciEkleSil.Visible = false;
                 panelKayitSilenler.Visible = false;
-                panelKayitEkleSil.Visible = false;
+                panelProgramAyarlari.Visible = false;
                 updateKayitEkleyenler();
                 panelTopRenk.BackColor = Color.Orange;
-                labelMesaj.ForeColor = Color.Black;
-                labelMesaj.Text = "";
+                labelMesaj.Text = " ";
             }
-            else if (panelKayitEkleyenler.Visible==true)
+            else if (panelKayitEkleyenler.Visible == true)
             {
                 panelKayitSilenler.Visible = false;
                 panelKayitEkleyenler.Visible = false;
                 panelKullaniciEkleSil.Visible = false;
-                panelKayitEkleSil.Visible = false;
+                panelProgramAyarlari.Visible = false;
             }
         }
-        
+
         // kayıt ekleyenler tüm ürünler
         private void ButtonKayitEkleyenlerTumKayitlar_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_ekleyen_kisi from urunler", cnn);
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_ekleyen_kisi from eklenen_urunler", cnn);
             adaptor.Fill(dt);
             dataGridViewKayitEkleyenlerUrunler.DataSource = dt;
         }
@@ -497,7 +438,7 @@ namespace WindowsFormsApplication7
         private void ButtonKayitEkleyenlerAra_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_ekleyen_kisi from urunler where urun_id='" + textBoxKayitEkleyenlerUrunID.Text + "' or urun_adi='" + textBoxKayitEkleyenlerUrunID.Text + "' or urun_ekleyen_kisi='" + textBoxKayitEkleyenlerUrunID.Text + "'", cnn);
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_ekleyen_kisi from eklenen_urunler where urun_id='" + textBoxKayitEkleyenlerUrunID.Text + "' or urun_adi='" + textBoxKayitEkleyenlerUrunID.Text + "' or urun_ekleyen_kisi='" + textBoxKayitEkleyenlerUrunID.Text + "'", cnn);
             adaptor.Fill(dt);
             dataGridViewKayitEkleyenlerUrunler.DataSource = dt;
         }
@@ -506,7 +447,7 @@ namespace WindowsFormsApplication7
         private void ButtonKayitEkleyenlerMusteriTumKayitlar_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            OleDbDataAdapter adaptor = new OleDbDataAdapter("select musteri_id, musteri_adi, musteri_ekleyen_kisi from musteriler", cnn);
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select musteri_id, musteri_adi, musteri_ekleyen_kisi from eklenen_musteriler", cnn);
             adaptor.Fill(dt);
             dataGridViewKayitEkleyenlerMusteriler.DataSource = dt;
         }
@@ -515,9 +456,29 @@ namespace WindowsFormsApplication7
         private void ButtonKayitEkleyenlerMusteriAra_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            OleDbDataAdapter adaptor = new OleDbDataAdapter("select musteri_id, musteri_adi, musteri_ekleyen_kisi from musteriler where musteri_id='" + textBoxKayitEkleyenlerMusteriID.Text + "' or musteri_adi='" + textBoxKayitEkleyenlerMusteriID.Text + "' or musteri_ekleyen_kisi='" + textBoxKayitEkleyenlerMusteriID.Text + "'", cnn);
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select musteri_id, musteri_adi, musteri_ekleyen_kisi from eklenen_musteriler where musteri_id='" + textBoxKayitEkleyenlerMusteriID.Text + "' or musteri_adi='" + textBoxKayitEkleyenlerMusteriID.Text + "' or musteri_ekleyen_kisi='" + textBoxKayitEkleyenlerMusteriID.Text + "'", cnn);
             adaptor.Fill(dt);
             dataGridViewKayitEkleyenlerMusteriler.DataSource = dt;
+        }
+
+        // kayıt ekleyenler ürün temizle
+        private void ButtonKayitEkleyenlerUrunTemizle_Click(object sender, EventArgs e)
+        {
+            cnn.Open();
+            OleDbCommand cmd = new OleDbCommand("delete * from eklenen_urunler", cnn);
+            cmd.ExecuteNonQuery();
+            updateKayitEkleyenler();
+            cnn.Close();
+        }
+
+        // kayıt ekleyenler müşteri temizle
+        private void ButtonKayitEkleyenlerMusteriTemizle_Click(object sender, EventArgs e)
+        {
+            cnn.Open();
+            OleDbCommand cmd = new OleDbCommand("delete * from eklenen_musteriler", cnn);
+            cmd.ExecuteNonQuery();
+            updateKayitEkleyenler();
+            cnn.Close();
         }
 
 
@@ -532,11 +493,11 @@ namespace WindowsFormsApplication7
         void updateKayitSilenler()
         {
             DataTable dt = new DataTable();
-            OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_silen_kisi from silinen_urunler",cnn);
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select urun_id, urun_adi, urun_silen_kisi from silinen_urunler", cnn);
             adaptor.Fill(dt);
             dataGridViewKayitSilenlerUrunler.DataSource = dt;
             DataTable dt2 = new DataTable();
-            OleDbDataAdapter adaptor2 = new OleDbDataAdapter("select musteri_id, musteri_adi, musteri_silen_kisi from silinen_musteriler",cnn);
+            OleDbDataAdapter adaptor2 = new OleDbDataAdapter("select musteri_id, musteri_adi, musteri_silen_kisi from silinen_musteriler", cnn);
             adaptor2.Fill(dt2);
             dataGridViewKayitSilenlerMusteriler.DataSource = dt2;
         }
@@ -544,22 +505,21 @@ namespace WindowsFormsApplication7
         // kayit silenler butonu
         private void ButtonKayitSilenler_Click(object sender, EventArgs e)
         {
-            if (panelKayitSilenler.Visible==false)
+            if (panelKayitSilenler.Visible == false)
             {
                 panelKayitSilenler.Visible = true;
                 panelKayitEkleyenler.Visible = false;
-                panelKayitEkleSil.Visible = false;
+                panelProgramAyarlari.Visible = false;
                 panelKullaniciEkleSil.Visible = false;
                 updateKayitSilenler();
                 panelTopRenk.BackColor = Color.Orange;
-                labelMesaj.ForeColor = Color.Black;
-                labelMesaj.Text = "";
+                labelMesaj.Text = " ";
             }
-            else if (panelKayitSilenler.Visible==true)
+            else if (panelKayitSilenler.Visible == true)
             {
                 panelKayitSilenler.Visible = false;
                 panelKayitEkleyenler.Visible = false;
-                panelKayitEkleSil.Visible = false;
+                panelProgramAyarlari.Visible = false;
                 panelKullaniciEkleSil.Visible = false;
             }
         }
@@ -586,7 +546,7 @@ namespace WindowsFormsApplication7
         private void ButtonKayitSilenlerUrunTemizle_Click(object sender, EventArgs e)
         {
             cnn.Open();
-            OleDbCommand cmd = new OleDbCommand("delete * from silinen_urunler",cnn);
+            OleDbCommand cmd = new OleDbCommand("delete * from silinen_urunler", cnn);
             cmd.ExecuteNonQuery();
             updateKayitSilenler();
             cnn.Close();
@@ -618,6 +578,45 @@ namespace WindowsFormsApplication7
             cmd.ExecuteNonQuery();
             updateKayitSilenler();
             cnn.Close();
+        }
+
+
+
+
+
+        /* program ayarları ================= */
+
+        // program ayarlarını kaydet
+        private void ButtonProgramAyarlariKaydet_Click(object sender, EventArgs e)
+        {
+            cnn.Open();
+            string kayitOlmayiDevreDisiBirak = "false";
+            if (checkBoxKayitOlmayiDevreDisiBirak.Checked == true)
+            {
+                kayitOlmayiDevreDisiBirak = "true";
+            }
+            else if (checkBoxKayitOlmayiDevreDisiBirak.Checked == false)
+            {
+                kayitOlmayiDevreDisiBirak = "false";
+            }
+
+            string kayitEklemeGuncellemeSilmeyiDevreDisiBirak = "false";
+            if (checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak.Checked == true)
+            {
+                kayitEklemeGuncellemeSilmeyiDevreDisiBirak = "true";
+            }
+            else if (checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak.Checked == false)
+            {
+                kayitEklemeGuncellemeSilmeyiDevreDisiBirak = "false";
+            }
+            OleDbCommand cmdUpdate = new OleDbCommand("update program_ayarlari set kayit_olmayi_devre_disi_birak=@p1, kayit_ekleme_guncelleme_silmeyi_devre_disi_birak=@p2", cnn);
+            cmdUpdate.Parameters.AddWithValue("@p1", kayitOlmayiDevreDisiBirak);
+            cmdUpdate.Parameters.AddWithValue("@p2", kayitEklemeGuncellemeSilmeyiDevreDisiBirak);
+            cmdUpdate.ExecuteNonQuery();
+            cnn.Close();
+            panelTopRenk.BackColor = Color.Lime;
+            labelMesaj.ForeColor = Color.Green;
+            labelMesaj.Text = "Ayarlar kaydedildi.";
         }
     }
 }

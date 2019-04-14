@@ -55,22 +55,17 @@
             this.buttonKullaniciGuncelle = new System.Windows.Forms.Button();
             this.buttonKullaniciEkle = new System.Windows.Forms.Button();
             this.dataGridViewKullaniciEkleSil = new System.Windows.Forms.DataGridView();
-            this.buttonKayitEkleSil = new System.Windows.Forms.Button();
-            this.panelKayitEkleSil = new System.Windows.Forms.Panel();
-            this.buttonKayitEkleSilMusteriler = new System.Windows.Forms.Button();
-            this.buttonKayitEkleSilUrunler = new System.Windows.Forms.Button();
-            this.panelKayitEkleSilUrunler = new System.Windows.Forms.Panel();
-            this.buttonKayitEkleSilUrunTumKayitlar = new System.Windows.Forms.Button();
-            this.buttonKayitEkleSilUrunAra = new System.Windows.Forms.Button();
-            this.textBoxKayitEkleSilUrunAra = new System.Windows.Forms.TextBox();
-            this.labelKayitEkleSilUrunIDAra = new System.Windows.Forms.Label();
-            this.buttonKayitEkleSilUrunTumUrunleriSil = new System.Windows.Forms.Button();
-            this.buttonKayitEkleSilUrunSil = new System.Windows.Forms.Button();
-            this.dataGridViewKayitEkleSilUrunler = new System.Windows.Forms.DataGridView();
-            this.panelKayitEkleSilMusteriler = new System.Windows.Forms.Panel();
+            this.panelProgramAyarlari = new System.Windows.Forms.Panel();
+            this.checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak = new System.Windows.Forms.CheckBox();
+            this.labelKayitEklemeGuncellemeSilmeyiDevreDisiBirak = new System.Windows.Forms.Label();
+            this.buttonProgramAyarlariKaydet = new System.Windows.Forms.Button();
+            this.checkBoxKayitOlmayiDevreDisiBirak = new System.Windows.Forms.CheckBox();
+            this.labelKayitOlmayiDevreDisiBirak = new System.Windows.Forms.Label();
             this.buttonKontrolPaneli = new System.Windows.Forms.Button();
             this.buttonKayitEkleyenler = new System.Windows.Forms.Button();
             this.panelKayitEkleyenler = new System.Windows.Forms.Panel();
+            this.buttonKayitEkleyenlerMusteriTemizle = new System.Windows.Forms.Button();
+            this.buttonKayitEkleyenlerUrunTemizle = new System.Windows.Forms.Button();
             this.buttonKayitEkleyenlerMusteriTumKayitlar = new System.Windows.Forms.Button();
             this.buttonKayitEkleyenlerMusteriAra = new System.Windows.Forms.Button();
             this.textBoxKayitEkleyenlerMusteriID = new System.Windows.Forms.TextBox();
@@ -83,6 +78,8 @@
             this.dataGridViewKayitEkleyenlerUrunler = new System.Windows.Forms.DataGridView();
             this.buttonKayitSilenler = new System.Windows.Forms.Button();
             this.panelKayitSilenler = new System.Windows.Forms.Panel();
+            this.buttonKayitSilenlerMusteriTemizle = new System.Windows.Forms.Button();
+            this.buttonKayitSilenlerUrunTemizle = new System.Windows.Forms.Button();
             this.buttonKayitSilenlerMusteriTumKayitlar = new System.Windows.Forms.Button();
             this.buttonKayitSilenlerMusteriAra = new System.Windows.Forms.Button();
             this.textBoxKayitSilenlerMusteriID = new System.Windows.Forms.TextBox();
@@ -93,17 +90,14 @@
             this.labelKayitSilenlerUrunID = new System.Windows.Forms.Label();
             this.dataGridViewKayitSilenlerMusteriler = new System.Windows.Forms.DataGridView();
             this.dataGridViewKayitSilenlerUrunler = new System.Windows.Forms.DataGridView();
-            this.buttonKayitSilenlerUrunTemizle = new System.Windows.Forms.Button();
-            this.buttonKayitSilenlerMusteriTemizle = new System.Windows.Forms.Button();
+            this.buttonProgramAyarlari = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panelKullaniciEkleSil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKullaniciEkleSil)).BeginInit();
-            this.panelKayitEkleSil.SuspendLayout();
-            this.panelKayitEkleSilUrunler.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKayitEkleSilUrunler)).BeginInit();
+            this.panelProgramAyarlari.SuspendLayout();
             this.panelKayitEkleyenler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKayitEkleyenlerMusteriler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKayitEkleyenlerUrunler)).BeginInit();
@@ -444,178 +438,69 @@
             this.dataGridViewKullaniciEkleSil.TabIndex = 2;
             this.dataGridViewKullaniciEkleSil.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewKullaniciEkleSil_CellClick);
             // 
-            // buttonKayitEkleSil
+            // panelProgramAyarlari
             // 
-            this.buttonKayitEkleSil.BackColor = System.Drawing.Color.Orange;
-            this.buttonKayitEkleSil.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonKayitEkleSil.FlatAppearance.BorderSize = 0;
-            this.buttonKayitEkleSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKayitEkleSil.ForeColor = System.Drawing.Color.White;
-            this.buttonKayitEkleSil.Location = new System.Drawing.Point(322, 45);
-            this.buttonKayitEkleSil.Name = "buttonKayitEkleSil";
-            this.buttonKayitEkleSil.Size = new System.Drawing.Size(276, 50);
-            this.buttonKayitEkleSil.TabIndex = 33;
-            this.buttonKayitEkleSil.Text = "Kayıt Ekle/Sil";
-            this.buttonKayitEkleSil.UseVisualStyleBackColor = false;
-            this.buttonKayitEkleSil.Click += new System.EventHandler(this.ButtonKayitEkleSil_Click);
+            this.panelProgramAyarlari.BackColor = System.Drawing.Color.Transparent;
+            this.panelProgramAyarlari.Controls.Add(this.checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak);
+            this.panelProgramAyarlari.Controls.Add(this.labelKayitEklemeGuncellemeSilmeyiDevreDisiBirak);
+            this.panelProgramAyarlari.Controls.Add(this.buttonProgramAyarlariKaydet);
+            this.panelProgramAyarlari.Controls.Add(this.checkBoxKayitOlmayiDevreDisiBirak);
+            this.panelProgramAyarlari.Controls.Add(this.labelKayitOlmayiDevreDisiBirak);
+            this.panelProgramAyarlari.Location = new System.Drawing.Point(12, 101);
+            this.panelProgramAyarlari.Name = "panelProgramAyarlari";
+            this.panelProgramAyarlari.Size = new System.Drawing.Size(955, 521);
+            this.panelProgramAyarlari.TabIndex = 33;
             // 
-            // panelKayitEkleSil
+            // checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak
             // 
-            this.panelKayitEkleSil.BackColor = System.Drawing.Color.Transparent;
-            this.panelKayitEkleSil.Controls.Add(this.buttonKayitEkleSilMusteriler);
-            this.panelKayitEkleSil.Controls.Add(this.buttonKayitEkleSilUrunler);
-            this.panelKayitEkleSil.Controls.Add(this.panelKayitEkleSilUrunler);
-            this.panelKayitEkleSil.Controls.Add(this.panelKayitEkleSilMusteriler);
-            this.panelKayitEkleSil.Location = new System.Drawing.Point(12, 101);
-            this.panelKayitEkleSil.Name = "panelKayitEkleSil";
-            this.panelKayitEkleSil.Size = new System.Drawing.Size(955, 521);
-            this.panelKayitEkleSil.TabIndex = 33;
+            this.checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak.AutoSize = true;
+            this.checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak.Location = new System.Drawing.Point(600, 133);
+            this.checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak.Name = "checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak";
+            this.checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak.TabIndex = 63;
+            this.checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak.UseVisualStyleBackColor = true;
             // 
-            // buttonKayitEkleSilMusteriler
+            // labelKayitEklemeGuncellemeSilmeyiDevreDisiBirak
             // 
-            this.buttonKayitEkleSilMusteriler.BackColor = System.Drawing.Color.Orange;
-            this.buttonKayitEkleSilMusteriler.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonKayitEkleSilMusteriler.FlatAppearance.BorderSize = 0;
-            this.buttonKayitEkleSilMusteriler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKayitEkleSilMusteriler.ForeColor = System.Drawing.Color.White;
-            this.buttonKayitEkleSilMusteriler.Location = new System.Drawing.Point(477, 3);
-            this.buttonKayitEkleSilMusteriler.Name = "buttonKayitEkleSilMusteriler";
-            this.buttonKayitEkleSilMusteriler.Size = new System.Drawing.Size(474, 50);
-            this.buttonKayitEkleSilMusteriler.TabIndex = 35;
-            this.buttonKayitEkleSilMusteriler.Text = "Müşteriler";
-            this.buttonKayitEkleSilMusteriler.UseVisualStyleBackColor = false;
-            this.buttonKayitEkleSilMusteriler.Click += new System.EventHandler(this.ButtonKayitEkleSilMusteriler_Click);
+            this.labelKayitEklemeGuncellemeSilmeyiDevreDisiBirak.AutoSize = true;
+            this.labelKayitEklemeGuncellemeSilmeyiDevreDisiBirak.Location = new System.Drawing.Point(42, 134);
+            this.labelKayitEklemeGuncellemeSilmeyiDevreDisiBirak.Name = "labelKayitEklemeGuncellemeSilmeyiDevreDisiBirak";
+            this.labelKayitEklemeGuncellemeSilmeyiDevreDisiBirak.Size = new System.Drawing.Size(245, 13);
+            this.labelKayitEklemeGuncellemeSilmeyiDevreDisiBirak.TabIndex = 62;
+            this.labelKayitEklemeGuncellemeSilmeyiDevreDisiBirak.Text = "Kayıt Ekleme/Güncelleme/Silmeyi Devre Dışı Bırak";
             // 
-            // buttonKayitEkleSilUrunler
+            // buttonProgramAyarlariKaydet
             // 
-            this.buttonKayitEkleSilUrunler.BackColor = System.Drawing.Color.Orange;
-            this.buttonKayitEkleSilUrunler.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonKayitEkleSilUrunler.FlatAppearance.BorderSize = 0;
-            this.buttonKayitEkleSilUrunler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKayitEkleSilUrunler.ForeColor = System.Drawing.Color.White;
-            this.buttonKayitEkleSilUrunler.Location = new System.Drawing.Point(3, 3);
-            this.buttonKayitEkleSilUrunler.Name = "buttonKayitEkleSilUrunler";
-            this.buttonKayitEkleSilUrunler.Size = new System.Drawing.Size(474, 50);
-            this.buttonKayitEkleSilUrunler.TabIndex = 34;
-            this.buttonKayitEkleSilUrunler.Text = "Ürünler";
-            this.buttonKayitEkleSilUrunler.UseVisualStyleBackColor = false;
-            this.buttonKayitEkleSilUrunler.Click += new System.EventHandler(this.ButtonKayitEkleSilUrunler_Click);
+            this.buttonProgramAyarlariKaydet.BackColor = System.Drawing.Color.Orange;
+            this.buttonProgramAyarlariKaydet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonProgramAyarlariKaydet.FlatAppearance.BorderSize = 0;
+            this.buttonProgramAyarlariKaydet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonProgramAyarlariKaydet.ForeColor = System.Drawing.Color.White;
+            this.buttonProgramAyarlariKaydet.Location = new System.Drawing.Point(334, 465);
+            this.buttonProgramAyarlariKaydet.Name = "buttonProgramAyarlariKaydet";
+            this.buttonProgramAyarlariKaydet.Size = new System.Drawing.Size(281, 50);
+            this.buttonProgramAyarlariKaydet.TabIndex = 61;
+            this.buttonProgramAyarlariKaydet.Text = "Kaydet";
+            this.buttonProgramAyarlariKaydet.UseVisualStyleBackColor = false;
+            this.buttonProgramAyarlariKaydet.Click += new System.EventHandler(this.ButtonProgramAyarlariKaydet_Click);
             // 
-            // panelKayitEkleSilUrunler
+            // checkBoxKayitOlmayiDevreDisiBirak
             // 
-            this.panelKayitEkleSilUrunler.Controls.Add(this.buttonKayitEkleSilUrunTumKayitlar);
-            this.panelKayitEkleSilUrunler.Controls.Add(this.buttonKayitEkleSilUrunAra);
-            this.panelKayitEkleSilUrunler.Controls.Add(this.textBoxKayitEkleSilUrunAra);
-            this.panelKayitEkleSilUrunler.Controls.Add(this.labelKayitEkleSilUrunIDAra);
-            this.panelKayitEkleSilUrunler.Controls.Add(this.buttonKayitEkleSilUrunTumUrunleriSil);
-            this.panelKayitEkleSilUrunler.Controls.Add(this.buttonKayitEkleSilUrunSil);
-            this.panelKayitEkleSilUrunler.Controls.Add(this.dataGridViewKayitEkleSilUrunler);
-            this.panelKayitEkleSilUrunler.Location = new System.Drawing.Point(4, 59);
-            this.panelKayitEkleSilUrunler.Name = "panelKayitEkleSilUrunler";
-            this.panelKayitEkleSilUrunler.Size = new System.Drawing.Size(947, 459);
-            this.panelKayitEkleSilUrunler.TabIndex = 36;
+            this.checkBoxKayitOlmayiDevreDisiBirak.AutoSize = true;
+            this.checkBoxKayitOlmayiDevreDisiBirak.Location = new System.Drawing.Point(600, 66);
+            this.checkBoxKayitOlmayiDevreDisiBirak.Name = "checkBoxKayitOlmayiDevreDisiBirak";
+            this.checkBoxKayitOlmayiDevreDisiBirak.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxKayitOlmayiDevreDisiBirak.TabIndex = 1;
+            this.checkBoxKayitOlmayiDevreDisiBirak.UseVisualStyleBackColor = true;
             // 
-            // buttonKayitEkleSilUrunTumKayitlar
+            // labelKayitOlmayiDevreDisiBirak
             // 
-            this.buttonKayitEkleSilUrunTumKayitlar.BackColor = System.Drawing.Color.Orange;
-            this.buttonKayitEkleSilUrunTumKayitlar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonKayitEkleSilUrunTumKayitlar.FlatAppearance.BorderSize = 0;
-            this.buttonKayitEkleSilUrunTumKayitlar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKayitEkleSilUrunTumKayitlar.ForeColor = System.Drawing.Color.White;
-            this.buttonKayitEkleSilUrunTumKayitlar.Location = new System.Drawing.Point(9, 118);
-            this.buttonKayitEkleSilUrunTumKayitlar.Name = "buttonKayitEkleSilUrunTumKayitlar";
-            this.buttonKayitEkleSilUrunTumKayitlar.Size = new System.Drawing.Size(200, 43);
-            this.buttonKayitEkleSilUrunTumKayitlar.TabIndex = 50;
-            this.buttonKayitEkleSilUrunTumKayitlar.Text = "Tüm Kayıtlar";
-            this.buttonKayitEkleSilUrunTumKayitlar.UseVisualStyleBackColor = false;
-            this.buttonKayitEkleSilUrunTumKayitlar.Click += new System.EventHandler(this.ButtonKayitEkleSilUrunTumKayitlar_Click);
-            // 
-            // buttonKayitEkleSilUrunAra
-            // 
-            this.buttonKayitEkleSilUrunAra.BackColor = System.Drawing.Color.Orange;
-            this.buttonKayitEkleSilUrunAra.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonKayitEkleSilUrunAra.FlatAppearance.BorderSize = 0;
-            this.buttonKayitEkleSilUrunAra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKayitEkleSilUrunAra.ForeColor = System.Drawing.Color.White;
-            this.buttonKayitEkleSilUrunAra.Location = new System.Drawing.Point(209, 118);
-            this.buttonKayitEkleSilUrunAra.Name = "buttonKayitEkleSilUrunAra";
-            this.buttonKayitEkleSilUrunAra.Size = new System.Drawing.Size(123, 43);
-            this.buttonKayitEkleSilUrunAra.TabIndex = 49;
-            this.buttonKayitEkleSilUrunAra.Text = "Ara";
-            this.buttonKayitEkleSilUrunAra.UseVisualStyleBackColor = false;
-            this.buttonKayitEkleSilUrunAra.Click += new System.EventHandler(this.ButtonKayitEkleSilUrunAra_Click);
-            // 
-            // textBoxKayitEkleSilUrunAra
-            // 
-            this.textBoxKayitEkleSilUrunAra.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBoxKayitEkleSilUrunAra.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxKayitEkleSilUrunAra.Location = new System.Drawing.Point(152, 87);
-            this.textBoxKayitEkleSilUrunAra.Multiline = true;
-            this.textBoxKayitEkleSilUrunAra.Name = "textBoxKayitEkleSilUrunAra";
-            this.textBoxKayitEkleSilUrunAra.Size = new System.Drawing.Size(180, 25);
-            this.textBoxKayitEkleSilUrunAra.TabIndex = 48;
-            // 
-            // labelKayitEkleSilUrunIDAra
-            // 
-            this.labelKayitEkleSilUrunIDAra.AutoSize = true;
-            this.labelKayitEkleSilUrunIDAra.Location = new System.Drawing.Point(6, 87);
-            this.labelKayitEkleSilUrunIDAra.Name = "labelKayitEkleSilUrunIDAra";
-            this.labelKayitEkleSilUrunIDAra.Size = new System.Drawing.Size(44, 13);
-            this.labelKayitEkleSilUrunIDAra.TabIndex = 47;
-            this.labelKayitEkleSilUrunIDAra.Text = "Ürün ID";
-            // 
-            // buttonKayitEkleSilUrunTumUrunleriSil
-            // 
-            this.buttonKayitEkleSilUrunTumUrunleriSil.BackColor = System.Drawing.Color.Orange;
-            this.buttonKayitEkleSilUrunTumUrunleriSil.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonKayitEkleSilUrunTumUrunleriSil.FlatAppearance.BorderSize = 0;
-            this.buttonKayitEkleSilUrunTumUrunleriSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKayitEkleSilUrunTumUrunleriSil.ForeColor = System.Drawing.Color.White;
-            this.buttonKayitEkleSilUrunTumUrunleriSil.Image = ((System.Drawing.Image)(resources.GetObject("buttonKayitEkleSilUrunTumUrunleriSil.Image")));
-            this.buttonKayitEkleSilUrunTumUrunleriSil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonKayitEkleSilUrunTumUrunleriSil.Location = new System.Drawing.Point(27, 402);
-            this.buttonKayitEkleSilUrunTumUrunleriSil.Name = "buttonKayitEkleSilUrunTumUrunleriSil";
-            this.buttonKayitEkleSilUrunTumUrunleriSil.Size = new System.Drawing.Size(312, 51);
-            this.buttonKayitEkleSilUrunTumUrunleriSil.TabIndex = 46;
-            this.buttonKayitEkleSilUrunTumUrunleriSil.Text = "Tüm Ürünleri Sil";
-            this.buttonKayitEkleSilUrunTumUrunleriSil.UseVisualStyleBackColor = false;
-            this.buttonKayitEkleSilUrunTumUrunleriSil.Click += new System.EventHandler(this.ButtonKayitEkleSilUrunTumUrunleriSil_Click);
-            // 
-            // buttonKayitEkleSilUrunSil
-            // 
-            this.buttonKayitEkleSilUrunSil.BackColor = System.Drawing.Color.Orange;
-            this.buttonKayitEkleSilUrunSil.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonKayitEkleSilUrunSil.FlatAppearance.BorderSize = 0;
-            this.buttonKayitEkleSilUrunSil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKayitEkleSilUrunSil.ForeColor = System.Drawing.Color.White;
-            this.buttonKayitEkleSilUrunSil.Image = ((System.Drawing.Image)(resources.GetObject("buttonKayitEkleSilUrunSil.Image")));
-            this.buttonKayitEkleSilUrunSil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonKayitEkleSilUrunSil.Location = new System.Drawing.Point(27, 351);
-            this.buttonKayitEkleSilUrunSil.Name = "buttonKayitEkleSilUrunSil";
-            this.buttonKayitEkleSilUrunSil.Size = new System.Drawing.Size(312, 51);
-            this.buttonKayitEkleSilUrunSil.TabIndex = 45;
-            this.buttonKayitEkleSilUrunSil.Text = "Sil";
-            this.buttonKayitEkleSilUrunSil.UseVisualStyleBackColor = false;
-            this.buttonKayitEkleSilUrunSil.Click += new System.EventHandler(this.ButtonKayitEkleSilUrunSil_Click);
-            // 
-            // dataGridViewKayitEkleSilUrunler
-            // 
-            this.dataGridViewKayitEkleSilUrunler.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewKayitEkleSilUrunler.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewKayitEkleSilUrunler.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewKayitEkleSilUrunler.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridViewKayitEkleSilUrunler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewKayitEkleSilUrunler.Location = new System.Drawing.Point(373, 3);
-            this.dataGridViewKayitEkleSilUrunler.Name = "dataGridViewKayitEkleSilUrunler";
-            this.dataGridViewKayitEkleSilUrunler.Size = new System.Drawing.Size(571, 453);
-            this.dataGridViewKayitEkleSilUrunler.TabIndex = 42;
-            // 
-            // panelKayitEkleSilMusteriler
-            // 
-            this.panelKayitEkleSilMusteriler.Location = new System.Drawing.Point(4, 59);
-            this.panelKayitEkleSilMusteriler.Name = "panelKayitEkleSilMusteriler";
-            this.panelKayitEkleSilMusteriler.Size = new System.Drawing.Size(947, 459);
-            this.panelKayitEkleSilMusteriler.TabIndex = 37;
+            this.labelKayitOlmayiDevreDisiBirak.AutoSize = true;
+            this.labelKayitOlmayiDevreDisiBirak.Location = new System.Drawing.Point(42, 67);
+            this.labelKayitOlmayiDevreDisiBirak.Name = "labelKayitOlmayiDevreDisiBirak";
+            this.labelKayitOlmayiDevreDisiBirak.Size = new System.Drawing.Size(143, 13);
+            this.labelKayitOlmayiDevreDisiBirak.TabIndex = 0;
+            this.labelKayitOlmayiDevreDisiBirak.Text = "Kayıt Olmayı Devre Dışı Bırak";
             // 
             // buttonKontrolPaneli
             // 
@@ -650,6 +535,8 @@
             // panelKayitEkleyenler
             // 
             this.panelKayitEkleyenler.BackColor = System.Drawing.Color.Transparent;
+            this.panelKayitEkleyenler.Controls.Add(this.buttonKayitEkleyenlerMusteriTemizle);
+            this.panelKayitEkleyenler.Controls.Add(this.buttonKayitEkleyenlerUrunTemizle);
             this.panelKayitEkleyenler.Controls.Add(this.buttonKayitEkleyenlerMusteriTumKayitlar);
             this.panelKayitEkleyenler.Controls.Add(this.buttonKayitEkleyenlerMusteriAra);
             this.panelKayitEkleyenler.Controls.Add(this.textBoxKayitEkleyenlerMusteriID);
@@ -664,6 +551,40 @@
             this.panelKayitEkleyenler.Name = "panelKayitEkleyenler";
             this.panelKayitEkleyenler.Size = new System.Drawing.Size(955, 521);
             this.panelKayitEkleyenler.TabIndex = 36;
+            // 
+            // buttonKayitEkleyenlerMusteriTemizle
+            // 
+            this.buttonKayitEkleyenlerMusteriTemizle.BackColor = System.Drawing.Color.Orange;
+            this.buttonKayitEkleyenlerMusteriTemizle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonKayitEkleyenlerMusteriTemizle.FlatAppearance.BorderSize = 0;
+            this.buttonKayitEkleyenlerMusteriTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonKayitEkleyenlerMusteriTemizle.ForeColor = System.Drawing.Color.White;
+            this.buttonKayitEkleyenlerMusteriTemizle.Image = ((System.Drawing.Image)(resources.GetObject("buttonKayitEkleyenlerMusteriTemizle.Image")));
+            this.buttonKayitEkleyenlerMusteriTemizle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonKayitEkleyenlerMusteriTemizle.Location = new System.Drawing.Point(20, 419);
+            this.buttonKayitEkleyenlerMusteriTemizle.Name = "buttonKayitEkleyenlerMusteriTemizle";
+            this.buttonKayitEkleyenlerMusteriTemizle.Size = new System.Drawing.Size(323, 51);
+            this.buttonKayitEkleyenlerMusteriTemizle.TabIndex = 61;
+            this.buttonKayitEkleyenlerMusteriTemizle.Text = "Temizle";
+            this.buttonKayitEkleyenlerMusteriTemizle.UseVisualStyleBackColor = false;
+            this.buttonKayitEkleyenlerMusteriTemizle.Click += new System.EventHandler(this.ButtonKayitEkleyenlerMusteriTemizle_Click);
+            // 
+            // buttonKayitEkleyenlerUrunTemizle
+            // 
+            this.buttonKayitEkleyenlerUrunTemizle.BackColor = System.Drawing.Color.Orange;
+            this.buttonKayitEkleyenlerUrunTemizle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonKayitEkleyenlerUrunTemizle.FlatAppearance.BorderSize = 0;
+            this.buttonKayitEkleyenlerUrunTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonKayitEkleyenlerUrunTemizle.ForeColor = System.Drawing.Color.White;
+            this.buttonKayitEkleyenlerUrunTemizle.Image = ((System.Drawing.Image)(resources.GetObject("buttonKayitEkleyenlerUrunTemizle.Image")));
+            this.buttonKayitEkleyenlerUrunTemizle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonKayitEkleyenlerUrunTemizle.Location = new System.Drawing.Point(20, 177);
+            this.buttonKayitEkleyenlerUrunTemizle.Name = "buttonKayitEkleyenlerUrunTemizle";
+            this.buttonKayitEkleyenlerUrunTemizle.Size = new System.Drawing.Size(323, 51);
+            this.buttonKayitEkleyenlerUrunTemizle.TabIndex = 60;
+            this.buttonKayitEkleyenlerUrunTemizle.Text = "Temizle";
+            this.buttonKayitEkleyenlerUrunTemizle.UseVisualStyleBackColor = false;
+            this.buttonKayitEkleyenlerUrunTemizle.Click += new System.EventHandler(this.ButtonKayitEkleyenlerUrunTemizle_Click);
             // 
             // buttonKayitEkleyenlerMusteriTumKayitlar
             // 
@@ -822,6 +743,40 @@
             this.panelKayitSilenler.Size = new System.Drawing.Size(955, 521);
             this.panelKayitSilenler.TabIndex = 59;
             // 
+            // buttonKayitSilenlerMusteriTemizle
+            // 
+            this.buttonKayitSilenlerMusteriTemizle.BackColor = System.Drawing.Color.Orange;
+            this.buttonKayitSilenlerMusteriTemizle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonKayitSilenlerMusteriTemizle.FlatAppearance.BorderSize = 0;
+            this.buttonKayitSilenlerMusteriTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonKayitSilenlerMusteriTemizle.ForeColor = System.Drawing.Color.White;
+            this.buttonKayitSilenlerMusteriTemizle.Image = ((System.Drawing.Image)(resources.GetObject("buttonKayitSilenlerMusteriTemizle.Image")));
+            this.buttonKayitSilenlerMusteriTemizle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonKayitSilenlerMusteriTemizle.Location = new System.Drawing.Point(20, 419);
+            this.buttonKayitSilenlerMusteriTemizle.Name = "buttonKayitSilenlerMusteriTemizle";
+            this.buttonKayitSilenlerMusteriTemizle.Size = new System.Drawing.Size(323, 51);
+            this.buttonKayitSilenlerMusteriTemizle.TabIndex = 60;
+            this.buttonKayitSilenlerMusteriTemizle.Text = "Temizle";
+            this.buttonKayitSilenlerMusteriTemizle.UseVisualStyleBackColor = false;
+            this.buttonKayitSilenlerMusteriTemizle.Click += new System.EventHandler(this.ButtonKayitSilenlerMusteriTemizle_Click);
+            // 
+            // buttonKayitSilenlerUrunTemizle
+            // 
+            this.buttonKayitSilenlerUrunTemizle.BackColor = System.Drawing.Color.Orange;
+            this.buttonKayitSilenlerUrunTemizle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonKayitSilenlerUrunTemizle.FlatAppearance.BorderSize = 0;
+            this.buttonKayitSilenlerUrunTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonKayitSilenlerUrunTemizle.ForeColor = System.Drawing.Color.White;
+            this.buttonKayitSilenlerUrunTemizle.Image = ((System.Drawing.Image)(resources.GetObject("buttonKayitSilenlerUrunTemizle.Image")));
+            this.buttonKayitSilenlerUrunTemizle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonKayitSilenlerUrunTemizle.Location = new System.Drawing.Point(20, 177);
+            this.buttonKayitSilenlerUrunTemizle.Name = "buttonKayitSilenlerUrunTemizle";
+            this.buttonKayitSilenlerUrunTemizle.Size = new System.Drawing.Size(323, 51);
+            this.buttonKayitSilenlerUrunTemizle.TabIndex = 59;
+            this.buttonKayitSilenlerUrunTemizle.Text = "Temizle";
+            this.buttonKayitSilenlerUrunTemizle.UseVisualStyleBackColor = false;
+            this.buttonKayitSilenlerUrunTemizle.Click += new System.EventHandler(this.ButtonKayitSilenlerUrunTemizle_Click);
+            // 
             // buttonKayitSilenlerMusteriTumKayitlar
             // 
             this.buttonKayitSilenlerMusteriTumKayitlar.BackColor = System.Drawing.Color.Orange;
@@ -944,39 +899,20 @@
             this.dataGridViewKayitSilenlerUrunler.Size = new System.Drawing.Size(571, 258);
             this.dataGridViewKayitSilenlerUrunler.TabIndex = 43;
             // 
-            // buttonKayitSilenlerUrunTemizle
+            // buttonProgramAyarlari
             // 
-            this.buttonKayitSilenlerUrunTemizle.BackColor = System.Drawing.Color.Orange;
-            this.buttonKayitSilenlerUrunTemizle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonKayitSilenlerUrunTemizle.FlatAppearance.BorderSize = 0;
-            this.buttonKayitSilenlerUrunTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKayitSilenlerUrunTemizle.ForeColor = System.Drawing.Color.White;
-            this.buttonKayitSilenlerUrunTemizle.Image = ((System.Drawing.Image)(resources.GetObject("buttonKayitSilenlerUrunTemizle.Image")));
-            this.buttonKayitSilenlerUrunTemizle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonKayitSilenlerUrunTemizle.Location = new System.Drawing.Point(20, 177);
-            this.buttonKayitSilenlerUrunTemizle.Name = "buttonKayitSilenlerUrunTemizle";
-            this.buttonKayitSilenlerUrunTemizle.Size = new System.Drawing.Size(323, 51);
-            this.buttonKayitSilenlerUrunTemizle.TabIndex = 59;
-            this.buttonKayitSilenlerUrunTemizle.Text = "Temizle";
-            this.buttonKayitSilenlerUrunTemizle.UseVisualStyleBackColor = false;
-            this.buttonKayitSilenlerUrunTemizle.Click += new System.EventHandler(this.ButtonKayitSilenlerUrunTemizle_Click);
-            // 
-            // buttonKayitSilenlerMusteriTemizle
-            // 
-            this.buttonKayitSilenlerMusteriTemizle.BackColor = System.Drawing.Color.Orange;
-            this.buttonKayitSilenlerMusteriTemizle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonKayitSilenlerMusteriTemizle.FlatAppearance.BorderSize = 0;
-            this.buttonKayitSilenlerMusteriTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKayitSilenlerMusteriTemizle.ForeColor = System.Drawing.Color.White;
-            this.buttonKayitSilenlerMusteriTemizle.Image = ((System.Drawing.Image)(resources.GetObject("buttonKayitSilenlerMusteriTemizle.Image")));
-            this.buttonKayitSilenlerMusteriTemizle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonKayitSilenlerMusteriTemizle.Location = new System.Drawing.Point(20, 419);
-            this.buttonKayitSilenlerMusteriTemizle.Name = "buttonKayitSilenlerMusteriTemizle";
-            this.buttonKayitSilenlerMusteriTemizle.Size = new System.Drawing.Size(323, 51);
-            this.buttonKayitSilenlerMusteriTemizle.TabIndex = 60;
-            this.buttonKayitSilenlerMusteriTemizle.Text = "Temizle";
-            this.buttonKayitSilenlerMusteriTemizle.UseVisualStyleBackColor = false;
-            this.buttonKayitSilenlerMusteriTemizle.Click += new System.EventHandler(this.ButtonKayitSilenlerMusteriTemizle_Click);
+            this.buttonProgramAyarlari.BackColor = System.Drawing.Color.Orange;
+            this.buttonProgramAyarlari.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonProgramAyarlari.FlatAppearance.BorderSize = 0;
+            this.buttonProgramAyarlari.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonProgramAyarlari.ForeColor = System.Drawing.Color.White;
+            this.buttonProgramAyarlari.Location = new System.Drawing.Point(322, 45);
+            this.buttonProgramAyarlari.Name = "buttonProgramAyarlari";
+            this.buttonProgramAyarlari.Size = new System.Drawing.Size(281, 50);
+            this.buttonProgramAyarlari.TabIndex = 60;
+            this.buttonProgramAyarlari.Text = "Program Ayarları";
+            this.buttonProgramAyarlari.UseVisualStyleBackColor = false;
+            this.buttonProgramAyarlari.Click += new System.EventHandler(this.ButtonProgramAyarlari_Click_1);
             // 
             // Admin_Paneli
             // 
@@ -986,24 +922,24 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(979, 665);
-            this.Controls.Add(this.panelKayitSilenler);
+            this.Controls.Add(this.buttonProgramAyarlari);
             this.Controls.Add(this.buttonKayitSilenler);
             this.Controls.Add(this.buttonKayitEkleyenler);
             this.Controls.Add(this.buttonKontrolPaneli);
-            this.Controls.Add(this.buttonKayitEkleSil);
             this.Controls.Add(this.buttonKullaniciEkleSil);
             this.Controls.Add(this.buttonCikisYap);
             this.Controls.Add(this.labelMesaj);
             this.Controls.Add(this.panelBottomRenk);
             this.Controls.Add(this.panelTop);
-            this.Controls.Add(this.panelKayitEkleyenler);
-            this.Controls.Add(this.panelKayitEkleSil);
+            this.Controls.Add(this.panelProgramAyarlari);
             this.Controls.Add(this.panelKullaniciEkleSil);
+            this.Controls.Add(this.panelKayitSilenler);
+            this.Controls.Add(this.panelKayitEkleyenler);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Admin_Paneli";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Hazır Giyim Otomasyonu - Kontrol Paneli";
+            this.Text = "Giyim Mağazası Otomasyonu - Kontrol Paneli";
             this.Load += new System.EventHandler(this.Admin_Paneli_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
@@ -1013,10 +949,8 @@
             this.panelKullaniciEkleSil.ResumeLayout(false);
             this.panelKullaniciEkleSil.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKullaniciEkleSil)).EndInit();
-            this.panelKayitEkleSil.ResumeLayout(false);
-            this.panelKayitEkleSilUrunler.ResumeLayout(false);
-            this.panelKayitEkleSilUrunler.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKayitEkleSilUrunler)).EndInit();
+            this.panelProgramAyarlari.ResumeLayout(false);
+            this.panelProgramAyarlari.PerformLayout();
             this.panelKayitEkleyenler.ResumeLayout(false);
             this.panelKayitEkleyenler.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKayitEkleyenlerMusteriler)).EndInit();
@@ -1044,8 +978,7 @@
         private System.Windows.Forms.Label labelKullaniciAdi;
         private System.Windows.Forms.Button buttonKullaniciEkleSil;
         private System.Windows.Forms.Panel panelKullaniciEkleSil;
-        private System.Windows.Forms.Button buttonKayitEkleSil;
-        private System.Windows.Forms.Panel panelKayitEkleSil;
+        private System.Windows.Forms.Panel panelProgramAyarlari;
         private System.Windows.Forms.DataGridView dataGridViewKullaniciEkleSil;
         private System.Windows.Forms.Button buttonKullaniciSil;
         private System.Windows.Forms.Button buttonKullaniciGuncelle;
@@ -1060,18 +993,7 @@
         private System.Windows.Forms.Label labelKullaniciEkleSilAra;
         private System.Windows.Forms.Button buttonKullaniciEkleSilAra;
         private System.Windows.Forms.Button buttonKayitEkleSilTumKayitlar;
-        private System.Windows.Forms.Button buttonKayitEkleSilMusteriler;
-        private System.Windows.Forms.Button buttonKayitEkleSilUrunler;
-        private System.Windows.Forms.Panel panelKayitEkleSilMusteriler;
-        private System.Windows.Forms.Panel panelKayitEkleSilUrunler;
         private System.Windows.Forms.Button buttonKontrolPaneli;
-        private System.Windows.Forms.Button buttonKayitEkleSilUrunTumKayitlar;
-        private System.Windows.Forms.Button buttonKayitEkleSilUrunAra;
-        private System.Windows.Forms.TextBox textBoxKayitEkleSilUrunAra;
-        private System.Windows.Forms.Label labelKayitEkleSilUrunIDAra;
-        private System.Windows.Forms.Button buttonKayitEkleSilUrunTumUrunleriSil;
-        private System.Windows.Forms.Button buttonKayitEkleSilUrunSil;
-        private System.Windows.Forms.DataGridView dataGridViewKayitEkleSilUrunler;
         private System.Windows.Forms.Button buttonKayitEkleyenler;
         private System.Windows.Forms.Panel panelKayitEkleyenler;
         private System.Windows.Forms.DataGridView dataGridViewKayitEkleyenlerUrunler;
@@ -1098,5 +1020,13 @@
         private System.Windows.Forms.DataGridView dataGridViewKayitSilenlerUrunler;
         private System.Windows.Forms.Button buttonKayitSilenlerMusteriTemizle;
         private System.Windows.Forms.Button buttonKayitSilenlerUrunTemizle;
+        private System.Windows.Forms.Button buttonKayitEkleyenlerMusteriTemizle;
+        private System.Windows.Forms.Button buttonKayitEkleyenlerUrunTemizle;
+        private System.Windows.Forms.Button buttonProgramAyarlari;
+        private System.Windows.Forms.Label labelKayitOlmayiDevreDisiBirak;
+        private System.Windows.Forms.CheckBox checkBoxKayitOlmayiDevreDisiBirak;
+        private System.Windows.Forms.Button buttonProgramAyarlariKaydet;
+        private System.Windows.Forms.CheckBox checkBoxKayitEklemeGuncellemeSilmeyiDevreDisiBirak;
+        private System.Windows.Forms.Label labelKayitEklemeGuncellemeSilmeyiDevreDisiBirak;
     }
 }

@@ -26,6 +26,37 @@ namespace WindowsFormsApplication7
 
         private void Kontrol_Paneli_Load(object sender, EventArgs e)
         {
+            /* kayıt ekleme güncelleme silme */
+            char control = 'f';
+            baglanti.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from program_ayarlari where ayar_id=@p1", baglanti);
+            cmd.Parameters.AddWithValue("@p1", "program");
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader["kayit_ekleme_guncelleme_silmeyi_devre_disi_birak"].ToString() == "true")
+                {
+                    buttonUrunEkle.Enabled = false;
+                    buttonUrunGuncelle.Enabled = false;
+                    buttonUrunSil.Enabled = false;
+
+                    buttonMusteriEkle.Enabled = false;
+                    buttonMusteriGuncelle.Enabled = false;
+                    buttonMusteriSil.Enabled = false;
+                }
+                else if (control == 'f')
+                {
+                    buttonUrunEkle.Enabled = true;
+                    buttonUrunGuncelle.Enabled = true;
+                    buttonUrunSil.Enabled = true;
+
+                    buttonMusteriEkle.Enabled = true;
+                    buttonMusteriGuncelle.Enabled = true;
+                    buttonMusteriSil.Enabled = true;
+                }
+            }
+            baglanti.Close();
+            /* admin paneli */
             baglanti.Open();
             OleDbCommand komut = new OleDbCommand("select * from kullanicilar where kullanici_adi='" + GirisEkrani.kullanici_adi + "'", baglanti);
             OleDbDataReader oku = komut.ExecuteReader();
@@ -41,7 +72,7 @@ namespace WindowsFormsApplication7
                 }
             }
             baglanti.Close();
-            //
+            // iconlar
             pictureBoxGitHub.Visible = false;
             pictureBoxTwitter.Visible = false;
             labelMesaj.Text = "";
@@ -342,6 +373,12 @@ namespace WindowsFormsApplication7
                 }
                 if (kontrol == 't')
                 {
+                    OleDbCommand cmdEklenenUrunler = new OleDbCommand("insert into eklenen_urunler values(@p1,@p2,@p3)", baglanti);
+                    cmdEklenenUrunler.Parameters.AddWithValue("@p1", textBoxUrunId.Text);
+                    cmdEklenenUrunler.Parameters.AddWithValue("@p2", textBoxUrunAdi.Text);
+                    cmdEklenenUrunler.Parameters.AddWithValue("@p3", GirisEkrani.kullanici_adi);
+                    cmdEklenenUrunler.ExecuteNonQuery();
+
                     OleDbCommand komutEkle = new OleDbCommand("insert into urunler values(@urun_id, @urun_adi, @urun_turu, @urun_rengi, @urun_bedeni, @urun_fiyati, @urun_kitlesi, @urun_resmi, @urun_ekleyen_kisi)", baglanti);
                     komutEkle.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
                     komutEkle.Parameters.AddWithValue("@urun_turu", textBoxUrunTuru.Text);
@@ -427,7 +464,7 @@ namespace WindowsFormsApplication7
                 if (textBoxUrunId.Text == oku["urun_id"].ToString())
                 {
                     kontrol = 't';
-                    OleDbCommand cmdSilinen = new OleDbCommand("insert into silinen_urunler values(@p1, @p2 ,@p3, @p4, @p5, @p6, @p7, @p8, @p9)",baglanti);
+                    OleDbCommand cmdSilinen = new OleDbCommand("insert into silinen_urunler values(@p1, @p2 ,@p3, @p4, @p5, @p6, @p7, @p8, @p9)", baglanti);
                     cmdSilinen.Parameters.AddWithValue("@p1", textBoxUrunId.Text);
                     cmdSilinen.Parameters.AddWithValue("@p2", textBoxUrunAdi.Text);
                     cmdSilinen.Parameters.AddWithValue("@p3", textBoxUrunTuru.Text);
@@ -524,6 +561,12 @@ namespace WindowsFormsApplication7
                 }
                 if (kontrol == 't')
                 {
+                    OleDbCommand cmdEklenenMusteriler = new OleDbCommand("insert into eklenen_musteriler values(@p1,@p2,@p3)", baglanti);
+                    cmdEklenenMusteriler.Parameters.AddWithValue("@p1", textBoxMusteriId.Text);
+                    cmdEklenenMusteriler.Parameters.AddWithValue("@p2", textBoxMusteriAdi.Text);
+                    cmdEklenenMusteriler.Parameters.AddWithValue("@p3", GirisEkrani.kullanici_adi);
+                    cmdEklenenMusteriler.ExecuteNonQuery();
+
                     OleDbCommand komutEkle = new OleDbCommand("insert into musteriler values(@musteri_id, @musteri_adi, @musteri_soyadi, @musteri_adresi, @musteri_telefonu, @musteri_resmi, @musteri_ekleyen_kisi)", baglanti);
                     komutEkle.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
                     komutEkle.Parameters.AddWithValue("@musteri_adi", textBoxMusteriAdi.Text);
@@ -579,39 +622,23 @@ namespace WindowsFormsApplication7
                 if (textBoxMusteriId.Text == oku["musteri_id"].ToString())
                 {
                     kontrol = 't';
-                    char controlSilinen = 't';
-                    OleDbCommand cmdSilinen = new OleDbCommand("select * from silinen_urunler", baglanti);
-                    OleDbDataReader readerSilinen = cmdSilinen.ExecuteReader();
-                    while (readerSilinen.Read())
-                    {
-                        if (readerSilinen["musteri_id"].ToString() == textBoxMusteriId.Text)
-                        {
-                            controlSilinen = 'f';
-                            panelTopRenk.BackColor = Color.Red;
-                            labelMesaj.ForeColor = Color.Red;
-                            labelMesaj.Text = "Başka bir ID deneyin.";
-                        }
-                    }
-                    if (controlSilinen == 't')
-                    {
-                        OleDbCommand cmdInsertSilinen = new OleDbCommand("insert into silinen_musteriler values(@p1,@p2,@p3,@p4,@p5,@p6,@p7)", baglanti);
-                        cmdInsertSilinen.Parameters.AddWithValue("@p1", textBoxMusteriId.Text);
-                        cmdInsertSilinen.Parameters.AddWithValue("@p2", textBoxMusteriAdi.Text);
-                        cmdInsertSilinen.Parameters.AddWithValue("@p3", textBoxMusteriSoyadi.Text);
-                        cmdInsertSilinen.Parameters.AddWithValue("@p4", textBoxMusteriAdresi.Text);
-                        cmdInsertSilinen.Parameters.AddWithValue("@p5", textBoxMusteriTelefonu.Text);
-                        cmdInsertSilinen.Parameters.AddWithValue("@p6", textBoxMusteriResmi.Text);
-                        cmdInsertSilinen.Parameters.AddWithValue("@p7", GirisEkrani.kullanici_adi);
-                        cmdInsertSilinen.ExecuteNonQuery();
-                        /*  */
-                        OleDbCommand komutSil = new OleDbCommand("delete from musteriler where musteri_id=@musteri_id", baglanti);
-                        komutSil.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
-                        komutSil.ExecuteNonQuery();
-                        panelTopRenk.BackColor = Color.Lime;
-                        labelMesaj.ForeColor = Color.Green;
-                        labelMesaj.Text = "Müşteri başarılı bir şekilde silindi.";
-                        musteriGuncelle();
-                    }
+                    OleDbCommand cmdInsertSilinen = new OleDbCommand("insert into silinen_musteriler values(@p1,@p2,@p3,@p4,@p5,@p6,@p7)", baglanti);
+                    cmdInsertSilinen.Parameters.AddWithValue("@p1", textBoxMusteriId.Text);
+                    cmdInsertSilinen.Parameters.AddWithValue("@p2", textBoxMusteriAdi.Text);
+                    cmdInsertSilinen.Parameters.AddWithValue("@p3", textBoxMusteriSoyadi.Text);
+                    cmdInsertSilinen.Parameters.AddWithValue("@p4", textBoxMusteriAdresi.Text);
+                    cmdInsertSilinen.Parameters.AddWithValue("@p5", textBoxMusteriTelefonu.Text);
+                    cmdInsertSilinen.Parameters.AddWithValue("@p6", textBoxMusteriResmi.Text);
+                    cmdInsertSilinen.Parameters.AddWithValue("@p7", GirisEkrani.kullanici_adi);
+                    cmdInsertSilinen.ExecuteNonQuery();
+                    /*  */
+                    OleDbCommand komutSil = new OleDbCommand("delete from musteriler where musteri_id=@musteri_id", baglanti);
+                    komutSil.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
+                    komutSil.ExecuteNonQuery();
+                    panelTopRenk.BackColor = Color.Lime;
+                    labelMesaj.ForeColor = Color.Green;
+                    labelMesaj.Text = "Müşteri başarılı bir şekilde silindi.";
+                    musteriGuncelle();
                 }
             }
             if (kontrol == 'f')
@@ -622,6 +649,7 @@ namespace WindowsFormsApplication7
             }
             baglanti.Close();
         }
+
 
         // müşteri textbox temizle butonu
         private void ButtonMusteriTemizle_Click(object sender, EventArgs e)
