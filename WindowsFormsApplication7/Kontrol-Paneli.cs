@@ -12,6 +12,8 @@ using System.Drawing.Text;
 using System.Diagnostics;
 //veritabanı
 using System.Data.OleDb;
+// test
+using System.IO;
 
 namespace WindowsFormsApplication7
 {
@@ -70,6 +72,15 @@ namespace WindowsFormsApplication7
                 {
                     buttonAdminPaneli.Visible = false;
                 }
+
+                if (oku["kullanici_resmi"].ToString() == "none")
+                {
+                    pictureBoxKullaniciResmi.Image = null;
+                }
+                else
+                {
+                    pictureBoxKullaniciResmi.Image = Image.FromFile("kullanicilar/" + oku["kullanici_resmi"].ToString());
+                }
             }
             baglanti.Close();
             // iconlar
@@ -85,34 +96,39 @@ namespace WindowsFormsApplication7
             panelMusteriler.Visible = false;
             panelKullanicilar.Visible = false;
             //font
-            PrivateFontCollection pfc = new PrivateFontCollection();
-            pfc.AddFontFile("fonts/Praktika-Light.otf");
-            foreach (Control c in this.Controls)
-            {
-                c.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
-                labelBaslik.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                labelMesaj.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                //ürünler tablosu
-                textBoxUrunId.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxUrunAdi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxUrunTuru.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxUrunRengi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxUrunBedeni.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxUrunFiyati.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxUrunKitlesi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxUrunResmi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                //müşteri tablosu
-                textBoxMusteriId.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxMusteriAdi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxMusteriSoyadi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxMusteriAdresi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxMusteriAdresi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxMusteriTelefonu.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxMusteriResmi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-            }
+            //PrivateFontCollection pfc = new PrivateFontCollection();
+            //pfc.AddFontFile("fonts/Praktika-Light.otf");
+            //foreach (Control c in this.Controls)
+            //{
+            //    c.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
+            //    labelBaslik.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    labelMesaj.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    //ürünler tablosu
+            //    textBoxUrunId.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    textBoxUrunAdi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    textBoxUrunTuru.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    textBoxUrunRengi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    textBoxUrunBedeni.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    textBoxUrunFiyati.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    textBoxUrunKitlesi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    //textBoxUrunResmi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    //müşteri tablosu
+            //    textBoxMusteriId.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    textBoxMusteriAdi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    textBoxMusteriSoyadi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    textBoxMusteriAdresi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    textBoxMusteriAdresi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    textBoxMusteriTelefonu.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    //textBoxMusteriResmi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //}
             //kullanıcı adı
             labelKullaniciAdi.Text = "Hoşgeldiniz sayın " + GirisEkrani.kullanici_adi + ".";
         }
+
+        public string musteriResim;
+        public string urunResim;
+        public Boolean musteriResimKontrol = false;
+        public Boolean urunResimKontrol = false;
 
         //twitter butonu
         private void pictureBoxTwitter_Click(object sender, EventArgs e)
@@ -373,27 +389,54 @@ namespace WindowsFormsApplication7
                 }
                 if (kontrol == 't')
                 {
-                    OleDbCommand cmdEklenenUrunler = new OleDbCommand("insert into eklenen_urunler values(@p1,@p2,@p3)", baglanti);
-                    cmdEklenenUrunler.Parameters.AddWithValue("@p1", textBoxUrunId.Text);
-                    cmdEklenenUrunler.Parameters.AddWithValue("@p2", textBoxUrunAdi.Text);
-                    cmdEklenenUrunler.Parameters.AddWithValue("@p3", GirisEkrani.kullanici_adi);
-                    cmdEklenenUrunler.ExecuteNonQuery();
+                    OleDbCommand cmdTarih = new OleDbCommand("select Format(now(), 'ddMMyyyy-hhmmss') as tarih", baglanti);
+                    OleDbDataReader readerTarih = cmdTarih.ExecuteReader();
+                    while (readerTarih.Read())
+                    {
+                        OleDbCommand cmdEklenenUrunler = new OleDbCommand("insert into eklenen_urunler values(@p1,@p2,@p3)", baglanti);
+                        cmdEklenenUrunler.Parameters.AddWithValue("@p1", textBoxUrunId.Text);
+                        cmdEklenenUrunler.Parameters.AddWithValue("@p2", textBoxUrunAdi.Text);
+                        cmdEklenenUrunler.Parameters.AddWithValue("@p3", GirisEkrani.kullanici_adi);
+                        cmdEklenenUrunler.ExecuteNonQuery();
 
-                    OleDbCommand komutEkle = new OleDbCommand("insert into urunler values(@urun_id, @urun_adi, @urun_turu, @urun_rengi, @urun_bedeni, @urun_fiyati, @urun_kitlesi, @urun_resmi, @urun_ekleyen_kisi)", baglanti);
-                    komutEkle.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
-                    komutEkle.Parameters.AddWithValue("@urun_turu", textBoxUrunTuru.Text);
-                    komutEkle.Parameters.AddWithValue("@urun_adi", textBoxUrunAdi.Text);
-                    komutEkle.Parameters.AddWithValue("@urun_rengi", textBoxUrunRengi.Text);
-                    komutEkle.Parameters.AddWithValue("@urun_bedeni", textBoxUrunBedeni.Text);
-                    komutEkle.Parameters.AddWithValue("@urun_fiyati", textBoxUrunFiyati.Text);
-                    komutEkle.Parameters.AddWithValue("@urun_kitlesi", textBoxUrunKitlesi.Text);
-                    komutEkle.Parameters.AddWithValue("@urun_resmi", textBoxUrunResmi.Text);
-                    komutEkle.Parameters.AddWithValue("@urun_ekleyen_kisi", GirisEkrani.kullanici_adi);
-                    komutEkle.ExecuteNonQuery();
-                    panelTopRenk.BackColor = Color.Lime;
-                    labelMesaj.ForeColor = Color.Green;
-                    labelMesaj.Text = "Kayıt başarıyla eklendi.";
-                    urunGuncelle();
+                        if (urunResimKontrol == true)
+                        {
+                            OleDbCommand komutEkle = new OleDbCommand("insert into urunler values(@urun_id, @urun_adi, @urun_turu, @urun_rengi, @urun_bedeni, @urun_fiyati, @urun_kitlesi, @urun_resmi, @urun_ekleyen_kisi)", baglanti);
+                            komutEkle.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_turu", textBoxUrunTuru.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_adi", textBoxUrunAdi.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_rengi", textBoxUrunRengi.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_bedeni", textBoxUrunBedeni.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_fiyati", textBoxUrunFiyati.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_kitlesi", textBoxUrunKitlesi.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_resmi", readerTarih["tarih"].ToString() + "_" + "urun" + ".jpg");
+                            komutEkle.Parameters.AddWithValue("@urun_ekleyen_kisi", GirisEkrani.kullanici_adi);
+                            komutEkle.ExecuteNonQuery();
+                            panelTopRenk.BackColor = Color.Lime;
+                            labelMesaj.ForeColor = Color.Green;
+                            labelMesaj.Text = "Kayıt başarıyla eklendi.";
+                            urunGuncelle();
+                            File.Copy(urunResim, "urunler/" + readerTarih["tarih"].ToString() + "_" + "urun" + ".jpg");
+                        }
+                        else if (urunResimKontrol == false)
+                        {
+                            OleDbCommand komutEkle = new OleDbCommand("insert into urunler values(@urun_id, @urun_adi, @urun_turu, @urun_rengi, @urun_bedeni, @urun_fiyati, @urun_kitlesi, @urun_resmi, @urun_ekleyen_kisi)", baglanti);
+                            komutEkle.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_turu", textBoxUrunTuru.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_adi", textBoxUrunAdi.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_rengi", textBoxUrunRengi.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_bedeni", textBoxUrunBedeni.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_fiyati", textBoxUrunFiyati.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_kitlesi", textBoxUrunKitlesi.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_resmi", "none");
+                            komutEkle.Parameters.AddWithValue("@urun_ekleyen_kisi", GirisEkrani.kullanici_adi);
+                            komutEkle.ExecuteNonQuery();
+                            panelTopRenk.BackColor = Color.Lime;
+                            labelMesaj.ForeColor = Color.Green;
+                            labelMesaj.Text = "Kayıt başarıyla eklendi.";
+                            urunGuncelle();
+                        }
+                    }
                 }
                 baglanti.Close();
             }
@@ -409,19 +452,41 @@ namespace WindowsFormsApplication7
         private void buttonUrunGuncelle_Click(object sender, EventArgs e)
         {
             baglanti.Open();
-            OleDbCommand komut = new OleDbCommand("update urunler set urun_id=@urun_id, urun_adi=@urun_adi, urun_turu=@urun_turu, urun_rengi=@urun_rengi, urun_bedeni=@urun_bedeni, urun_fiyati=@urun_fiyati, urun_kitlesi=@urun_kitlesi, urun_resmi=@urun_resmi where urun_id=@urun_id", baglanti);
-            komut.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
-            komut.Parameters.AddWithValue("@urun_adi", textBoxUrunAdi.Text);
-            komut.Parameters.AddWithValue("@urun_turu", textBoxUrunTuru.Text);
-            komut.Parameters.AddWithValue("@urun_rengi", textBoxUrunRengi.Text);
-            komut.Parameters.AddWithValue("@urun_bedeni", textBoxUrunBedeni.Text);
-            komut.Parameters.AddWithValue("@urun_fiyati", textBoxUrunFiyati.Text);
-            komut.Parameters.AddWithValue("@urun_kitlesi", textBoxUrunKitlesi.Text);
-            komut.Parameters.AddWithValue("@urun_resmi", textBoxUrunResmi.Text);
-            komut.ExecuteNonQuery();
+            if (urunResimKontrol == true)
+            {
+                OleDbCommand cmdTarih = new OleDbCommand("select Format(now(), 'ddMMyyyy-hhmmss') as tarih", baglanti);
+                OleDbDataReader readerTarih = cmdTarih.ExecuteReader();
+                while (readerTarih.Read())
+                {
+                    {
+                        //MessageBox.Show(urunResim);
+                        File.Copy(urunResim, "urunler/" + readerTarih["tarih"].ToString() + "_" + "urun" + ".jpg");
+                        OleDbCommand komut = new OleDbCommand("update urunler set urun_id=@urun_id, urun_adi=@urun_adi, urun_turu=@urun_turu, urun_rengi=@urun_rengi, urun_bedeni=@urun_bedeni, urun_fiyati=@urun_fiyati, urun_kitlesi=@urun_kitlesi, urun_resmi=@urun_resmi where urun_id=@urun_id", baglanti);
+                        komut.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
+                        komut.Parameters.AddWithValue("@urun_adi", textBoxUrunAdi.Text);
+                        komut.Parameters.AddWithValue("@urun_turu", textBoxUrunTuru.Text);
+                        komut.Parameters.AddWithValue("@urun_rengi", textBoxUrunRengi.Text);
+                        komut.Parameters.AddWithValue("@urun_bedeni", textBoxUrunBedeni.Text);
+                        komut.Parameters.AddWithValue("@urun_fiyati", textBoxUrunFiyati.Text);
+                        komut.Parameters.AddWithValue("@urun_kitlesi", textBoxUrunKitlesi.Text);
+                        komut.Parameters.AddWithValue("@urun_resmi", readerTarih["tarih"].ToString() + "_" + "urun" + ".jpg");
+                        komut.ExecuteNonQuery();
+                    }
+                }
+            }
+            else if (urunResimKontrol == false)
+            {
+                OleDbCommand komut = new OleDbCommand("update urunler set urun_id=@urun_id, urun_adi=@urun_adi, urun_turu=@urun_turu, urun_rengi=@urun_rengi, urun_bedeni=@urun_bedeni, urun_fiyati=@urun_fiyati, urun_kitlesi=@urun_kitlesi where urun_id=@urun_id", baglanti);
+                komut.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
+                komut.Parameters.AddWithValue("@urun_adi", textBoxUrunAdi.Text);
+                komut.Parameters.AddWithValue("@urun_turu", textBoxUrunTuru.Text);
+                komut.Parameters.AddWithValue("@urun_rengi", textBoxUrunRengi.Text);
+                komut.Parameters.AddWithValue("@urun_bedeni", textBoxUrunBedeni.Text);
+                komut.Parameters.AddWithValue("@urun_fiyati", textBoxUrunFiyati.Text);
+                komut.Parameters.AddWithValue("@urun_kitlesi", textBoxUrunKitlesi.Text);
+                komut.ExecuteNonQuery();
+            }
             baglanti.Close();
-            //MessageBox.Show("Kayıt düzenlendi.");
-            //baglanti.Open();
             DataTable dt = new DataTable();
             if (comboBoxKitleSecim.SelectedItem == "Erkek")
             {
@@ -472,7 +537,6 @@ namespace WindowsFormsApplication7
                     cmdSilinen.Parameters.AddWithValue("@p5", textBoxUrunBedeni.Text);
                     cmdSilinen.Parameters.AddWithValue("@p6", textBoxUrunFiyati.Text);
                     cmdSilinen.Parameters.AddWithValue("@p7", textBoxUrunKitlesi.Text);
-                    cmdSilinen.Parameters.AddWithValue("@p8", textBoxUrunResmi.Text);
                     cmdSilinen.Parameters.AddWithValue("@p9", GirisEkrani.kullanici_adi);
                     cmdSilinen.ExecuteNonQuery();
 
@@ -505,7 +569,7 @@ namespace WindowsFormsApplication7
             textBoxUrunBedeni.Text = "";
             textBoxUrunFiyati.Text = "";
             textBoxUrunKitlesi.Text = "";
-            textBoxUrunResmi.Text = "";
+            //textBoxUrunResmi.Text = "";
         }
 
         //ürünler tüm kayıtları göster butonu
@@ -545,43 +609,61 @@ namespace WindowsFormsApplication7
         {
             if (textBoxMusteriId.TextLength > 2)
             {
-                char kontrol = 't';
-                baglanti.Open();
-                OleDbCommand komut = new OleDbCommand("select * from musteriler", baglanti);
-                OleDbDataReader oku = komut.ExecuteReader();
-                while (oku.Read())
+                if (musteriResimKontrol == false)
                 {
-                    if (textBoxMusteriId.Text == oku["musteri_id"].ToString())
+                    panelTopRenk.BackColor = Color.Red;
+                    labelMesaj.ForeColor = Color.Red;
+                    labelMesaj.Text = "Önce bir resim seçin!";
+                }
+                else if (musteriResimKontrol == true)
+                {
+                    char kontrol = 't';
+                    baglanti.Open();
+                    OleDbCommand komut = new OleDbCommand("select * from musteriler", baglanti);
+                    OleDbDataReader oku = komut.ExecuteReader();
+                    while (oku.Read())
                     {
-                        kontrol = 'f';
-                        panelTopRenk.BackColor = Color.Red;
-                        labelMesaj.ForeColor = Color.Red;
-                        labelMesaj.Text = "Böyle bir müşteri zaten kayıtlı.";
+                        if (textBoxMusteriId.Text == oku["musteri_id"].ToString())
+                        {
+                            kontrol = 'f';
+                            panelTopRenk.BackColor = Color.Red;
+                            labelMesaj.ForeColor = Color.Red;
+                            labelMesaj.Text = "Böyle bir müşteri zaten kayıtlı.";
+                        }
                     }
-                }
-                if (kontrol == 't')
-                {
-                    OleDbCommand cmdEklenenMusteriler = new OleDbCommand("insert into eklenen_musteriler values(@p1,@p2,@p3)", baglanti);
-                    cmdEklenenMusteriler.Parameters.AddWithValue("@p1", textBoxMusteriId.Text);
-                    cmdEklenenMusteriler.Parameters.AddWithValue("@p2", textBoxMusteriAdi.Text);
-                    cmdEklenenMusteriler.Parameters.AddWithValue("@p3", GirisEkrani.kullanici_adi);
-                    cmdEklenenMusteriler.ExecuteNonQuery();
+                    if (kontrol == 't')
+                    {
+                        string tarih;
+                        OleDbCommand cmdTarih = new OleDbCommand("select Format(now(), 'ddMMyyyy-hhmmss') as tarih", baglanti);
+                        OleDbDataReader readerTarih = cmdTarih.ExecuteReader();
+                        while (readerTarih.Read())
+                        {
+                            tarih = readerTarih["tarih"].ToString();
+                            File.Copy(musteriResim, "musteriler/" + readerTarih["tarih"].ToString() + "_" + "musteri" + ".jpg");
 
-                    OleDbCommand komutEkle = new OleDbCommand("insert into musteriler values(@musteri_id, @musteri_adi, @musteri_soyadi, @musteri_adresi, @musteri_telefonu, @musteri_resmi, @musteri_ekleyen_kisi)", baglanti);
-                    komutEkle.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
-                    komutEkle.Parameters.AddWithValue("@musteri_adi", textBoxMusteriAdi.Text);
-                    komutEkle.Parameters.AddWithValue("@musteri_soyadi", textBoxMusteriSoyadi.Text);
-                    komutEkle.Parameters.AddWithValue("@musteri_adresi", textBoxMusteriAdresi.Text);
-                    komutEkle.Parameters.AddWithValue("@musteri_telefonu", textBoxMusteriTelefonu.Text);
-                    komutEkle.Parameters.AddWithValue("@musteri_resmi", textBoxMusteriResmi.Text);
-                    komutEkle.Parameters.AddWithValue("@musteri_ekleyen_kisi", GirisEkrani.kullanici_adi);
-                    komutEkle.ExecuteNonQuery();
-                    panelTopRenk.BackColor = Color.Lime;
-                    labelMesaj.ForeColor = Color.Green;
-                    labelMesaj.Text = "Müşteri başarıyla eklendi.";
-                    musteriGuncelle();
+                            OleDbCommand cmdEklenenMusteriler = new OleDbCommand("insert into eklenen_musteriler values(@p1,@p2,@p3)", baglanti);
+                            cmdEklenenMusteriler.Parameters.AddWithValue("@p1", textBoxMusteriId.Text);
+                            cmdEklenenMusteriler.Parameters.AddWithValue("@p2", textBoxMusteriAdi.Text);
+                            cmdEklenenMusteriler.Parameters.AddWithValue("@p3", GirisEkrani.kullanici_adi);
+                            cmdEklenenMusteriler.ExecuteNonQuery();
+
+                            OleDbCommand komutEkle = new OleDbCommand("insert into musteriler values(@musteri_id, @musteri_adi, @musteri_soyadi, @musteri_adresi, @musteri_telefonu, @musteri_resmi, @musteri_ekleyen_kisi, Format(now(),'ddMMyyyy-hhmmss'))", baglanti);
+                            komutEkle.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
+                            komutEkle.Parameters.AddWithValue("@musteri_adi", textBoxMusteriAdi.Text);
+                            komutEkle.Parameters.AddWithValue("@musteri_soyadi", textBoxMusteriSoyadi.Text);
+                            komutEkle.Parameters.AddWithValue("@musteri_adresi", textBoxMusteriAdresi.Text);
+                            komutEkle.Parameters.AddWithValue("@musteri_telefonu", textBoxMusteriTelefonu.Text);
+                            komutEkle.Parameters.AddWithValue("@musteri_resmi", readerTarih["tarih"].ToString() + "_" + "musteri" + ".jpg");
+                            komutEkle.Parameters.AddWithValue("@musteri_ekleyen_kisi", GirisEkrani.kullanici_adi);
+                            komutEkle.ExecuteNonQuery();
+                            panelTopRenk.BackColor = Color.Lime;
+                            labelMesaj.ForeColor = Color.Green;
+                            labelMesaj.Text = "Müşteri başarıyla eklendi.";
+                            musteriGuncelle();
+                        }
+                    }
+                    baglanti.Close();
                 }
-                baglanti.Close();
             }
             else
             {
@@ -594,20 +676,45 @@ namespace WindowsFormsApplication7
         //müşteri güncelle butonu
         private void buttonMusteriGuncelle_Click(object sender, EventArgs e)
         {
-            baglanti.Open();
-            OleDbCommand komut = new OleDbCommand("update musteriler set musteri_id=@musteri_id, musteri_adi=@musteri_adi, musteri_soyadi=@musteri_soyadi, musteri_adresi=@musteri_adresi, musteri_telefonu=@musteri_telefonu, musteri_resmi=@musteri_resmi where musteri_id=@musteri_id", baglanti);
-            komut.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
-            komut.Parameters.AddWithValue("@musteri_adi", textBoxMusteriAdi.Text);
-            komut.Parameters.AddWithValue("@musteri_soyadi", textBoxMusteriSoyadi.Text);
-            komut.Parameters.AddWithValue("@musteri_adresi", textBoxMusteriAdresi.Text);
-            komut.Parameters.AddWithValue("@musteri_telefonu", textBoxMusteriTelefonu.Text);
-            komut.Parameters.AddWithValue("@musteri_resmi", textBoxMusteriResmi.Text);
-            komut.ExecuteNonQuery();
-            baglanti.Close();
-            panelTopRenk.BackColor = Color.Lime;
-            labelMesaj.ForeColor = Color.Green;
-            labelMesaj.Text = "Müşteri tablosu güncellendi.";
-            musteriGuncelle();
+            if (musteriResimKontrol == true)
+            {
+                baglanti.Open();
+                OleDbCommand cmdTarih = new OleDbCommand("select Format(now(), 'ddMMyyyy-hhmmss') as tarih", baglanti);
+                OleDbDataReader readerTarih = cmdTarih.ExecuteReader();
+                while (readerTarih.Read())
+                {
+                    File.Copy(musteriResim, "musteriler/" + readerTarih["tarih"].ToString() + "_" + "musteri" + ".jpg");
+                    OleDbCommand komut = new OleDbCommand("update musteriler set musteri_id=@musteri_id, musteri_adi=@musteri_adi, musteri_soyadi=@musteri_soyadi, musteri_adresi=@musteri_adresi, musteri_telefonu=@musteri_telefonu, musteri_resmi=@musteri_resmi where musteri_id=@musteri_id", baglanti);
+                    komut.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
+                    komut.Parameters.AddWithValue("@musteri_adi", textBoxMusteriAdi.Text);
+                    komut.Parameters.AddWithValue("@musteri_soyadi", textBoxMusteriSoyadi.Text);
+                    komut.Parameters.AddWithValue("@musteri_adresi", textBoxMusteriAdresi.Text);
+                    komut.Parameters.AddWithValue("@musteri_telefonu", textBoxMusteriTelefonu.Text);
+                    komut.Parameters.AddWithValue("@musteri_resmi", readerTarih["tarih"].ToString() + "_" + "musteri" + ".jpg");
+                    komut.ExecuteNonQuery();
+                }
+                baglanti.Close();
+                panelTopRenk.BackColor = Color.Lime;
+                labelMesaj.ForeColor = Color.Green;
+                labelMesaj.Text = "Müşteri tablosu güncellendi.";
+                musteriGuncelle();
+            }
+            else if (musteriResimKontrol == false)
+            {
+                baglanti.Open();
+                OleDbCommand komut = new OleDbCommand("update musteriler set musteri_id=@musteri_id, musteri_adi=@musteri_adi, musteri_soyadi=@musteri_soyadi, musteri_adresi=@musteri_adresi, musteri_telefonu=@musteri_telefonu where musteri_id=@musteri_id", baglanti);
+                komut.Parameters.AddWithValue("@musteri_id", textBoxMusteriId.Text);
+                komut.Parameters.AddWithValue("@musteri_adi", textBoxMusteriAdi.Text);
+                komut.Parameters.AddWithValue("@musteri_soyadi", textBoxMusteriSoyadi.Text);
+                komut.Parameters.AddWithValue("@musteri_adresi", textBoxMusteriAdresi.Text);
+                komut.Parameters.AddWithValue("@musteri_telefonu", textBoxMusteriTelefonu.Text);
+                komut.ExecuteNonQuery();
+                baglanti.Close();
+                panelTopRenk.BackColor = Color.Lime;
+                labelMesaj.ForeColor = Color.Green;
+                labelMesaj.Text = "Müşteri tablosu güncellendi.";
+                musteriGuncelle();
+            }
         }
 
         //müşteri sil butonu
@@ -628,7 +735,7 @@ namespace WindowsFormsApplication7
                     cmdInsertSilinen.Parameters.AddWithValue("@p3", textBoxMusteriSoyadi.Text);
                     cmdInsertSilinen.Parameters.AddWithValue("@p4", textBoxMusteriAdresi.Text);
                     cmdInsertSilinen.Parameters.AddWithValue("@p5", textBoxMusteriTelefonu.Text);
-                    cmdInsertSilinen.Parameters.AddWithValue("@p6", textBoxMusteriResmi.Text);
+                    cmdInsertSilinen.Parameters.AddWithValue("@p6", musteriResim);
                     cmdInsertSilinen.Parameters.AddWithValue("@p7", GirisEkrani.kullanici_adi);
                     cmdInsertSilinen.ExecuteNonQuery();
                     /*  */
@@ -639,6 +746,13 @@ namespace WindowsFormsApplication7
                     labelMesaj.ForeColor = Color.Green;
                     labelMesaj.Text = "Müşteri başarılı bir şekilde silindi.";
                     musteriGuncelle();
+
+                    OleDbCommand cmdMusteriResmi = new OleDbCommand("select musteri_resmi from musteriler where musteri_id='" + textBoxMusteriId.Text + "'", baglanti);
+                    OleDbDataReader readerMusteriResmi = cmdMusteriResmi.ExecuteReader();
+                    while (readerMusteriResmi.Read())
+                    {
+                        File.Move("musteriler/" + readerMusteriResmi["musteri_resmi"].ToString(), "musteriler/cache/" + readerMusteriResmi["musteri_resmi"].ToString());
+                    }
                 }
             }
             if (kontrol == 'f')
@@ -650,7 +764,6 @@ namespace WindowsFormsApplication7
             baglanti.Close();
         }
 
-
         // müşteri textbox temizle butonu
         private void ButtonMusteriTemizle_Click(object sender, EventArgs e)
         {
@@ -660,7 +773,6 @@ namespace WindowsFormsApplication7
             textBoxMusteriSoyadi.Text = "";
             textBoxMusteriAdresi.Text = "";
             textBoxMusteriTelefonu.Text = "";
-            textBoxMusteriResmi.Text = "";
         }
 
         //çıkış yap butonu
@@ -699,91 +811,42 @@ namespace WindowsFormsApplication7
             textBoxMusteriSoyadi.Text = dataGridViewMusteriler.CurrentRow.Cells["musteri_soyadi"].Value.ToString();
             textBoxMusteriAdresi.Text = dataGridViewMusteriler.CurrentRow.Cells["musteri_adresi"].Value.ToString();
             textBoxMusteriTelefonu.Text = dataGridViewMusteriler.CurrentRow.Cells["musteri_telefonu"].Value.ToString();
-            textBoxMusteriResmi.Text = dataGridViewMusteriler.CurrentRow.Cells["musteri_resmi"].Value.ToString();
+            pictureBoxMusteriResmi.Image = Image.FromFile("musteriler/" + dataGridViewMusteriler.CurrentRow.Cells["musteri_resmi"].Value.ToString());
+            musteriResim = "musteriler/" + dataGridViewMusteriler.CurrentRow.Cells["musteri_resmi"].Value.ToString();
+        }
+
+        // ürünler cellclick
+        private void DataGridViewUrunler_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxUrunId.Text = dataGridViewUrunler.CurrentRow.Cells["urun_id"].Value.ToString();
+            textBoxUrunAdi.Text = dataGridViewUrunler.CurrentRow.Cells["urun_adi"].Value.ToString();
+            textBoxUrunTuru.Text = dataGridViewUrunler.CurrentRow.Cells["urun_turu"].Value.ToString();
+            textBoxUrunRengi.Text = dataGridViewUrunler.CurrentRow.Cells["urun_rengi"].Value.ToString();
+            textBoxUrunBedeni.Text = dataGridViewUrunler.CurrentRow.Cells["urun_bedeni"].Value.ToString();
+            textBoxUrunFiyati.Text = dataGridViewUrunler.CurrentRow.Cells["urun_fiyati"].Value.ToString();
             baglanti.Open();
-            OleDbCommand komutResim = new OleDbCommand("select musteri_resmi from musteriler where musteri_id=@p1", baglanti);
-            komutResim.Parameters.AddWithValue("@p1", textBoxMusteriId.Text);
-            komutResim.ExecuteNonQuery();
-            OleDbDataReader oku = komutResim.ExecuteReader();
-            while (oku.Read())
+            OleDbCommand cmdUrunKitlesi = new OleDbCommand("select * from urunler where urun_id='" + textBoxUrunId.Text + "'", baglanti);
+            OleDbDataReader readerUrunKitlesi = cmdUrunKitlesi.ExecuteReader();
+            while (readerUrunKitlesi.Read())
             {
-                try
+                textBoxUrunKitlesi.Text = readerUrunKitlesi["urun_kitlesi"].ToString();
+                if (readerUrunKitlesi["urun_resmi"].ToString() == "none")
                 {
-                    if (textBoxMusteriResmi.Text == "" || textBoxMusteriResmi.Text == " ")
-                    {
-                        pictureBoxMusteriResmi.Image = null;
-                    }
-
-                    else
-                    {
-                        pictureBoxMusteriResmi.Image = Image.FromFile("musteriler/" + oku["musteri_resmi"].ToString());
-                    }
+                    pictureBoxUrunResmi.Image = null;
                 }
-
-                catch
+                else
                 {
-                    panelTopRenk.BackColor = Color.Red;
-                    labelMesaj.ForeColor = Color.Red;
-                    labelMesaj.Text = "Böyle bir resim dosyası bulunmuyor!";
+                    pictureBoxUrunResmi.Image = Image.FromFile("urunler/" + dataGridViewUrunler.CurrentRow.Cells["urun_resmi"].Value.ToString());
                 }
             }
             baglanti.Close();
+            urunResim = dataGridViewUrunler.CurrentRow.Cells["urun_resmi"].Value.ToString();
         }
 
-        // ürünler cell click
+        // ürünler  click
         private void DataGridViewUrunler_Click(object sender, EventArgs e)
         {
-            try
-            {
-                textBoxUrunId.Text = dataGridViewUrunler.CurrentRow.Cells["urun_id"].Value.ToString();
-                textBoxUrunAdi.Text = dataGridViewUrunler.CurrentRow.Cells["urun_adi"].Value.ToString();
-                textBoxUrunTuru.Text = dataGridViewUrunler.CurrentRow.Cells["urun_turu"].Value.ToString();
-                textBoxUrunRengi.Text = dataGridViewUrunler.CurrentRow.Cells["urun_rengi"].Value.ToString();
-                textBoxUrunBedeni.Text = dataGridViewUrunler.CurrentRow.Cells["urun_bedeni"].Value.ToString();
-                textBoxUrunFiyati.Text = dataGridViewUrunler.CurrentRow.Cells["urun_fiyati"].Value.ToString();
-                textBoxUrunResmi.Text = dataGridViewUrunler.CurrentRow.Cells["urun_resmi"].Value.ToString();
-                baglanti.Open();
-                OleDbCommand komut = new OleDbCommand("select urun_kitlesi from urunler where urun_id='" + textBoxUrunId.Text + "'", baglanti);
-                OleDbDataReader oku = komut.ExecuteReader();
-                while (oku.Read())
-                {
-                    textBoxUrunKitlesi.Text = oku["urun_kitlesi"].ToString();
-                    OleDbCommand komutResim = new OleDbCommand("select urun_resmi from urunler where urun_id=@urun_id", baglanti);
-                    komutResim.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
-                    komutResim.ExecuteNonQuery();
-                    OleDbDataReader okuResim = komutResim.ExecuteReader();
-                    while (okuResim.Read())
-                    {
-                        try
-                        {
-                            if (textBoxUrunResmi.Text == "" || textBoxUrunResmi.Text == " ")
-                            {
-                                pictureBoxUrunResmi.Image = null;
-                            }
-
-                            else
-                            {
-                                pictureBoxUrunResmi.Image = Image.FromFile("urunler/" + okuResim["urun_resmi"].ToString());
-                            }
-                        }
-
-                        catch
-                        {
-                            panelTopRenk.BackColor = Color.Red;
-                            labelMesaj.ForeColor = Color.Red;
-                            labelMesaj.Text = "Bu kayıtın resmi yok!";
-                        }
-                    }
-                }
-                baglanti.Close();
-            }
-
-            catch
-            {
-                panelTopRenk.BackColor = Color.Red;
-                labelMesaj.ForeColor = Color.Red;
-                labelMesaj.Text = "Önce bir seçim yapın!";
-            }
+            ;
         }
 
         // admin paneli
@@ -792,6 +855,38 @@ namespace WindowsFormsApplication7
             Admin_Paneli adminPaneli = new Admin_Paneli();
             this.Hide();
             adminPaneli.Show();
+        }
+
+        // müşteri resmi ekle
+        private void ButtonMusteriResmiEkle_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog f = new OpenFileDialog();
+            f.Filter = "JPG Resim|*.jpg";
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                musteriResim = f.FileName;
+                musteriResimKontrol = true;
+            }
+            else
+            {
+                musteriResimKontrol = false;
+            }
+        }
+
+        // ürün resmi ekle
+        private void ButtonUrunResmiEkle_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog f = new OpenFileDialog();
+            f.Filter = "JPG Resim|*.jpg";
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                urunResim = f.FileName;
+                urunResimKontrol = true;
+            }
+            else
+            {
+                urunResimKontrol = false;
+            }
         }
     }
 }

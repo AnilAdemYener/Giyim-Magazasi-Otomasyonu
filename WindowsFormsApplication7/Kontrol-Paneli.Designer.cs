@@ -40,11 +40,11 @@
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.panelBottomRenk = new System.Windows.Forms.Panel();
             this.panelUrunler = new System.Windows.Forms.Panel();
+            this.buttonUrunResmiEkle = new System.Windows.Forms.Button();
             this.buttonUrunTemizle = new System.Windows.Forms.Button();
             this.textBoxUrunTuru = new System.Windows.Forms.TextBox();
             this.labelUrunTuru = new System.Windows.Forms.Label();
             this.pictureBoxUrunResmi = new System.Windows.Forms.PictureBox();
-            this.textBoxUrunResmi = new System.Windows.Forms.TextBox();
             this.labelUrunResmi = new System.Windows.Forms.Label();
             this.buttonUrunAra = new System.Windows.Forms.Button();
             this.buttonUrunTumKayitlariGoster = new System.Windows.Forms.Button();
@@ -70,8 +70,8 @@
             this.dataGridViewUrunler = new System.Windows.Forms.DataGridView();
             this.labelMesaj = new System.Windows.Forms.Label();
             this.panelMusteriler = new System.Windows.Forms.Panel();
+            this.buttonMusteriResmiEkle = new System.Windows.Forms.Button();
             this.buttonMusteriTemizle = new System.Windows.Forms.Button();
-            this.textBoxMusteriResmi = new System.Windows.Forms.TextBox();
             this.labelMusteriResmi = new System.Windows.Forms.Label();
             this.pictureBoxMusteriResmi = new System.Windows.Forms.PictureBox();
             this.buttonMusteriTumKayitlariGoster = new System.Windows.Forms.Button();
@@ -102,6 +102,8 @@
             this.buttonKullanicilariGoster2 = new System.Windows.Forms.Button();
             this.buttonKullanicilariGoster1 = new System.Windows.Forms.Button();
             this.buttonAdminPaneli = new System.Windows.Forms.Button();
+            this.pictureBoxKullaniciResmi = new System.Windows.Forms.PictureBox();
+            this.buttonKullaniciAyarlari = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGitHub)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTwitter)).BeginInit();
@@ -116,11 +118,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMusteriler)).BeginInit();
             this.panelKullanicilar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKullanicilar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKullaniciResmi)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.Color.Black;
+            this.panelTop.Controls.Add(this.pictureBoxKullaniciResmi);
             this.panelTop.Controls.Add(this.labelKullaniciAdi);
             this.panelTop.Controls.Add(this.panelTopRenk);
             this.panelTop.Controls.Add(this.pictureBoxGitHub);
@@ -238,11 +242,11 @@
             // panelUrunler
             // 
             this.panelUrunler.BackColor = System.Drawing.Color.Transparent;
+            this.panelUrunler.Controls.Add(this.buttonUrunResmiEkle);
             this.panelUrunler.Controls.Add(this.buttonUrunTemizle);
             this.panelUrunler.Controls.Add(this.textBoxUrunTuru);
             this.panelUrunler.Controls.Add(this.labelUrunTuru);
             this.panelUrunler.Controls.Add(this.pictureBoxUrunResmi);
-            this.panelUrunler.Controls.Add(this.textBoxUrunResmi);
             this.panelUrunler.Controls.Add(this.labelUrunResmi);
             this.panelUrunler.Controls.Add(this.buttonUrunAra);
             this.panelUrunler.Controls.Add(this.buttonUrunTumKayitlariGoster);
@@ -270,6 +274,22 @@
             this.panelUrunler.Name = "panelUrunler";
             this.panelUrunler.Size = new System.Drawing.Size(973, 516);
             this.panelUrunler.TabIndex = 4;
+            // 
+            // buttonUrunResmiEkle
+            // 
+            this.buttonUrunResmiEkle.BackColor = System.Drawing.Color.Orange;
+            this.buttonUrunResmiEkle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonUrunResmiEkle.FlatAppearance.BorderSize = 0;
+            this.buttonUrunResmiEkle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUrunResmiEkle.ForeColor = System.Drawing.Color.White;
+            this.buttonUrunResmiEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonUrunResmiEkle.Location = new System.Drawing.Point(793, 379);
+            this.buttonUrunResmiEkle.Name = "buttonUrunResmiEkle";
+            this.buttonUrunResmiEkle.Size = new System.Drawing.Size(165, 28);
+            this.buttonUrunResmiEkle.TabIndex = 56;
+            this.buttonUrunResmiEkle.Text = "Seç";
+            this.buttonUrunResmiEkle.UseVisualStyleBackColor = false;
+            this.buttonUrunResmiEkle.Click += new System.EventHandler(this.ButtonUrunResmiEkle_Click);
             // 
             // buttonUrunTemizle
             // 
@@ -316,16 +336,6 @@
             this.pictureBoxUrunResmi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxUrunResmi.TabIndex = 36;
             this.pictureBoxUrunResmi.TabStop = false;
-            // 
-            // textBoxUrunResmi
-            // 
-            this.textBoxUrunResmi.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBoxUrunResmi.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxUrunResmi.Location = new System.Drawing.Point(784, 379);
-            this.textBoxUrunResmi.Multiline = true;
-            this.textBoxUrunResmi.Name = "textBoxUrunResmi";
-            this.textBoxUrunResmi.Size = new System.Drawing.Size(180, 25);
-            this.textBoxUrunResmi.TabIndex = 35;
             // 
             // labelUrunResmi
             // 
@@ -592,6 +602,7 @@
             this.dataGridViewUrunler.Name = "dataGridViewUrunler";
             this.dataGridViewUrunler.Size = new System.Drawing.Size(643, 466);
             this.dataGridViewUrunler.TabIndex = 0;
+            this.dataGridViewUrunler.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewUrunler_CellClick);
             this.dataGridViewUrunler.Click += new System.EventHandler(this.DataGridViewUrunler_Click);
             // 
             // labelMesaj
@@ -607,8 +618,8 @@
             // panelMusteriler
             // 
             this.panelMusteriler.BackColor = System.Drawing.Color.Transparent;
+            this.panelMusteriler.Controls.Add(this.buttonMusteriResmiEkle);
             this.panelMusteriler.Controls.Add(this.buttonMusteriTemizle);
-            this.panelMusteriler.Controls.Add(this.textBoxMusteriResmi);
             this.panelMusteriler.Controls.Add(this.labelMusteriResmi);
             this.panelMusteriler.Controls.Add(this.pictureBoxMusteriResmi);
             this.panelMusteriler.Controls.Add(this.buttonMusteriTumKayitlariGoster);
@@ -634,6 +645,22 @@
             this.panelMusteriler.Size = new System.Drawing.Size(973, 516);
             this.panelMusteriler.TabIndex = 5;
             // 
+            // buttonMusteriResmiEkle
+            // 
+            this.buttonMusteriResmiEkle.BackColor = System.Drawing.Color.Orange;
+            this.buttonMusteriResmiEkle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonMusteriResmiEkle.FlatAppearance.BorderSize = 0;
+            this.buttonMusteriResmiEkle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMusteriResmiEkle.ForeColor = System.Drawing.Color.White;
+            this.buttonMusteriResmiEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonMusteriResmiEkle.Location = new System.Drawing.Point(799, 379);
+            this.buttonMusteriResmiEkle.Name = "buttonMusteriResmiEkle";
+            this.buttonMusteriResmiEkle.Size = new System.Drawing.Size(165, 28);
+            this.buttonMusteriResmiEkle.TabIndex = 55;
+            this.buttonMusteriResmiEkle.Text = "Seç";
+            this.buttonMusteriResmiEkle.UseVisualStyleBackColor = false;
+            this.buttonMusteriResmiEkle.Click += new System.EventHandler(this.ButtonMusteriResmiEkle_Click);
+            // 
             // buttonMusteriTemizle
             // 
             this.buttonMusteriTemizle.BackColor = System.Drawing.Color.Orange;
@@ -651,15 +678,6 @@
             this.buttonMusteriTemizle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonMusteriTemizle.UseVisualStyleBackColor = false;
             this.buttonMusteriTemizle.Click += new System.EventHandler(this.ButtonMusteriTemizle_Click);
-            // 
-            // textBoxMusteriResmi
-            // 
-            this.textBoxMusteriResmi.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxMusteriResmi.Location = new System.Drawing.Point(799, 382);
-            this.textBoxMusteriResmi.Multiline = true;
-            this.textBoxMusteriResmi.Name = "textBoxMusteriResmi";
-            this.textBoxMusteriResmi.Size = new System.Drawing.Size(159, 25);
-            this.textBoxMusteriResmi.TabIndex = 53;
             // 
             // labelMusteriResmi
             // 
@@ -1012,13 +1030,36 @@
             this.buttonAdminPaneli.FlatAppearance.BorderSize = 0;
             this.buttonAdminPaneli.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdminPaneli.ForeColor = System.Drawing.Color.White;
-            this.buttonAdminPaneli.Location = new System.Drawing.Point(715, 628);
+            this.buttonAdminPaneli.Location = new System.Drawing.Point(583, 628);
             this.buttonAdminPaneli.Name = "buttonAdminPaneli";
             this.buttonAdminPaneli.Size = new System.Drawing.Size(132, 34);
             this.buttonAdminPaneli.TabIndex = 31;
             this.buttonAdminPaneli.Text = "Admin Paneli";
             this.buttonAdminPaneli.UseVisualStyleBackColor = false;
             this.buttonAdminPaneli.Click += new System.EventHandler(this.ButtonAdminPaneli_Click);
+            // 
+            // pictureBoxKullaniciResmi
+            // 
+            this.pictureBoxKullaniciResmi.Location = new System.Drawing.Point(444, 5);
+            this.pictureBoxKullaniciResmi.Name = "pictureBoxKullaniciResmi";
+            this.pictureBoxKullaniciResmi.Size = new System.Drawing.Size(39, 39);
+            this.pictureBoxKullaniciResmi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxKullaniciResmi.TabIndex = 14;
+            this.pictureBoxKullaniciResmi.TabStop = false;
+            // 
+            // buttonKullaniciAyarlari
+            // 
+            this.buttonKullaniciAyarlari.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonKullaniciAyarlari.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonKullaniciAyarlari.FlatAppearance.BorderSize = 0;
+            this.buttonKullaniciAyarlari.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonKullaniciAyarlari.ForeColor = System.Drawing.Color.White;
+            this.buttonKullaniciAyarlari.Location = new System.Drawing.Point(715, 628);
+            this.buttonKullaniciAyarlari.Name = "buttonKullaniciAyarlari";
+            this.buttonKullaniciAyarlari.Size = new System.Drawing.Size(132, 34);
+            this.buttonKullaniciAyarlari.TabIndex = 32;
+            this.buttonKullaniciAyarlari.Text = "Kullanıcı Ayarları";
+            this.buttonKullaniciAyarlari.UseVisualStyleBackColor = false;
             // 
             // Kontrol_Paneli
             // 
@@ -1028,6 +1069,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(979, 665);
+            this.Controls.Add(this.buttonKullaniciAyarlari);
             this.Controls.Add(this.buttonAdminPaneli);
             this.Controls.Add(this.buttonCikisYap);
             this.Controls.Add(this.buttonKullanicilariGoster2);
@@ -1039,9 +1081,9 @@
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.buttonMusterileriGoster2);
             this.Controls.Add(this.buttonMusterileriGoster1);
+            this.Controls.Add(this.panelUrunler);
             this.Controls.Add(this.panelMusteriler);
             this.Controls.Add(this.panelKullanicilar);
-            this.Controls.Add(this.panelUrunler);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Kontrol_Paneli";
@@ -1065,6 +1107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMusteriler)).EndInit();
             this.panelKullanicilar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKullanicilar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKullaniciResmi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1134,16 +1177,18 @@
         private System.Windows.Forms.Label labelMusteriAra;
         private System.Windows.Forms.TextBox textBoxMusteriAra;
         private System.Windows.Forms.Button buttonMusteriTumKayitlariGoster;
-        private System.Windows.Forms.TextBox textBoxUrunResmi;
         private System.Windows.Forms.Label labelUrunResmi;
         private System.Windows.Forms.PictureBox pictureBoxUrunResmi;
         private System.Windows.Forms.TextBox textBoxUrunTuru;
         private System.Windows.Forms.Label labelUrunTuru;
         private System.Windows.Forms.PictureBox pictureBoxMusteriResmi;
-        private System.Windows.Forms.TextBox textBoxMusteriResmi;
         private System.Windows.Forms.Label labelMusteriResmi;
         private System.Windows.Forms.Button buttonMusteriTemizle;
         private System.Windows.Forms.Button buttonUrunTemizle;
         private System.Windows.Forms.Button buttonAdminPaneli;
+        private System.Windows.Forms.Button buttonMusteriResmiEkle;
+        private System.Windows.Forms.Button buttonUrunResmiEkle;
+        private System.Windows.Forms.PictureBox pictureBoxKullaniciResmi;
+        private System.Windows.Forms.Button buttonKullaniciAyarlari;
     }
 }

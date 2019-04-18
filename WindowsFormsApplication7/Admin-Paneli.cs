@@ -72,17 +72,33 @@ namespace WindowsFormsApplication7
             panelKayitEkleyenler.Visible = false;
             panelKayitSilenler.Visible = false;
             //font
-            PrivateFontCollection pfc = new PrivateFontCollection();
-            pfc.AddFontFile("fonts/Praktika-Light.otf");
-            foreach (Control c in this.Controls)
-            {
-                c.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
-                labelBaslik.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                labelMesaj.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-            }
+            //PrivateFontCollection pfc = new PrivateFontCollection();
+            //pfc.AddFontFile("fonts/Praktika-Light.otf");
+            //foreach (Control c in this.Controls)
+            //{
+            //    c.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
+            //    labelBaslik.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    labelMesaj.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //}
             //kullanıcı adı
             labelKullaniciAdi.Text = "Hoşgeldiniz sayın " + GirisEkrani.kullanici_adi + ".";
             labelMesaj.Text = "";
+            // kullanıcı resmi
+            cnn.Open();
+            OleDbCommand cmdKullaniciResmi = new OleDbCommand("select * from kullanicilar where kullanici_adi='" + GirisEkrani.kullanici_adi + "'", cnn);
+            OleDbDataReader readerKullaniciResmi = cmdKullaniciResmi.ExecuteReader();
+            while (readerKullaniciResmi.Read())
+            {
+                if (readerKullaniciResmi["kullanici_resmi"].ToString() == "none")
+                {
+                    pictureBoxKullaniciResmi.Image = null;
+                }
+                else
+                {
+                    pictureBoxKullaniciResmi.Image = Image.FromFile("kullanicilar/" + readerKullaniciResmi["kullanici_resmi"].ToString());
+                }
+            }
+            cnn.Close();
         }
 
         // kullanıcı tablosu
@@ -361,6 +377,21 @@ namespace WindowsFormsApplication7
             {
                 checkBoxKullaniciEkleSilYetkisi.Checked = false;
             }
+            cnn.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from kullanicilar where kullanici_adi='" + textBoxKullaniciEkleSilAdi.Text + "'", cnn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader["kullanici_resmi"].ToString() == "none")
+                {
+                    pictureBoxKullaniciEkleSilResmi.Image = null;
+                }
+                else
+                {
+                    pictureBoxKullaniciEkleSilResmi.Image = Image.FromFile("kullanicilar/" + reader["kullanici_resmi"].ToString());
+                }
+            }
+            cnn.Close();
         }
 
 

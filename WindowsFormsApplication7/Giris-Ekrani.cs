@@ -47,16 +47,16 @@ namespace WindowsFormsApplication7
             //mesaj
             labelMesaj.Text = "";
             //font
-            PrivateFontCollection pfc = new PrivateFontCollection();
-            pfc.AddFontFile("fonts/Praktika-Light.otf");
-            foreach (Control c in this.Controls)
-            {
-                c.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
-                labelBaslik.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                labelMesaj.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxKullaniciAdi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-                textBoxSifre.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
-            }
+            //PrivateFontCollection pfc = new PrivateFontCollection();
+            //pfc.AddFontFile("fonts/Praktika-Light.otf");
+            //foreach (Control c in this.Controls)
+            //{
+            //    c.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
+            //    labelBaslik.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    labelMesaj.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    textBoxKullaniciAdi.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //    textBoxSifre.Font = new Font(pfc.Families[0], 15, FontStyle.Bold);
+            //}
         }
 
         //mouse ile pencere taşıma ====================================================================================
@@ -96,12 +96,12 @@ namespace WindowsFormsApplication7
 
             buttonKayitOl.BackColor = Color.Transparent;
 
-            PrivateFontCollection pfc = new PrivateFontCollection();
-            pfc.AddFontFile("fonts/Praktika-Light.otf");
-            foreach (Control c in this.Controls)
-            {
-                buttonGirisYap.Font = new Font(pfc.Families[0], 17, FontStyle.Bold);
-            }
+            //PrivateFontCollection pfc = new PrivateFontCollection();
+            //pfc.AddFontFile("fonts/Praktika-Light.otf");
+            //foreach (Control c in this.Controls)
+            //{
+            //    buttonGirisYap.Font = new Font(pfc.Families[0], 17, FontStyle.Bold);
+            //}
         }
 
         private void buttonGirisYap_MouseLeave(object sender, EventArgs e)
@@ -112,12 +112,12 @@ namespace WindowsFormsApplication7
             buttonKayitOl.BackColor = Color.Transparent;
             buttonKayitOl.ForeColor = Color.Black;
 
-            PrivateFontCollection pfc = new PrivateFontCollection();
-            pfc.AddFontFile("fonts/Praktika-Light.otf");
-            foreach (Control c in this.Controls)
-            {
-                buttonGirisYap.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
-            }
+            //PrivateFontCollection pfc = new PrivateFontCollection();
+            //pfc.AddFontFile("fonts/Praktika-Light.otf");
+            //foreach (Control c in this.Controls)
+            //{
+            //    buttonGirisYap.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
+            //}
         }
 
         // kayıt ol buton hover ====================================================================================
@@ -128,12 +128,12 @@ namespace WindowsFormsApplication7
 
             buttonGirisYap.BackColor = Color.Transparent;
 
-            PrivateFontCollection pfc = new PrivateFontCollection();
-            pfc.AddFontFile("fonts/Praktika-Light.otf");
-            foreach (Control c in this.Controls)
-            {
-                buttonKayitOl.Font = new Font(pfc.Families[0], 17, FontStyle.Bold);
-            }
+            //PrivateFontCollection pfc = new PrivateFontCollection();
+            //pfc.AddFontFile("fonts/Praktika-Light.otf");
+            //foreach (Control c in this.Controls)
+            //{
+            //    buttonKayitOl.Font = new Font(pfc.Families[0], 17, FontStyle.Bold);
+            //}
         }
 
         private void buttonKayitOl_MouseLeave(object sender, EventArgs e)
@@ -144,12 +144,12 @@ namespace WindowsFormsApplication7
             buttonGirisYap.BackColor = Color.Transparent;
             buttonGirisYap.ForeColor = Color.Black;
 
-            PrivateFontCollection pfc = new PrivateFontCollection();
-            pfc.AddFontFile("fonts/Praktika-Light.otf");
-            foreach (Control c in this.Controls)
-            {
-                buttonKayitOl.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
-            }
+            //PrivateFontCollection pfc = new PrivateFontCollection();
+            //pfc.AddFontFile("fonts/Praktika-Light.otf");
+            //foreach (Control c in this.Controls)
+            //{
+            //    buttonKayitOl.Font = new Font(pfc.Families[0], 15, FontStyle.Regular);
+            //}
         }
 
         OleDbConnection baglanti = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=databases/veritabani.accdb");
@@ -207,10 +207,11 @@ namespace WindowsFormsApplication7
                 }
                 if (kontrol == 'f')
                 {
-                    OleDbCommand komutEkle = new OleDbCommand("insert into kullanicilar values(@kullanici_adi,@sifre,@yetki)", baglanti);
+                    OleDbCommand komutEkle = new OleDbCommand("insert into kullanicilar values(@kullanici_adi,@sifre,@yetki,@kullanici_resmi)", baglanti);
                     komutEkle.Parameters.AddWithValue("@kullanici_adi", textBoxKullaniciAdi.Text);
                     komutEkle.Parameters.AddWithValue("@sifre", textBoxSifre.Text);
                     komutEkle.Parameters.AddWithValue("@yetki", "normal");
+                    komutEkle.Parameters.AddWithValue("@kullanici_resmi", "none");
                     komutEkle.ExecuteNonQuery();
                     panelTopRenk.BackColor = Color.Lime;
                     labelMesaj.ForeColor = Color.Green;
