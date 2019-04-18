@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Kullanici-Ayarlari.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kullanici-Ayarlari.Designer.cs">
+      <DependentUpon>Kullanici-Ayarlari.cs</DependentUpon>
+    </Compile>
     <Compile Include="Giris-Ekrani.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Kullanici-Ayarlari.resx">
+      <DependentUpon>Kullanici-Ayarlari.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Giris-Ekrani.resx">
       <DependentUpon>Giris-Ekrani.cs</DependentUpon>
     </EmbeddedResource>

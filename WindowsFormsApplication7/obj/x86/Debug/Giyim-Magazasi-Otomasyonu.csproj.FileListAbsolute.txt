@@ -9,3 +9,4 @@ C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplicat
 C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\bin\Debug\Giyim-Magazasi-Otomasyonu.pdb
 C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\Giyim-Magazasi-Otomasyonu.exe
 C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\Giyim-Magazasi-Otomasyonu.pdb
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu\WindowsFormsApplication7\obj\x86\Debug\WindowsFormsApplication7.Kullanici_Ayarlari.resources

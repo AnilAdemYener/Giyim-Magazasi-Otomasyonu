@@ -888,5 +888,13 @@ namespace WindowsFormsApplication7
                 urunResimKontrol = false;
             }
         }
+
+        // kullanıcı ayarları
+        private void ButtonKullaniciAyarlari_Click(object sender, EventArgs e)
+        {
+            Kullanici_Ayarlari kullaniciAyarlari = new Kullanici_Ayarlari();
+            this.Hide();
+            kullaniciAyarlari.Show();
+        }
     }
 }
