@@ -146,7 +146,7 @@ namespace WindowsFormsApplication7
                 if (kullaniciResimKontrol == true)
                 {
                     File.Copy(kullaniciResim, "kullanicilar/" + readerTarih["tarih"].ToString() + "_" + "kullanici" + ".jpg");
-                    OleDbCommand cmdUpdate = new OleDbCommand("update kullanicilar set kullanici_resmi=@p1", cnn);
+                    OleDbCommand cmdUpdate = new OleDbCommand("update kullanicilar set kullanici_resmi=@p1 where kullanici_adi='"+GirisEkrani.kullanici_adi+"'", cnn);
                     cmdUpdate.Parameters.AddWithValue("@p1", readerTarih["tarih"].ToString() + "_" + "kullanici" + ".jpg");
                     cmdUpdate.ExecuteNonQuery();
                     panelTopRenk.BackColor = Color.Lime;
@@ -193,6 +193,52 @@ namespace WindowsFormsApplication7
                 labelMesaj.ForeColor = Color.Red;
                 labelMesaj.Text = "Zaten mevcut bir resminiz bulunmamaktadır.";
             }
+        }
+
+        // şifreyi değiştir
+        private void buttonSifreyiDegistir_Click(object sender, EventArgs e)
+        {
+            Boolean control = false;
+            cnn.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from kullanicilar where kullanici_adi='"+GirisEkrani.kullanici_adi+"'",cnn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader["sifre"].ToString() == textBoxMevcutSifreniz.Text)
+                {
+                    control = true;
+                }
+                else
+                {
+                    control = false;
+                }
+            }
+            if (control == true)
+            {
+                if (textBoxYeniSifreniz.Text == textBoxYeniSifrenizTekrar.Text)
+                {
+                    OleDbCommand cmdUpdate = new OleDbCommand("update kullanicilar set sifre=@p1 where kullanici_adi=@p2",cnn);
+                    cmdUpdate.Parameters.AddWithValue("@p1", textBoxYeniSifreniz.Text);
+                    cmdUpdate.Parameters.AddWithValue("@p2", GirisEkrani.kullanici_adi);
+                    cmdUpdate.ExecuteNonQuery();
+                    panelTopRenk.BackColor = Color.Lime;
+                    labelMesaj.ForeColor = Color.Green;
+                    labelMesaj.Text = "Şifreniz başarıyla değişti!";
+                }
+                else
+                {
+                    panelTopRenk.BackColor = Color.Red;
+                    labelMesaj.ForeColor = Color.Red;
+                    labelMesaj.Text = "Şifrelerin uyuştuğundan emin olun!";
+                }
+            }
+            else
+            {
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Mevcut şifrenizi doğru girdiğinizden emin olun!";
+            }
+            cnn.Close();
         }
     }
 }

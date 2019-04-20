@@ -1,9 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28721.148
-MinimumVisualStudioVersion = 10.0.40219.1
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giyim-Magazasi-Otomasyonu", "WindowsFormsApplication7\Giyim-Magazasi-Otomasyonu.csproj", "{19A5EC51-5676-4FB4-A837-812C5B5065CE}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Giyim-Magazasi-Otomasyonu-STP", "Giyim-Magazasi-Otomasyonu-STP\Giyim-Magazasi-Otomasyonu-STP.vdproj", "{F85CE73C-D037-4B99-9E3B-2185394A13A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +15,8 @@ Global
 		{19A5EC51-5676-4FB4-A837-812C5B5065CE}.Debug|x86.Build.0 = Debug|x86
 		{19A5EC51-5676-4FB4-A837-812C5B5065CE}.Release|x86.ActiveCfg = Release|x86
 		{19A5EC51-5676-4FB4-A837-812C5B5065CE}.Release|x86.Build.0 = Release|x86
+		{F85CE73C-D037-4B99-9E3B-2185394A13A8}.Debug|x86.ActiveCfg = Debug
+		{F85CE73C-D037-4B99-9E3B-2185394A13A8}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin_Paneli));
             this.panelTop = new System.Windows.Forms.Panel();
+            this.pictureBoxKullaniciResmi = new System.Windows.Forms.PictureBox();
             this.labelKullaniciAdi = new System.Windows.Forms.Label();
             this.panelTopRenk = new System.Windows.Forms.Panel();
             this.labelBaslik = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@
             this.buttonCikisYap = new System.Windows.Forms.Button();
             this.buttonKullaniciEkleSil = new System.Windows.Forms.Button();
             this.panelKullaniciEkleSil = new System.Windows.Forms.Panel();
+            this.pictureBoxKullaniciEkleSilResmi = new System.Windows.Forms.PictureBox();
             this.buttonKayitEkleSilTumKayitlar = new System.Windows.Forms.Button();
             this.buttonKullaniciEkleSilAra = new System.Windows.Forms.Button();
             this.textBoxKullaniciEkleSilAra = new System.Windows.Forms.TextBox();
@@ -91,13 +93,13 @@
             this.dataGridViewKayitSilenlerMusteriler = new System.Windows.Forms.DataGridView();
             this.dataGridViewKayitSilenlerUrunler = new System.Windows.Forms.DataGridView();
             this.buttonProgramAyarlari = new System.Windows.Forms.Button();
-            this.pictureBoxKullaniciResmi = new System.Windows.Forms.PictureBox();
-            this.pictureBoxKullaniciEkleSilResmi = new System.Windows.Forms.PictureBox();
             this.panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKullaniciResmi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panelKullaniciEkleSil.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKullaniciEkleSilResmi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKullaniciEkleSil)).BeginInit();
             this.panelProgramAyarlari.SuspendLayout();
             this.panelKayitEkleyenler.SuspendLayout();
@@ -106,8 +108,6 @@
             this.panelKayitSilenler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKayitSilenlerMusteriler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKayitSilenlerUrunler)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKullaniciResmi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKullaniciEkleSilResmi)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -127,6 +127,15 @@
             this.panelTop.TabIndex = 1;
             this.panelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseDown);
             this.panelTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTop_MouseMove);
+            // 
+            // pictureBoxKullaniciResmi
+            // 
+            this.pictureBoxKullaniciResmi.Location = new System.Drawing.Point(444, 5);
+            this.pictureBoxKullaniciResmi.Name = "pictureBoxKullaniciResmi";
+            this.pictureBoxKullaniciResmi.Size = new System.Drawing.Size(39, 39);
+            this.pictureBoxKullaniciResmi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxKullaniciResmi.TabIndex = 15;
+            this.pictureBoxKullaniciResmi.TabStop = false;
             // 
             // labelKullaniciAdi
             // 
@@ -204,9 +213,10 @@
             // 
             this.labelMesaj.AutoSize = true;
             this.labelMesaj.BackColor = System.Drawing.Color.Transparent;
-            this.labelMesaj.Location = new System.Drawing.Point(108, 628);
+            this.labelMesaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.labelMesaj.Location = new System.Drawing.Point(108, 629);
             this.labelMesaj.Name = "labelMesaj";
-            this.labelMesaj.Size = new System.Drawing.Size(35, 13);
+            this.labelMesaj.Size = new System.Drawing.Size(54, 20);
             this.labelMesaj.TabIndex = 29;
             this.labelMesaj.Text = "Mesaj";
             // 
@@ -262,6 +272,15 @@
             this.panelKullaniciEkleSil.Name = "panelKullaniciEkleSil";
             this.panelKullaniciEkleSil.Size = new System.Drawing.Size(955, 521);
             this.panelKullaniciEkleSil.TabIndex = 32;
+            // 
+            // pictureBoxKullaniciEkleSilResmi
+            // 
+            this.pictureBoxKullaniciEkleSilResmi.Location = new System.Drawing.Point(142, 3);
+            this.pictureBoxKullaniciEkleSilResmi.Name = "pictureBoxKullaniciEkleSilResmi";
+            this.pictureBoxKullaniciEkleSilResmi.Size = new System.Drawing.Size(112, 112);
+            this.pictureBoxKullaniciEkleSilResmi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxKullaniciEkleSilResmi.TabIndex = 42;
+            this.pictureBoxKullaniciEkleSilResmi.TabStop = false;
             // 
             // buttonKayitEkleSilTumKayitlar
             // 
@@ -920,24 +939,6 @@
             this.buttonProgramAyarlari.UseVisualStyleBackColor = false;
             this.buttonProgramAyarlari.Click += new System.EventHandler(this.ButtonProgramAyarlari_Click_1);
             // 
-            // pictureBoxKullaniciResmi
-            // 
-            this.pictureBoxKullaniciResmi.Location = new System.Drawing.Point(444, 5);
-            this.pictureBoxKullaniciResmi.Name = "pictureBoxKullaniciResmi";
-            this.pictureBoxKullaniciResmi.Size = new System.Drawing.Size(39, 39);
-            this.pictureBoxKullaniciResmi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxKullaniciResmi.TabIndex = 15;
-            this.pictureBoxKullaniciResmi.TabStop = false;
-            // 
-            // pictureBoxKullaniciEkleSilResmi
-            // 
-            this.pictureBoxKullaniciEkleSilResmi.Location = new System.Drawing.Point(142, 3);
-            this.pictureBoxKullaniciEkleSilResmi.Name = "pictureBoxKullaniciEkleSilResmi";
-            this.pictureBoxKullaniciEkleSilResmi.Size = new System.Drawing.Size(112, 112);
-            this.pictureBoxKullaniciEkleSilResmi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxKullaniciEkleSilResmi.TabIndex = 42;
-            this.pictureBoxKullaniciEkleSilResmi.TabStop = false;
-            // 
             // Admin_Paneli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -967,11 +968,13 @@
             this.Load += new System.EventHandler(this.Admin_Paneli_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKullaniciResmi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.panelKullaniciEkleSil.ResumeLayout(false);
             this.panelKullaniciEkleSil.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKullaniciEkleSilResmi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKullaniciEkleSil)).EndInit();
             this.panelProgramAyarlari.ResumeLayout(false);
             this.panelProgramAyarlari.PerformLayout();
@@ -983,8 +986,6 @@
             this.panelKayitSilenler.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKayitSilenlerMusteriler)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKayitSilenlerUrunler)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKullaniciResmi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKullaniciEkleSilResmi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

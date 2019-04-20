@@ -91,10 +91,12 @@ namespace WindowsFormsApplication7
             buttonUrunleriGoster2.Visible = false;
             buttonMusterileriGoster2.Visible = false;
             buttonKullanicilariGoster2.Visible = false;
+            buttonStoklariGoster2.Visible = false;
             //paneller
             panelUrunler.Visible = false;
             panelMusteriler.Visible = false;
             panelKullanicilar.Visible = false;
+            panelStoklar.Visible = false;
             //font
             //PrivateFontCollection pfc = new PrivateFontCollection();
             //pfc.AddFontFile("fonts/Praktika-Light.otf");
@@ -123,6 +125,7 @@ namespace WindowsFormsApplication7
             //}
             //kullanıcı adı
             labelKullaniciAdi.Text = "Hoşgeldiniz sayın " + GirisEkrani.kullanici_adi + ".";
+            labelKullanicilar.Text = "";
         }
 
         public string musteriResim;
@@ -179,10 +182,13 @@ namespace WindowsFormsApplication7
             panelUrunler.Visible = true;
             panelMusteriler.Visible = false;
             panelKullanicilar.Visible = false;
+            panelStoklar.Visible = false;
             buttonMusterileriGoster1.Visible = true;
             buttonMusterileriGoster2.Visible = false;
             buttonKullanicilariGoster1.Visible = true;
             buttonKullanicilariGoster2.Visible = false;
+            buttonStoklariGoster1.Visible = true;
+            buttonStoklariGoster2.Visible = false;
             panelTopRenk.BackColor = Color.Orange;
             labelMesaj.ForeColor = Color.Black;
             labelMesaj.Text = "Ürünler tablosu gösterildi.";
@@ -196,10 +202,13 @@ namespace WindowsFormsApplication7
             panelUrunler.Visible = false;
             panelMusteriler.Visible = true;
             panelKullanicilar.Visible = false;
+            panelStoklar.Visible = false;
             buttonUrunleriGoster1.Visible = true;
             buttonUrunleriGoster2.Visible = false;
             buttonKullanicilariGoster1.Visible = true;
             buttonKullanicilariGoster2.Visible = false;
+            buttonStoklariGoster1.Visible = true;
+            buttonStoklariGoster2.Visible = false;
             musteriGuncelle();
             panelTopRenk.BackColor = Color.Orange;
             labelMesaj.ForeColor = Color.Black;
@@ -214,10 +223,13 @@ namespace WindowsFormsApplication7
             panelUrunler.Visible = false;
             panelMusteriler.Visible = false;
             panelKullanicilar.Visible = true;
+            panelStoklar.Visible = false;
             buttonUrunleriGoster1.Visible = true;
             buttonUrunleriGoster2.Visible = false;
             buttonMusterileriGoster1.Visible = true;
             buttonMusterileriGoster2.Visible = false;
+            buttonStoklariGoster1.Visible = true;
+            buttonStoklariGoster2.Visible = false;
             kullanicilariGuncelle();
             panelTopRenk.BackColor = Color.Orange;
             labelMesaj.ForeColor = Color.Black;
@@ -403,8 +415,8 @@ namespace WindowsFormsApplication7
                         {
                             OleDbCommand komutEkle = new OleDbCommand("insert into urunler values(@urun_id, @urun_adi, @urun_turu, @urun_rengi, @urun_bedeni, @urun_fiyati, @urun_kitlesi, @urun_resmi, @urun_ekleyen_kisi)", baglanti);
                             komutEkle.Parameters.AddWithValue("@urun_id", textBoxUrunId.Text);
-                            komutEkle.Parameters.AddWithValue("@urun_turu", textBoxUrunTuru.Text);
                             komutEkle.Parameters.AddWithValue("@urun_adi", textBoxUrunAdi.Text);
+                            komutEkle.Parameters.AddWithValue("@urun_turu", textBoxUrunTuru.Text);
                             komutEkle.Parameters.AddWithValue("@urun_rengi", textBoxUrunRengi.Text);
                             komutEkle.Parameters.AddWithValue("@urun_bedeni", textBoxUrunBedeni.Text);
                             komutEkle.Parameters.AddWithValue("@urun_fiyati", textBoxUrunFiyati.Text);
@@ -895,6 +907,202 @@ namespace WindowsFormsApplication7
             Kullanici_Ayarlari kullaniciAyarlari = new Kullanici_Ayarlari();
             this.Hide();
             kullaniciAyarlari.Show();
+        }
+
+        // stokları göster
+        private void buttonStoklariGoster1_Click(object sender, EventArgs e)
+        {
+            buttonUrunleriGoster1.Visible = true;
+            buttonUrunleriGoster2.Visible = false;
+            panelUrunler.Visible = false;
+            panelMusteriler.Visible = false;
+            panelKullanicilar.Visible = false;
+            panelStoklar.Visible = true;
+            buttonMusterileriGoster1.Visible = true;
+            buttonMusterileriGoster2.Visible = false;
+            buttonKullanicilariGoster1.Visible = true;
+            buttonKullanicilariGoster2.Visible = false;
+            buttonStoklariGoster1.Visible = false;
+            buttonStoklariGoster2.Visible = true;
+            panelTopRenk.BackColor = Color.Orange;
+            labelMesaj.ForeColor = Color.Black;
+            labelMesaj.Text = "Stoklar tablosu gösterildi.";
+            stokGuncelle();
+        }
+
+        // ters stokları göster
+        private void buttonStoklariGoster2_Click(object sender, EventArgs e)
+        {
+            buttonStoklariGoster1.Visible = true;
+            buttonStoklariGoster2.Visible = false;
+            panelStoklar.Visible = false; 
+        }
+
+        // stokları güncelle
+        void stokGuncelle()
+        {
+            DataTable dt = new DataTable();
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select * from stoklar",baglanti);
+            adaptor.Fill(dt);
+            dataGridViewStoklar.DataSource = dt;
+        }
+
+        // stok ekle
+        private void buttonStokEkle_Click(object sender, EventArgs e)
+        {
+            Boolean control = true;
+            baglanti.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from stoklar",baglanti);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (textBoxStokID.Text == reader["stok_id"].ToString())
+                {
+                    control = false;
+                }
+                else
+                {
+                    control = true;
+                }
+            }
+            if (control == true)
+            {
+                OleDbCommand cmdInsert = new OleDbCommand("insert into stoklar values(@p1,@p2,@p3,@p4,@p5)",baglanti);
+                cmdInsert.Parameters.AddWithValue("@p1", textBoxStokID.Text);
+                cmdInsert.Parameters.AddWithValue("@p2", textBoxStokAdi.Text);
+                cmdInsert.Parameters.AddWithValue("@p3", textBoxStokAdedi.Text);
+                cmdInsert.Parameters.AddWithValue("@p4", textBoxStokFiyati.Text);
+                cmdInsert.Parameters.AddWithValue("@p5", GirisEkrani.kullanici_adi);
+                cmdInsert.ExecuteNonQuery();
+                panelTopRenk.BackColor = Color.Lime;
+                labelMesaj.ForeColor = Color.Green;
+                labelMesaj.Text = "Stok başarıyla eklendi!";
+                stokGuncelle();
+            }
+            else
+            {
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Bu ID ile bir stok zaten kayıtlı!";
+            }
+            baglanti.Close();
+        }
+
+        // stoklar tablosuna tıklandığında
+        private void dataGridViewStoklar_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxStokID.Text = dataGridViewStoklar.CurrentRow.Cells["stok_id"].Value.ToString();
+            textBoxStokAdi.Text = dataGridViewStoklar.CurrentRow.Cells["stok_adi"].Value.ToString();
+            textBoxStokAdedi.Text = dataGridViewStoklar.CurrentRow.Cells["stok_adedi"].Value.ToString();
+            textBoxStokFiyati.Text = dataGridViewStoklar.CurrentRow.Cells["stok_fiyati"].Value.ToString();
+        }
+
+        // stok güncelle
+        private void buttonStokGuncelle_Click(object sender, EventArgs e)
+        {
+            Boolean control = false;
+            baglanti.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from stoklar",baglanti);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (textBoxStokID.Text == reader["stok_id"].ToString())
+                {
+                    control = true;
+                }
+                else
+                {
+                    control = false;
+                }
+            }
+            if (control == true)
+            {
+                OleDbCommand cmdUpdate = new OleDbCommand("update stoklar set stok_adi=@p1, stok_adedi=@p2, stok_fiyati=@p3 where stok_id=@p4",baglanti);
+                cmdUpdate.Parameters.AddWithValue("@p1", textBoxStokAdi.Text);
+                cmdUpdate.Parameters.AddWithValue("@p2", textBoxStokAdedi.Text);
+                cmdUpdate.Parameters.AddWithValue("@p3", textBoxStokFiyati.Text);
+                cmdUpdate.Parameters.AddWithValue("@p4", textBoxStokID.Text);
+                cmdUpdate.ExecuteNonQuery();
+                panelTopRenk.BackColor = Color.Lime;
+                labelMesaj.ForeColor = Color.Green;
+                labelMesaj.Text = "Stok başarıyla güncellendi!";
+                stokGuncelle();
+            }
+            else
+            {
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Böyle bir stok mevcut değil!";
+            }
+            baglanti.Close();
+        }
+
+        // stok sil
+        private void buttonStokSil_Click(object sender, EventArgs e)
+        {
+            Boolean control = false;
+            baglanti.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from stoklar",baglanti);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (textBoxStokID.Text == reader["stok_id"].ToString())
+                {
+                    control = true;
+                }
+                else
+                {
+                    control = false;
+                }
+            }
+            if (control == true)
+            {
+                OleDbCommand cmdDelete = new OleDbCommand("delete from stoklar where stok_id=@p1",baglanti);
+                cmdDelete.Parameters.AddWithValue("@p1",textBoxStokID.Text);
+                cmdDelete.ExecuteNonQuery();
+                panelTopRenk.BackColor = Color.Lime;
+                labelMesaj.ForeColor = Color.Green;
+                labelMesaj.Text = "Kayıt başarıyla silindi!";
+                stokGuncelle();
+            }
+            else
+            {
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Böyle bir stok mevcut değil!";
+            }
+            baglanti.Close();
+        }
+
+        // stok temizle
+        private void buttonStokTemizle_Click(object sender, EventArgs e)
+        {
+            textBoxStokID.Text = "";
+            textBoxStokAdi.Text = "";
+            textBoxStokAdedi.Text = "";
+            textBoxStokFiyati.Text = "";
+        }
+
+        // kullanıcıları göster veritabanı tıklandığında
+        private void dataGridViewKullanicilar_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string kullaniciAdi = dataGridViewKullanicilar.CurrentRow.Cells["kullanici_adi"].Value.ToString();
+            baglanti.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from kullanicilar where kullanici_adi='"+kullaniciAdi+"'",baglanti);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                labelKullanicilar.Text = "Kullanıcı adı: " + reader["kullanici_adi"].ToString() + "    |    " + "Yetkisi: " + reader["yetki"].ToString();
+                if (reader["kullanici_resmi"].ToString() == "none")
+                {
+                    pictureBoxKullanicilarKullaniciResmi.BackColor = Color.White;
+                }
+                else
+                {
+                    pictureBoxKullanicilarKullaniciResmi.Image = Image.FromFile("kullanicilar/" + reader["kullanici_resmi"].ToString()); 
+                }
+            }
+            baglanti.Close();
         }
     }
 }

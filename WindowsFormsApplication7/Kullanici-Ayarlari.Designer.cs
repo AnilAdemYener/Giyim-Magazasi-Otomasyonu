@@ -50,6 +50,13 @@
             this.buttonKullaniciAyarlariResimSec = new System.Windows.Forms.Button();
             this.buttonKullaniciAyarlariResimKaydet = new System.Windows.Forms.Button();
             this.buttonKullaniciAyarlariResimSil = new System.Windows.Forms.Button();
+            this.buttonSifreyiDegistir = new System.Windows.Forms.Button();
+            this.textBoxYeniSifreniz = new System.Windows.Forms.TextBox();
+            this.labelYeniSifreniz = new System.Windows.Forms.Label();
+            this.textBoxMevcutSifreniz = new System.Windows.Forms.TextBox();
+            this.labelMevcutSifreniz = new System.Windows.Forms.Label();
+            this.textBoxYeniSifrenizTekrar = new System.Windows.Forms.TextBox();
+            this.labelYeniSifrenizTekrar = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKullaniciResmi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMinimize)).BeginInit();
@@ -161,9 +168,10 @@
             // 
             this.labelMesaj.AutoSize = true;
             this.labelMesaj.BackColor = System.Drawing.Color.Transparent;
-            this.labelMesaj.Location = new System.Drawing.Point(108, 628);
+            this.labelMesaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.labelMesaj.Location = new System.Drawing.Point(107, 615);
             this.labelMesaj.Name = "labelMesaj";
-            this.labelMesaj.Size = new System.Drawing.Size(35, 13);
+            this.labelMesaj.Size = new System.Drawing.Size(54, 20);
             this.labelMesaj.TabIndex = 29;
             this.labelMesaj.Text = "Mesaj";
             // 
@@ -209,16 +217,17 @@
             // labelKullaniciAyarlariKullaniciAdi
             // 
             this.labelKullaniciAyarlariKullaniciAdi.AutoSize = true;
-            this.labelKullaniciAyarlariKullaniciAdi.Location = new System.Drawing.Point(506, 187);
+            this.labelKullaniciAyarlariKullaniciAdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.labelKullaniciAyarlariKullaniciAdi.Location = new System.Drawing.Point(491, 186);
             this.labelKullaniciAyarlariKullaniciAdi.Name = "labelKullaniciAyarlariKullaniciAdi";
-            this.labelKullaniciAyarlariKullaniciAdi.Size = new System.Drawing.Size(83, 13);
+            this.labelKullaniciAyarlariKullaniciAdi.Size = new System.Drawing.Size(133, 20);
             this.labelKullaniciAyarlariKullaniciAdi.TabIndex = 35;
             this.labelKullaniciAyarlariKullaniciAdi.Text = "Kullanıcı Adınız: ";
             // 
             // textBoxKullaniciAyarlariKullaniciAdi
             // 
             this.textBoxKullaniciAyarlariKullaniciAdi.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxKullaniciAyarlariKullaniciAdi.Location = new System.Drawing.Point(595, 187);
+            this.textBoxKullaniciAyarlariKullaniciAdi.Location = new System.Drawing.Point(634, 186);
             this.textBoxKullaniciAyarlariKullaniciAdi.Name = "textBoxKullaniciAyarlariKullaniciAdi";
             this.textBoxKullaniciAyarlariKullaniciAdi.Size = new System.Drawing.Size(211, 13);
             this.textBoxKullaniciAyarlariKullaniciAdi.TabIndex = 36;
@@ -226,16 +235,17 @@
             // labelKullaniciAyarlariSifre
             // 
             this.labelKullaniciAyarlariSifre.AutoSize = true;
-            this.labelKullaniciAyarlariSifre.Location = new System.Drawing.Point(542, 213);
+            this.labelKullaniciAyarlariSifre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.labelKullaniciAyarlariSifre.Location = new System.Drawing.Point(548, 212);
             this.labelKullaniciAyarlariSifre.Name = "labelKullaniciAyarlariSifre";
-            this.labelKullaniciAyarlariSifre.Size = new System.Drawing.Size(47, 13);
+            this.labelKullaniciAyarlariSifre.Size = new System.Drawing.Size(76, 20);
             this.labelKullaniciAyarlariSifre.TabIndex = 37;
             this.labelKullaniciAyarlariSifre.Text = "Şifreniz: ";
             // 
             // textBoxKullaniciAyarlariSifre
             // 
             this.textBoxKullaniciAyarlariSifre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxKullaniciAyarlariSifre.Location = new System.Drawing.Point(595, 213);
+            this.textBoxKullaniciAyarlariSifre.Location = new System.Drawing.Point(634, 212);
             this.textBoxKullaniciAyarlariSifre.Name = "textBoxKullaniciAyarlariSifre";
             this.textBoxKullaniciAyarlariSifre.Size = new System.Drawing.Size(211, 13);
             this.textBoxKullaniciAyarlariSifre.TabIndex = 38;
@@ -247,7 +257,7 @@
             this.buttonKullaniciAyarlariSifreyiAcKapat.FlatAppearance.BorderSize = 0;
             this.buttonKullaniciAyarlariSifreyiAcKapat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonKullaniciAyarlariSifreyiAcKapat.ForeColor = System.Drawing.Color.White;
-            this.buttonKullaniciAyarlariSifreyiAcKapat.Location = new System.Drawing.Point(762, 232);
+            this.buttonKullaniciAyarlariSifreyiAcKapat.Location = new System.Drawing.Point(676, 231);
             this.buttonKullaniciAyarlariSifreyiAcKapat.Name = "buttonKullaniciAyarlariSifreyiAcKapat";
             this.buttonKullaniciAyarlariSifreyiAcKapat.Size = new System.Drawing.Size(169, 37);
             this.buttonKullaniciAyarlariSifreyiAcKapat.TabIndex = 39;
@@ -302,6 +312,78 @@
             this.buttonKullaniciAyarlariResimSil.UseVisualStyleBackColor = false;
             this.buttonKullaniciAyarlariResimSil.Click += new System.EventHandler(this.ButtonKullaniciAyarlariResimSil_Click);
             // 
+            // buttonSifreyiDegistir
+            // 
+            this.buttonSifreyiDegistir.BackColor = System.Drawing.Color.Orange;
+            this.buttonSifreyiDegistir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSifreyiDegistir.FlatAppearance.BorderSize = 0;
+            this.buttonSifreyiDegistir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSifreyiDegistir.ForeColor = System.Drawing.Color.White;
+            this.buttonSifreyiDegistir.Location = new System.Drawing.Point(674, 406);
+            this.buttonSifreyiDegistir.Name = "buttonSifreyiDegistir";
+            this.buttonSifreyiDegistir.Size = new System.Drawing.Size(169, 37);
+            this.buttonSifreyiDegistir.TabIndex = 61;
+            this.buttonSifreyiDegistir.Text = "Şifreyi Değiştir";
+            this.buttonSifreyiDegistir.UseVisualStyleBackColor = false;
+            this.buttonSifreyiDegistir.Click += new System.EventHandler(this.buttonSifreyiDegistir_Click);
+            // 
+            // textBoxYeniSifreniz
+            // 
+            this.textBoxYeniSifreniz.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxYeniSifreniz.Location = new System.Drawing.Point(632, 357);
+            this.textBoxYeniSifreniz.Name = "textBoxYeniSifreniz";
+            this.textBoxYeniSifreniz.Size = new System.Drawing.Size(211, 13);
+            this.textBoxYeniSifreniz.TabIndex = 60;
+            this.textBoxYeniSifreniz.UseSystemPasswordChar = true;
+            // 
+            // labelYeniSifreniz
+            // 
+            this.labelYeniSifreniz.AutoSize = true;
+            this.labelYeniSifreniz.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.labelYeniSifreniz.Location = new System.Drawing.Point(513, 354);
+            this.labelYeniSifreniz.Name = "labelYeniSifreniz";
+            this.labelYeniSifreniz.Size = new System.Drawing.Size(113, 20);
+            this.labelYeniSifreniz.TabIndex = 59;
+            this.labelYeniSifreniz.Text = "Yeni Şifreniz: ";
+            // 
+            // textBoxMevcutSifreniz
+            // 
+            this.textBoxMevcutSifreniz.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxMevcutSifreniz.Location = new System.Drawing.Point(632, 338);
+            this.textBoxMevcutSifreniz.Name = "textBoxMevcutSifreniz";
+            this.textBoxMevcutSifreniz.Size = new System.Drawing.Size(211, 13);
+            this.textBoxMevcutSifreniz.TabIndex = 58;
+            this.textBoxMevcutSifreniz.UseSystemPasswordChar = true;
+            // 
+            // labelMevcutSifreniz
+            // 
+            this.labelMevcutSifreniz.AutoSize = true;
+            this.labelMevcutSifreniz.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.labelMevcutSifreniz.Location = new System.Drawing.Point(491, 331);
+            this.labelMevcutSifreniz.Name = "labelMevcutSifreniz";
+            this.labelMevcutSifreniz.Size = new System.Drawing.Size(135, 20);
+            this.labelMevcutSifreniz.TabIndex = 57;
+            this.labelMevcutSifreniz.Text = "Mevcut Şifreniz: ";
+            // 
+            // textBoxYeniSifrenizTekrar
+            // 
+            this.textBoxYeniSifrenizTekrar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxYeniSifrenizTekrar.Location = new System.Drawing.Point(632, 376);
+            this.textBoxYeniSifrenizTekrar.Name = "textBoxYeniSifrenizTekrar";
+            this.textBoxYeniSifrenizTekrar.Size = new System.Drawing.Size(211, 13);
+            this.textBoxYeniSifrenizTekrar.TabIndex = 63;
+            this.textBoxYeniSifrenizTekrar.UseSystemPasswordChar = true;
+            // 
+            // labelYeniSifrenizTekrar
+            // 
+            this.labelYeniSifrenizTekrar.AutoSize = true;
+            this.labelYeniSifrenizTekrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.labelYeniSifrenizTekrar.Location = new System.Drawing.Point(460, 376);
+            this.labelYeniSifrenizTekrar.Name = "labelYeniSifrenizTekrar";
+            this.labelYeniSifrenizTekrar.Size = new System.Drawing.Size(166, 20);
+            this.labelYeniSifrenizTekrar.TabIndex = 62;
+            this.labelYeniSifrenizTekrar.Text = "Yeni Şifreniz Tekrar: ";
+            // 
             // Kullanici_Ayarlari
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -310,6 +392,13 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(979, 665);
+            this.Controls.Add(this.textBoxYeniSifrenizTekrar);
+            this.Controls.Add(this.labelYeniSifrenizTekrar);
+            this.Controls.Add(this.buttonSifreyiDegistir);
+            this.Controls.Add(this.textBoxYeniSifreniz);
+            this.Controls.Add(this.labelYeniSifreniz);
+            this.Controls.Add(this.textBoxMevcutSifreniz);
+            this.Controls.Add(this.labelMevcutSifreniz);
             this.Controls.Add(this.buttonKullaniciAyarlariResimSil);
             this.Controls.Add(this.buttonKullaniciAyarlariResimKaydet);
             this.Controls.Add(this.buttonKullaniciAyarlariResimSec);
@@ -365,5 +454,12 @@
         private System.Windows.Forms.Button buttonKullaniciAyarlariResimSec;
         private System.Windows.Forms.Button buttonKullaniciAyarlariResimKaydet;
         private System.Windows.Forms.Button buttonKullaniciAyarlariResimSil;
+        private System.Windows.Forms.Button buttonSifreyiDegistir;
+        private System.Windows.Forms.TextBox textBoxYeniSifreniz;
+        private System.Windows.Forms.Label labelYeniSifreniz;
+        private System.Windows.Forms.TextBox textBoxMevcutSifreniz;
+        private System.Windows.Forms.Label labelMevcutSifreniz;
+        private System.Windows.Forms.TextBox textBoxYeniSifrenizTekrar;
+        private System.Windows.Forms.Label labelYeniSifrenizTekrar;
     }
 }

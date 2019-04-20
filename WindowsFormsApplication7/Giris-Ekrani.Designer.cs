@@ -162,9 +162,10 @@
             // 
             this.labelKullaniciAdi.AutoSize = true;
             this.labelKullaniciAdi.BackColor = System.Drawing.Color.Transparent;
+            this.labelKullaniciAdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.labelKullaniciAdi.Location = new System.Drawing.Point(12, 150);
             this.labelKullaniciAdi.Name = "labelKullaniciAdi";
-            this.labelKullaniciAdi.Size = new System.Drawing.Size(64, 13);
+            this.labelKullaniciAdi.Size = new System.Drawing.Size(101, 20);
             this.labelKullaniciAdi.TabIndex = 3;
             this.labelKullaniciAdi.Text = "Kullanıcı A‍dı";
             // 
@@ -172,9 +173,10 @@
             // 
             this.labelSifre.AutoSize = true;
             this.labelSifre.BackColor = System.Drawing.Color.Transparent;
+            this.labelSifre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.labelSifre.Location = new System.Drawing.Point(48, 183);
             this.labelSifre.Name = "labelSifre";
-            this.labelSifre.Size = new System.Drawing.Size(28, 13);
+            this.labelSifre.Size = new System.Drawing.Size(44, 20);
             this.labelSifre.TabIndex = 4;
             this.labelSifre.Text = "Şifre";
             // 
@@ -231,9 +233,10 @@
             // 
             this.labelMesaj.AutoSize = true;
             this.labelMesaj.BackColor = System.Drawing.Color.Transparent;
+            this.labelMesaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.labelMesaj.Location = new System.Drawing.Point(14, 344);
             this.labelMesaj.Name = "labelMesaj";
-            this.labelMesaj.Size = new System.Drawing.Size(35, 13);
+            this.labelMesaj.Size = new System.Drawing.Size(54, 20);
             this.labelMesaj.TabIndex = 9;
             this.labelMesaj.Text = "Mesaj";
             // 
