@@ -549,6 +549,7 @@ namespace WindowsFormsApplication7
                     cmdSilinen.Parameters.AddWithValue("@p5", textBoxUrunBedeni.Text);
                     cmdSilinen.Parameters.AddWithValue("@p6", textBoxUrunFiyati.Text);
                     cmdSilinen.Parameters.AddWithValue("@p7", textBoxUrunKitlesi.Text);
+                    cmdSilinen.Parameters.AddWithValue("@p8", "none");
                     cmdSilinen.Parameters.AddWithValue("@p9", GirisEkrani.kullanici_adi);
                     cmdSilinen.ExecuteNonQuery();
 
@@ -823,7 +824,17 @@ namespace WindowsFormsApplication7
             textBoxMusteriSoyadi.Text = dataGridViewMusteriler.CurrentRow.Cells["musteri_soyadi"].Value.ToString();
             textBoxMusteriAdresi.Text = dataGridViewMusteriler.CurrentRow.Cells["musteri_adresi"].Value.ToString();
             textBoxMusteriTelefonu.Text = dataGridViewMusteriler.CurrentRow.Cells["musteri_telefonu"].Value.ToString();
-            pictureBoxMusteriResmi.Image = Image.FromFile("musteriler/" + dataGridViewMusteriler.CurrentRow.Cells["musteri_resmi"].Value.ToString());
+            try
+            {
+                pictureBoxMusteriResmi.Image = Image.FromFile("musteriler/" + dataGridViewMusteriler.CurrentRow.Cells["musteri_resmi"].Value.ToString());
+            }
+            catch
+            {
+                pictureBoxMusteriResmi.Image = null;
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Bu kayıtın resim dosyası bozuk veya mevcut değil!";
+            }
             musteriResim = "musteriler/" + dataGridViewMusteriler.CurrentRow.Cells["musteri_resmi"].Value.ToString();
         }
 
@@ -836,19 +847,32 @@ namespace WindowsFormsApplication7
             textBoxUrunRengi.Text = dataGridViewUrunler.CurrentRow.Cells["urun_rengi"].Value.ToString();
             textBoxUrunBedeni.Text = dataGridViewUrunler.CurrentRow.Cells["urun_bedeni"].Value.ToString();
             textBoxUrunFiyati.Text = dataGridViewUrunler.CurrentRow.Cells["urun_fiyati"].Value.ToString();
+            string resimYol = dataGridViewUrunler.CurrentRow.Cells["urun_resmi"].Value.ToString();
             baglanti.Open();
             OleDbCommand cmdUrunKitlesi = new OleDbCommand("select * from urunler where urun_id='" + textBoxUrunId.Text + "'", baglanti);
             OleDbDataReader readerUrunKitlesi = cmdUrunKitlesi.ExecuteReader();
             while (readerUrunKitlesi.Read())
             {
                 textBoxUrunKitlesi.Text = readerUrunKitlesi["urun_kitlesi"].ToString();
-                if (readerUrunKitlesi["urun_resmi"].ToString() == "none")
+                try
+                {
+                    panelTopRenk.BackColor = Color.Orange;
+                    labelMesaj.Text = "";
+                    if (readerUrunKitlesi["urun_resmi"].ToString() == "none")
+                    {
+                        pictureBoxUrunResmi.Image = null;
+                    }
+                    else
+                    {
+                        pictureBoxUrunResmi.Image = Image.FromFile("urunler/" + resimYol);
+                    }
+                }
+                catch
                 {
                     pictureBoxUrunResmi.Image = null;
-                }
-                else
-                {
-                    pictureBoxUrunResmi.Image = Image.FromFile("urunler/" + dataGridViewUrunler.CurrentRow.Cells["urun_resmi"].Value.ToString());
+                    panelTopRenk.BackColor = Color.Red;
+                    labelMesaj.ForeColor = Color.Red;
+                    labelMesaj.Text = "Bu kayıtın resim dosyası bozuk veya mevcut değil!";
                 }
             }
             baglanti.Close();
@@ -872,32 +896,54 @@ namespace WindowsFormsApplication7
         // müşteri resmi ekle
         private void ButtonMusteriResmiEkle_Click(object sender, EventArgs e)
         {
-            OpenFileDialog f = new OpenFileDialog();
-            f.Filter = "JPG Resim|*.jpg";
-            if (f.ShowDialog() == DialogResult.OK)
+            try
             {
-                musteriResim = f.FileName;
-                musteriResimKontrol = true;
+                panelTopRenk.BackColor = Color.Orange;
+                labelMesaj.Text = "";
+                OpenFileDialog f = new OpenFileDialog();
+                f.Filter = "JPG Resim|*.jpg";
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    musteriResim = f.FileName;
+                    musteriResimKontrol = true;
+                }
+                else
+                {
+                    musteriResimKontrol = false;
+                }
             }
-            else
+            catch
             {
-                musteriResimKontrol = false;
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Sisteminiz resimleri açmaya uygun değil!";
             }
         }
 
         // ürün resmi ekle
         private void ButtonUrunResmiEkle_Click(object sender, EventArgs e)
         {
-            OpenFileDialog f = new OpenFileDialog();
-            f.Filter = "JPG Resim|*.jpg";
-            if (f.ShowDialog() == DialogResult.OK)
+            try
             {
-                urunResim = f.FileName;
-                urunResimKontrol = true;
+                panelTopRenk.BackColor = Color.Orange;
+                labelMesaj.Text = "";
+                OpenFileDialog f = new OpenFileDialog();
+                f.Filter = "JPG Resim|*.jpg";
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    urunResim = f.FileName;
+                    urunResimKontrol = true;
+                }
+                else
+                {
+                    urunResimKontrol = false;
+                }
             }
-            else
+            catch
             {
-                urunResimKontrol = false;
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Sisteminiz resimleri açmaya uygun değil!";
             }
         }
 
@@ -935,14 +981,14 @@ namespace WindowsFormsApplication7
         {
             buttonStoklariGoster1.Visible = true;
             buttonStoklariGoster2.Visible = false;
-            panelStoklar.Visible = false; 
+            panelStoklar.Visible = false;
         }
 
         // stokları güncelle
         void stokGuncelle()
         {
             DataTable dt = new DataTable();
-            OleDbDataAdapter adaptor = new OleDbDataAdapter("select * from stoklar",baglanti);
+            OleDbDataAdapter adaptor = new OleDbDataAdapter("select * from stoklar", baglanti);
             adaptor.Fill(dt);
             dataGridViewStoklar.DataSource = dt;
         }
@@ -952,7 +998,7 @@ namespace WindowsFormsApplication7
         {
             Boolean control = true;
             baglanti.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from stoklar",baglanti);
+            OleDbCommand cmd = new OleDbCommand("select * from stoklar", baglanti);
             OleDbDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -967,7 +1013,7 @@ namespace WindowsFormsApplication7
             }
             if (control == true)
             {
-                OleDbCommand cmdInsert = new OleDbCommand("insert into stoklar values(@p1,@p2,@p3,@p4,@p5)",baglanti);
+                OleDbCommand cmdInsert = new OleDbCommand("insert into stoklar values(@p1,@p2,@p3,@p4,@p5)", baglanti);
                 cmdInsert.Parameters.AddWithValue("@p1", textBoxStokID.Text);
                 cmdInsert.Parameters.AddWithValue("@p2", textBoxStokAdi.Text);
                 cmdInsert.Parameters.AddWithValue("@p3", textBoxStokAdedi.Text);
@@ -1002,7 +1048,7 @@ namespace WindowsFormsApplication7
         {
             Boolean control = false;
             baglanti.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from stoklar",baglanti);
+            OleDbCommand cmd = new OleDbCommand("select * from stoklar", baglanti);
             OleDbDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -1017,7 +1063,7 @@ namespace WindowsFormsApplication7
             }
             if (control == true)
             {
-                OleDbCommand cmdUpdate = new OleDbCommand("update stoklar set stok_adi=@p1, stok_adedi=@p2, stok_fiyati=@p3 where stok_id=@p4",baglanti);
+                OleDbCommand cmdUpdate = new OleDbCommand("update stoklar set stok_adi=@p1, stok_adedi=@p2, stok_fiyati=@p3 where stok_id=@p4", baglanti);
                 cmdUpdate.Parameters.AddWithValue("@p1", textBoxStokAdi.Text);
                 cmdUpdate.Parameters.AddWithValue("@p2", textBoxStokAdedi.Text);
                 cmdUpdate.Parameters.AddWithValue("@p3", textBoxStokFiyati.Text);
@@ -1042,7 +1088,7 @@ namespace WindowsFormsApplication7
         {
             Boolean control = false;
             baglanti.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from stoklar",baglanti);
+            OleDbCommand cmd = new OleDbCommand("select * from stoklar", baglanti);
             OleDbDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -1057,8 +1103,8 @@ namespace WindowsFormsApplication7
             }
             if (control == true)
             {
-                OleDbCommand cmdDelete = new OleDbCommand("delete from stoklar where stok_id=@p1",baglanti);
-                cmdDelete.Parameters.AddWithValue("@p1",textBoxStokID.Text);
+                OleDbCommand cmdDelete = new OleDbCommand("delete from stoklar where stok_id=@p1", baglanti);
+                cmdDelete.Parameters.AddWithValue("@p1", textBoxStokID.Text);
                 cmdDelete.ExecuteNonQuery();
                 panelTopRenk.BackColor = Color.Lime;
                 labelMesaj.ForeColor = Color.Green;
@@ -1088,7 +1134,7 @@ namespace WindowsFormsApplication7
         {
             string kullaniciAdi = dataGridViewKullanicilar.CurrentRow.Cells["kullanici_adi"].Value.ToString();
             baglanti.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from kullanicilar where kullanici_adi='"+kullaniciAdi+"'",baglanti);
+            OleDbCommand cmd = new OleDbCommand("select * from kullanicilar where kullanici_adi='" + kullaniciAdi + "'", baglanti);
             OleDbDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -1099,7 +1145,7 @@ namespace WindowsFormsApplication7
                 }
                 else
                 {
-                    pictureBoxKullanicilarKullaniciResmi.Image = Image.FromFile("kullanicilar/" + reader["kullanici_resmi"].ToString()); 
+                    pictureBoxKullanicilarKullaniciResmi.Image = Image.FromFile("kullanicilar/" + reader["kullanici_resmi"].ToString());
                 }
             }
             baglanti.Close();

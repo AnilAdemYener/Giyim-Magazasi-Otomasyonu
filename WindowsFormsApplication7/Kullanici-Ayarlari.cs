@@ -34,6 +34,7 @@ namespace WindowsFormsApplication7
             labelKullaniciAdi.Text = "Hoşgeldiniz sayın " + GirisEkrani.kullanici_adi + ".";
             labelMesaj.Text = "";
             textBoxKullaniciAyarlariKullaniciAdi.Enabled = false;
+            textBoxKullaniciAyarlariSifre.Enabled = false;
             textBoxKullaniciAyarlariKullaniciAdi.Text = GirisEkrani.kullanici_adi;
             // kullanıcı resmi
             cnn.Open();
@@ -145,19 +146,30 @@ namespace WindowsFormsApplication7
             {
                 if (kullaniciResimKontrol == true)
                 {
-                    File.Copy(kullaniciResim, "kullanicilar/" + readerTarih["tarih"].ToString() + "_" + "kullanici" + ".jpg");
-                    OleDbCommand cmdUpdate = new OleDbCommand("update kullanicilar set kullanici_resmi=@p1 where kullanici_adi='"+GirisEkrani.kullanici_adi+"'", cnn);
-                    cmdUpdate.Parameters.AddWithValue("@p1", readerTarih["tarih"].ToString() + "_" + "kullanici" + ".jpg");
-                    cmdUpdate.ExecuteNonQuery();
-                    panelTopRenk.BackColor = Color.Lime;
-                    labelMesaj.ForeColor = Color.Green;
-                    labelMesaj.Text = "Yeni resminiz başarıyla yüklendi!";
-                    OleDbCommand cmdResimUpdate = new OleDbCommand("select * from kullanicilar where kullanici_adi='" + GirisEkrani.kullanici_adi + "'", cnn);
-                    OleDbDataReader readerResimUpdate = cmdResimUpdate.ExecuteReader();
-                    while (readerResimUpdate.Read())
+                    try
                     {
-                        pictureBoxKullaniciResmi.Image = Image.FromFile("kullanicilar/" + readerResimUpdate["kullanici_resmi"].ToString());
-                        pictureBoxKullaniciAyarlariKullaniciResmi.Image = Image.FromFile("kullanicilar/" + readerResimUpdate["kullanici_resmi"].ToString());
+                        panelTopRenk.BackColor = Color.Orange;
+                        labelMesaj.Text = "";
+                        File.Copy(kullaniciResim, "kullanicilar/" + readerTarih["tarih"].ToString() + "_" + "kullanici" + ".jpg");
+                        OleDbCommand cmdUpdate = new OleDbCommand("update kullanicilar set kullanici_resmi=@p1 where kullanici_adi='" + GirisEkrani.kullanici_adi + "'", cnn);
+                        cmdUpdate.Parameters.AddWithValue("@p1", readerTarih["tarih"].ToString() + "_" + "kullanici" + ".jpg");
+                        cmdUpdate.ExecuteNonQuery();
+                        panelTopRenk.BackColor = Color.Lime;
+                        labelMesaj.ForeColor = Color.Green;
+                        labelMesaj.Text = "Yeni resminiz başarıyla yüklendi!";
+                        OleDbCommand cmdResimUpdate = new OleDbCommand("select * from kullanicilar where kullanici_adi='" + GirisEkrani.kullanici_adi + "'", cnn);
+                        OleDbDataReader readerResimUpdate = cmdResimUpdate.ExecuteReader();
+                        while (readerResimUpdate.Read())
+                        {
+                            pictureBoxKullaniciResmi.Image = Image.FromFile("kullanicilar/" + readerResimUpdate["kullanici_resmi"].ToString());
+                            pictureBoxKullaniciAyarlariKullaniciResmi.Image = Image.FromFile("kullanicilar/" + readerResimUpdate["kullanici_resmi"].ToString());
+                        }
+                    }
+                    catch
+                    {
+                        panelTopRenk.BackColor = Color.Red;
+                        labelMesaj.ForeColor = Color.Red;
+                        labelMesaj.Text = "Önce bir resim seçtiğinizden emin olun!";
                     }
                 }
                 else if (kullaniciResimKontrol == false)
@@ -200,7 +212,7 @@ namespace WindowsFormsApplication7
         {
             Boolean control = false;
             cnn.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from kullanicilar where kullanici_adi='"+GirisEkrani.kullanici_adi+"'",cnn);
+            OleDbCommand cmd = new OleDbCommand("select * from kullanicilar where kullanici_adi='" + GirisEkrani.kullanici_adi + "'", cnn);
             OleDbDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -217,7 +229,7 @@ namespace WindowsFormsApplication7
             {
                 if (textBoxYeniSifreniz.Text == textBoxYeniSifrenizTekrar.Text)
                 {
-                    OleDbCommand cmdUpdate = new OleDbCommand("update kullanicilar set sifre=@p1 where kullanici_adi=@p2",cnn);
+                    OleDbCommand cmdUpdate = new OleDbCommand("update kullanicilar set sifre=@p1 where kullanici_adi=@p2", cnn);
                     cmdUpdate.Parameters.AddWithValue("@p1", textBoxYeniSifreniz.Text);
                     cmdUpdate.Parameters.AddWithValue("@p2", GirisEkrani.kullanici_adi);
                     cmdUpdate.ExecuteNonQuery();
