@@ -240,42 +240,52 @@ namespace WindowsFormsApplication7
         // kayıt ekle sil kullanıcı ekle
         private void ButtonKullaniciEkle_Click(object sender, EventArgs e)
         {
-            char control = 't';
-            cnn.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from kullanicilar", cnn);
-            OleDbDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            if (textBoxKullaniciEkleSilAdi.TextLength>1 && textBoxKullaniciEkleSilSifresi.TextLength > 1)
             {
-                if (textBoxKullaniciEkleSilAdi.Text == reader["kullanici_adi"].ToString())
+                char control = 't';
+                cnn.Open();
+                OleDbCommand cmd = new OleDbCommand("select * from kullanicilar", cnn);
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    control = 'f';
-                    panelTopRenk.BackColor = Color.Red;
-                    labelMesaj.ForeColor = Color.Red;
-                    labelMesaj.Text = "Böyle bir kayıt zaten var.";
+                    if (textBoxKullaniciEkleSilAdi.Text == reader["kullanici_adi"].ToString())
+                    {
+                        control = 'f';
+                        panelTopRenk.BackColor = Color.Red;
+                        labelMesaj.ForeColor = Color.Red;
+                        labelMesaj.Text = "Böyle bir kayıt zaten var.";
+                    }
                 }
+                if (control == 't')
+                {
+                    string yetki;
+                    if (checkBoxKullaniciEkleSilYetkisi.Checked == true)
+                    {
+                        yetki = "admin";
+                    }
+                    else// if (checkBoxKullaniciEkleSilYetkisi.Checked==false)
+                    {
+                        yetki = "normal";
+                    }
+                    OleDbCommand cmdInsert = new OleDbCommand("insert into kullanicilar values(@p1,@p2,@p3,@p4)", cnn);
+                    cmdInsert.Parameters.AddWithValue("@p1", textBoxKullaniciEkleSilAdi.Text);
+                    cmdInsert.Parameters.AddWithValue("@p2", textBoxKullaniciEkleSilSifresi.Text);
+                    cmdInsert.Parameters.AddWithValue("@p3", yetki);
+                    cmdInsert.Parameters.AddWithValue("@p4", "none");
+                    cmdInsert.ExecuteNonQuery();
+                    panelTopRenk.BackColor = Color.Lime;
+                    labelMesaj.ForeColor = Color.Green;
+                    labelMesaj.Text = "Kayıt eklendi.";
+                    updateKullanicilar();
+                }
+                cnn.Close(); 
             }
-            if (control == 't')
+            else
             {
-                string yetki;
-                if (checkBoxKullaniciEkleSilYetkisi.Checked == true)
-                {
-                    yetki = "admin";
-                }
-                else// if (checkBoxKullaniciEkleSilYetkisi.Checked==false)
-                {
-                    yetki = "normal";
-                }
-                OleDbCommand cmdInsert = new OleDbCommand("insert into kullanicilar values(@p1,@p2,@p3)", cnn);
-                cmdInsert.Parameters.AddWithValue("@p1", textBoxKullaniciEkleSilAdi.Text);
-                cmdInsert.Parameters.AddWithValue("@p2", textBoxKullaniciEkleSilSifresi.Text);
-                cmdInsert.Parameters.AddWithValue("@p3", yetki);
-                cmdInsert.ExecuteNonQuery();
-                panelTopRenk.BackColor = Color.Lime;
-                labelMesaj.ForeColor = Color.Green;
-                labelMesaj.Text = "Kayıt eklendi.";
-                updateKullanicilar();
+                panelTopRenk.BackColor = Color.Red;
+                labelMesaj.ForeColor = Color.Red;
+                labelMesaj.Text = "Boş değer girmediğinize emin olun!";
             }
-            cnn.Close();
         }
 
         // kullanıcı güncelle

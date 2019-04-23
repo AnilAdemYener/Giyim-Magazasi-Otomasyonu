@@ -1138,7 +1138,17 @@ namespace WindowsFormsApplication7
             OleDbDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+                if (reader["yetki"].ToString() == "admin")
+                {
+                    labelKullanicilar.ForeColor = Color.Red;
+                }
+                else
+                {
+                    labelKullanicilar.ForeColor = Color.Black; 
+                }
+                
                 labelKullanicilar.Text = "Kullanıcı adı: " + reader["kullanici_adi"].ToString() + "    |    " + "Yetkisi: " + reader["yetki"].ToString();
+
                 if (reader["kullanici_resmi"].ToString() == "none")
                 {
                     pictureBoxKullanicilarKullaniciResmi.BackColor = Color.White;
@@ -1146,7 +1156,7 @@ namespace WindowsFormsApplication7
                 else
                 {
                     pictureBoxKullanicilarKullaniciResmi.Image = Image.FromFile("kullanicilar/" + reader["kullanici_resmi"].ToString());
-                }
+                } 
             }
             baglanti.Close();
         }
