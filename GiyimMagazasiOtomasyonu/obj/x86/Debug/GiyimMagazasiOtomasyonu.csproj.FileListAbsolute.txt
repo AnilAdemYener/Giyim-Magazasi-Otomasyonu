@@ -13,3 +13,4 @@ C:\Users\Anıl Adem Yener\documents\visual studio 2010\Projects\GiyimMagazasiOto
 C:\Users\Anıl Adem Yener\documents\visual studio 2010\Projects\GiyimMagazasiOtomasyonu\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.ChangeProfileSettings.resources
 C:\Users\Anıl Adem Yener\documents\visual studio 2010\Projects\GiyimMagazasiOtomasyonu\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.AdminPanel.resources
 C:\Users\Anıl Adem Yener\documents\visual studio 2010\Projects\GiyimMagazasiOtomasyonu\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.NewSale.resources
+C:\Users\Anıl Adem Yener\documents\visual studio 2010\Projects\GiyimMagazasiOtomasyonu\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.CustomerDetails.resources

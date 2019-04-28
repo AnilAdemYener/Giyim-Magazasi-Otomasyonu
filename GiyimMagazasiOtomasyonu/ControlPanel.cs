@@ -878,5 +878,34 @@ namespace GiyimMagazasiOtomasyonu
             movX = e.X;
             movY = e.Y;
         }
+
+        public static string customerID;
+
+        // müşteri detayları
+        private void buttonCustomerDetails_Click(object sender, EventArgs e)
+        {
+            Boolean control = false;
+            cnn.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from customers",cnn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (textBoxCustomerID.Text == reader["customer_id"].ToString())
+                {
+                    control = true;
+                    customerID = textBoxCustomerID.Text;
+                    CustomerDetails customerDetails = new CustomerDetails();
+                    this.Hide();
+                    customerDetails.Show();
+                }
+            }
+            if (control == false)
+            {
+                panelTopColor.BackColor = Color.Red;
+                labelMessage.ForeColor = Color.Red;
+                labelMessage.Text = "Böyle bir müşteri kayıtlı değil!";
+            }
+            cnn.Close();
+        }
     }
 }

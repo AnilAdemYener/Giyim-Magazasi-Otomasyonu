@@ -114,6 +114,7 @@
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
             this.textBoxUserID = new System.Windows.Forms.TextBox();
             this.labelUserID = new System.Windows.Forms.Label();
+            this.buttonCustomerDetails = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMinimize)).BeginInit();
@@ -715,6 +716,7 @@
             // panelCustomers
             // 
             this.panelCustomers.BackColor = System.Drawing.Color.Transparent;
+            this.panelCustomers.Controls.Add(this.buttonCustomerDetails);
             this.panelCustomers.Controls.Add(this.textBoxCustomerEmail);
             this.panelCustomers.Controls.Add(this.labelCustomerEmail);
             this.panelCustomers.Controls.Add(this.textBoxCustomerNumber);
@@ -1238,6 +1240,22 @@
             this.labelUserID.TabIndex = 6;
             this.labelUserID.Text = "Kullanıcı ID";
             // 
+            // buttonCustomerDetails
+            // 
+            this.buttonCustomerDetails.BackColor = System.Drawing.Color.Orange;
+            this.buttonCustomerDetails.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonCustomerDetails.FlatAppearance.BorderSize = 0;
+            this.buttonCustomerDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCustomerDetails.Font = new System.Drawing.Font("Segoe UI", 10.75F);
+            this.buttonCustomerDetails.ForeColor = System.Drawing.Color.White;
+            this.buttonCustomerDetails.Location = new System.Drawing.Point(648, 413);
+            this.buttonCustomerDetails.Name = "buttonCustomerDetails";
+            this.buttonCustomerDetails.Size = new System.Drawing.Size(328, 41);
+            this.buttonCustomerDetails.TabIndex = 36;
+            this.buttonCustomerDetails.Text = "Müşteri Detayları";
+            this.buttonCustomerDetails.UseVisualStyleBackColor = false;
+            this.buttonCustomerDetails.Click += new System.EventHandler(this.buttonCustomerDetails_Click);
+            // 
             // ControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1379,5 +1397,6 @@
         private System.Windows.Forms.PictureBox pictureBoxUsers;
         private System.Windows.Forms.PictureBox pictureBoxUserAvatar;
         private System.Windows.Forms.Button buttonNewSale;
+        private System.Windows.Forms.Button buttonCustomerDetails;
     }
 }
