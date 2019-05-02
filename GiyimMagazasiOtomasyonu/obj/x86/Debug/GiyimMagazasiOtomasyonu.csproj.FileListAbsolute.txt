@@ -14,3 +14,19 @@ C:\Users\Anıl Adem Yener\documents\visual studio 2010\Projects\GiyimMagazasiOto
 C:\Users\Anıl Adem Yener\documents\visual studio 2010\Projects\GiyimMagazasiOtomasyonu\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.AdminPanel.resources
 C:\Users\Anıl Adem Yener\documents\visual studio 2010\Projects\GiyimMagazasiOtomasyonu\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.NewSale.resources
 C:\Users\Anıl Adem Yener\documents\visual studio 2010\Projects\GiyimMagazasiOtomasyonu\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.CustomerDetails.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.exe
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.pdb
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\bin\Debug\GiyimMagazasiOtomasyonu.exe
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\bin\Debug\GiyimMagazasiOtomasyonu.pdb
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.csprojResolveAssemblyReference.cache
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.ControlPanel.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.ChangeProfileSettings.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.AdminPanel.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.CustomerDetails.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.NewSale.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.ProfileSettings.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.Design.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.Register.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.Login.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.Properties.Resources.resources
+C:\Users\Anıl Adem Yener\Desktop\Giyim-Magazasi-Otomasyonu-master\GiyimMagazasiOtomasyonu\obj\x86\Debug\GiyimMagazasiOtomasyonu.csproj.GenerateResource.Cache

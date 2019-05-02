@@ -36,6 +36,8 @@ namespace GiyimMagazasiOtomasyonu
             textBoxCustomerName.Enabled = false;
             textBoxProductName.Enabled = false;
             textBoxProductPrice.Enabled = false;
+            // puan
+            updatePoint();
             // satış
             cnn.Open();
             OleDbCommand cmdCustomer = new OleDbCommand("select * from customers", cnn);
@@ -203,6 +205,24 @@ namespace GiyimMagazasiOtomasyonu
                 panelTopColor.BackColor = Color.Lime;
                 labelMessage.ForeColor = Color.Green;
                 labelMessage.Text = "Satış başarıyla gerçekleşti!";
+                // puan arttır
+                int amount = Convert.ToInt32(numericUpDownProductNumber.Value);
+                OleDbCommand cmdPoint = new OleDbCommand("update users set user_point=user_point+(1*@p1) where user_id='" + Login.userId + "'", cnn);
+                cmdPoint.Parameters.AddWithValue("@p1", amount);
+                cmdPoint.ExecuteNonQuery();
+            }
+            cnn.Close();
+            updatePoint();
+        }
+
+        void updatePoint()
+        {
+            cnn.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from users where user_id='" + Login.userId + "'", cnn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                labelPoint.Text = "Puanınız: " + reader["user_point"].ToString();
             }
             cnn.Close();
         }
@@ -257,14 +277,47 @@ namespace GiyimMagazasiOtomasyonu
         // satışı iptal et
         private void buttonCancelSell_Click(object sender, EventArgs e)
         {
+            Boolean control = false; // böyle bir kayıt var mı
+            Boolean control2 = false; // bu kayıtı silmeye çalışan kişi ekleyen kişi mi
             cnn.Open();
-            OleDbCommand cmd = new OleDbCommand("delete * from sales where sell_id='" + comboBoxSellID.Text + "'", cnn);
-            cmd.ExecuteNonQuery();
+            OleDbCommand cmd = new OleDbCommand("select * from sales", cnn);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (comboBoxSellID.Text == reader["sell_id"].ToString())
+                {
+                    control = true;
+                    if (reader["sold_by"].ToString() == Login.userId)
+                    {
+                        control2 = true;
+                        OleDbCommand cmdDelete = new OleDbCommand("delete * from sales where sell_id='" + comboBoxSellID.Text + "'", cnn);
+                        cmdDelete.ExecuteNonQuery();
+                        panelTopColor.BackColor = Color.Lime;
+                        labelMessage.ForeColor = Color.Green;
+                        labelMessage.Text = "Satış iptal edildi!";
+                        updateAllSales();
+                        // puan azalt
+                        int amount = Convert.ToInt32(numericUpDownProductNumber.Value);
+                        OleDbCommand cmdPoint = new OleDbCommand("update users set user_point=(user_point-@p1) where user_id='" + Login.userId + "'", cnn);
+                        cmdPoint.Parameters.AddWithValue("@p1", Convert.ToInt32(reader["product_number"].ToString()));
+                        cmdPoint.ExecuteNonQuery();
+                    }
+                }
+                if (control2 == false)
+                {
+                    panelTopColor.BackColor = Color.Red;
+                    labelMessage.ForeColor = Color.Red;
+                    labelMessage.Text = "Bu kayıt size ait değil!";
+                }
+            }
+            if (control == false)
+            {
+                panelTopColor.BackColor = Color.Red;
+                labelMessage.ForeColor = Color.Red;
+                labelMessage.Text = "Böyle bir kayıt mevcut değil!";
+            }
             cnn.Close();
-            updateAllSales();
-            panelTopColor.BackColor = Color.Lime;
-            labelMessage.ForeColor = Color.Green;
-            labelMessage.Text = "Satış iptal edildi!";
+            updatePoint();
         }
 
         // tüm satışlara tıklandığında

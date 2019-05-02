@@ -63,6 +63,7 @@
             this.buttonCancelSell = new System.Windows.Forms.Button();
             this.labelSellID = new System.Windows.Forms.Label();
             this.comboBoxSellID = new System.Windows.Forms.ComboBox();
+            this.labelPoint = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMinimize)).BeginInit();
@@ -377,6 +378,7 @@
             // panelNewSale
             // 
             this.panelNewSale.BackColor = System.Drawing.Color.Transparent;
+            this.panelNewSale.Controls.Add(this.labelPoint);
             this.panelNewSale.Controls.Add(this.buttonAllSales);
             this.panelNewSale.Controls.Add(this.numericUpDownProductNumber);
             this.panelNewSale.Controls.Add(this.comboBoxCustomerID);
@@ -512,6 +514,18 @@
             this.comboBoxSellID.TabIndex = 67;
             this.comboBoxSellID.SelectedIndexChanged += new System.EventHandler(this.comboBoxSellID_SelectedIndexChanged);
             // 
+            // labelPoint
+            // 
+            this.labelPoint.AutoSize = true;
+            this.labelPoint.BackColor = System.Drawing.Color.Transparent;
+            this.labelPoint.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelPoint.ForeColor = System.Drawing.Color.Black;
+            this.labelPoint.Location = new System.Drawing.Point(153, 9);
+            this.labelPoint.Name = "labelPoint";
+            this.labelPoint.Size = new System.Drawing.Size(103, 30);
+            this.labelPoint.TabIndex = 73;
+            this.labelPoint.Text = "Puanınız: ";
+            // 
             // NewSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -586,5 +600,6 @@
         private System.Windows.Forms.ComboBox comboBoxSellID;
         private System.Windows.Forms.DataGridView dataGridViewSales;
         private System.Windows.Forms.Button buttonShowAllSales;
+        private System.Windows.Forms.Label labelPoint;
     }
 }

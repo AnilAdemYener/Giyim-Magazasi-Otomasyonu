@@ -58,13 +58,14 @@ namespace GiyimMagazasiOtomasyonu
                 }
                 if (control == true)
                 {
-                    OleDbCommand cmdInsert = new OleDbCommand("insert into users values(@p1,@p2,@p3,@p4,now,@p5,@p6)", cnn);
+                    OleDbCommand cmdInsert = new OleDbCommand("insert into users values(@p1,@p2,@p3,@p4,now,@p5,@p6,@p7)", cnn);
                     cmdInsert.Parameters.AddWithValue("@p1", textBoxUserId.Text);
                     cmdInsert.Parameters.AddWithValue("@p2", textBoxUserName.Text);
                     cmdInsert.Parameters.AddWithValue("@p3", textBoxPassword.Text);
                     cmdInsert.Parameters.AddWithValue("@p4", textBoxEmail.Text);
                     cmdInsert.Parameters.AddWithValue("@p5", "none");
                     cmdInsert.Parameters.AddWithValue("@p6", "normal");
+                    cmdInsert.Parameters.AddWithValue("@p7", 0);
                     cmdInsert.ExecuteNonQuery();
                     panelTopColor.BackColor = Color.Lime;
                     labelMessage.ForeColor = Color.Green;

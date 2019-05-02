@@ -53,7 +53,7 @@ namespace GiyimMagazasiOtomasyonu
             OleDbDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                labelWelcome.Text = "| Hoşgeldiniz sayın " + reader["user_name"].ToString() + ".";
+                labelWelcome.Text = "| Hoşgeldiniz sayın " + reader["user_name"].ToString() + "." + " [" + reader["user_point"].ToString() + " puan" + "]";
             }
             cnn.Close();
         }
@@ -886,7 +886,7 @@ namespace GiyimMagazasiOtomasyonu
         {
             Boolean control = false;
             cnn.Open();
-            OleDbCommand cmd = new OleDbCommand("select * from customers",cnn);
+            OleDbCommand cmd = new OleDbCommand("select * from customers", cnn);
             OleDbDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
